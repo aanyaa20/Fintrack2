@@ -6,8 +6,8 @@ import {
   bulkTransactionSchema,
   createTransactionSchema,
   transactionIdSchema,
-  updateTransactionSchema,
-} from "../validators/transaction.validator";
+  updateTransactionSchema, 
+} from "../validators/transaction.validator"; 
 import {
   bulkDeleteTransactionService,
   bulkTransactionService,
