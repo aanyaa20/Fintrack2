@@ -12,8 +12,11 @@ dist
 dist-ssr
 *.local
 import-transaction-dialog
-_billing.tsx
+# Environment variables
 
+.env
+.env.local
+.env.*.local
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
