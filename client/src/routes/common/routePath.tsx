@@ -6,6 +6,7 @@ export const AUTH_ROUTES = {
   SIGN_IN: "/",
   SIGN_UP: "/sign-up",
   GITHUB_CALLBACK: "/auth/github/callback",
+  GOOGLE_CALLBACK: "/auth/google/callback",
 };  export const PROTECTED_ROUTES = {
     OVERVIEW: "/overview",
     TRANSACTIONS: "/transactions",

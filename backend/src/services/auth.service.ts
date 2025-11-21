@@ -10,6 +10,7 @@ import ReportSettingModel, {
 } from "../models/report-setting.model";
 import { calulateNextReportDate } from "../utils/helper";
 import { signJwtToken } from "../utils/jwt";
+import { verifyFirebaseToken } from "../config/firebase.config";
 
 export const registerService = async (body: RegisterSchemaType) => {
   const { email } = body;
@@ -74,6 +75,61 @@ export const loginService = async (body: LoginSchemaType) => {
 
 export const githubAuthService = async (user: UserDocument) => {
   // Find or create report settings
+  let reportSetting = await ReportSettingModel.findOne({ userId: user._id });
+
+  if (!reportSetting) {
+    reportSetting = await ReportSettingModel.create({
+      userId: user._id,
+      frequency: ReportFrequencyEnum.MONTHLY,
+      isEnabled: true,
+      nextReportDate: calulateNextReportDate(),
+      lastSentDate: null,
+    });
+  }
+
+  const { token, expiresAt } = signJwtToken({ userId: user.id });
+
+  return {
+    user: user.omitPassword(),
+    accessToken: token,
+    expiresAt,
+    reportSetting: {
+      _id: reportSetting._id,
+      frequency: reportSetting.frequency,
+      isEnabled: reportSetting.isEnabled,
+    },
+  };
+};
+
+export const googleAuthService = async (firebaseToken: string) => {
+  const decodedToken = await verifyFirebaseToken(firebaseToken);
+  const { email, name, picture, uid } = decodedToken;
+
+  if (!email) {
+    throw new UnauthorizedException("Email not provided by Google");
+  }
+
+  let user = await UserModel.findOne({ googleId: uid });
+
+  if (!user) {
+    user = await UserModel.findOne({ email });
+
+    if (user) {
+      user.googleId = uid;
+      user.provider = "google";
+      user.profilePicture = picture || user.profilePicture;
+      await user.save();
+    } else {
+      user = await UserModel.create({
+        googleId: uid,
+        name: name || email.split("@")[0],
+        email,
+        profilePicture: picture,
+        provider: "google",
+      });
+    }
+  }
+
   let reportSetting = await ReportSettingModel.findOne({ userId: user._id });
 
   if (!reportSetting) {

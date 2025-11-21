@@ -17,9 +17,13 @@ import { initializeCrons } from "./cron";
 import reportRoutes from "./routes/report.route";
 import { getDateRange } from "./utils/date";
 import analyticsRoutes from "./routes/analytics.route";
+import { initializeFirebase } from "./config/firebase.config";
 
 const app = express();
 const BASE_PATH = Env.BASE_PATH;
+
+// Initialize Firebase Admin
+initializeFirebase();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -2,9 +2,10 @@ import { Request, Response } from "express";
 import { HTTPSTATUS } from "../config/http.config";
 import { asyncHandler } from "../middlewares/asyncHandler.middlerware";
 import { loginSchema, registerSchema } from "../validators/auth.validator";
-import { loginService, registerService, githubAuthService } from "../services/auth.service";
+import { loginService, registerService, githubAuthService, googleAuthService } from "../services/auth.service";
 import { UserDocument } from "../models/user.model";
 import { Env } from "../config/env.config";
+import { UnauthorizedException } from "../utils/app-error";
 
 export const registerController = asyncHandler(
   async (req: Request, res: Response) => {
@@ -50,5 +51,25 @@ export const githubCallbackController = asyncHandler(
     // Redirect to frontend with token
     const redirectUrl = `${Env.FRONTEND_ORIGIN}/auth/github/callback?token=${accessToken}&expiresAt=${expiresAt}`;
     return res.redirect(redirectUrl);
+  }
+);
+
+export const googleAuthController = asyncHandler(
+  async (req: Request, res: Response) => {
+    const { firebaseToken } = req.body;
+
+    if (!firebaseToken) {
+      throw new UnauthorizedException("Firebase token is required");
+    }
+
+    const { user, accessToken, expiresAt, reportSetting } = await googleAuthService(firebaseToken);
+
+    return res.status(HTTPSTATUS.OK).json({
+      message: "Google login successful",
+      user,
+      accessToken,
+      expiresAt,
+      reportSetting,
+    });
   }
 );

@@ -3,6 +3,7 @@ import {
   loginController,
   registerController,
   githubCallbackController,
+  googleAuthController,
 } from "../controllers/auth.controller";
 import passport from "passport";
 
@@ -25,5 +26,7 @@ authRoutes.get(
   }),
   githubCallbackController
 );
+
+authRoutes.post("/google", googleAuthController);
 
 export default authRoutes;
