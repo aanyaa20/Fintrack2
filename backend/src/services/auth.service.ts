@@ -155,3 +155,58 @@ export const googleAuthService = async (firebaseToken: string) => {
     },
   };
 };
+
+export const microsoftAuthService = async (firebaseToken: string) => {
+  const decodedToken = await verifyFirebaseToken(firebaseToken);
+  const { email, name, picture, uid } = decodedToken;
+
+  if (!email) {
+    throw new UnauthorizedException("Email not provided by Microsoft");
+  }
+
+  let user = await UserModel.findOne({ microsoftId: uid });
+
+  if (!user) {
+    user = await UserModel.findOne({ email });
+
+    if (user) {
+      user.microsoftId = uid;
+      user.provider = "microsoft";
+      user.profilePicture = picture || user.profilePicture;
+      await user.save();
+    } else {
+      user = await UserModel.create({
+        microsoftId: uid,
+        name: name || email.split("@")[0],
+        email,
+        profilePicture: picture,
+        provider: "microsoft",
+      });
+    }
+  }
+
+  let reportSetting = await ReportSettingModel.findOne({ userId: user._id });
+
+  if (!reportSetting) {
+    reportSetting = await ReportSettingModel.create({
+      userId: user._id,
+      frequency: ReportFrequencyEnum.MONTHLY,
+      isEnabled: true,
+      nextReportDate: calulateNextReportDate(),
+      lastSentDate: null,
+    });
+  }
+
+  const { token, expiresAt } = signJwtToken({ userId: user.id });
+
+  return {
+    user: user.omitPassword(),
+    accessToken: token,
+    expiresAt,
+    reportSetting: {
+      _id: reportSetting._id,
+      frequency: reportSetting.frequency,
+      isEnabled: reportSetting.isEnabled,
+    },
+  };
+};

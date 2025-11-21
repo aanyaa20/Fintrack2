@@ -8,7 +8,8 @@ export interface UserDocument extends Document {
   profilePicture: string | null;
   githubId?: string;
   googleId?: string;
-  provider?: "local" | "github" | "google";
+  microsoftId?: string;
+  provider?: "local" | "github" | "google" | "microsoft";
   createdAt: Date;
   updatedAt: Date;
   comparePassword: (password: string) => Promise<boolean>;
@@ -48,9 +49,14 @@ const userSchema = new Schema<UserDocument>(
       unique: true,
       sparse: true,
     },
+    microsoftId: {
+      type: String,
+      unique: true,
+      sparse: true,
+    },
     provider: {
       type: String,
-      enum: ["local", "github", "google"],
+      enum: ["local", "github", "google", "microsoft"],
       default: "local",
     },
   },

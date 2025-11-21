@@ -4,6 +4,7 @@ import {
   registerController,
   githubCallbackController,
   googleAuthController,
+  microsoftAuthController,
 } from "../controllers/auth.controller";
 import passport from "passport";
 
@@ -28,5 +29,7 @@ authRoutes.get(
 );
 
 authRoutes.post("/google", googleAuthController);
+
+authRoutes.post("/microsoft", microsoftAuthController);
 
 export default authRoutes;

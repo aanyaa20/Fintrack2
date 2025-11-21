@@ -21,7 +21,7 @@ import { useLoginMutation } from "@/features/auth/authAPI";
 import { useAppDispatch } from "@/app/hook";
 import { setCredentials } from "@/features/auth/authSlice";
 import { signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "@/config/firebase.config";
+import { auth, googleProvider, microsoftProvider } from "@/config/firebase.config";
 import { useState } from "react";
 
 const schema = z.object({
@@ -39,6 +39,7 @@ const SignInForm = ({
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [isMicrosoftLoading, setIsMicrosoftLoading] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
@@ -95,6 +96,44 @@ const SignInForm = ({
       toast.error("Failed to sign in with Google. Please try again.");
     } finally {
       setIsGoogleLoading(false);
+    }
+  };
+
+  const handleMicrosoftSignIn = async () => {
+    try {
+      setIsMicrosoftLoading(true);
+      const result = await signInWithPopup(auth, microsoftProvider);
+      const idToken = await result.user.getIdToken();
+
+      // Send Firebase token to backend
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/microsoft`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ firebaseToken: idToken }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to authenticate with Microsoft");
+      }
+
+      const data = await response.json();
+
+      dispatch(setCredentials({
+        user: data.user,
+        accessToken: data.accessToken,
+        expiresAt: data.expiresAt,
+        reportSetting: data.reportSetting,
+      }));
+
+      toast.success("Successfully logged in with Microsoft!");
+      navigate(PROTECTED_ROUTES.OVERVIEW);
+    } catch (error) {
+      console.error("Microsoft sign-in error:", error);
+      toast.error("Failed to sign in with Microsoft. Please try again.");
+    } finally {
+      setIsMicrosoftLoading(false);
     }
   };
 
@@ -170,6 +209,23 @@ const SignInForm = ({
               <path fill="none" d="M0 0h48v48H0z"/>
             </svg>
             Login with Google
+          </Button>
+          <Button 
+            type="button" 
+            variant="outline" 
+            className="w-full"
+            disabled={isMicrosoftLoading}
+            onClick={handleMicrosoftSignIn}
+          >
+            {isMicrosoftLoading && <Loader className="h-4 w-4 animate-spin" />}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" className="h-5 w-5">
+              <path fill="#f3f3f3" d="M0 0h23v23H0z"/>
+              <path fill="#f35325" d="M1 1h10v10H1z"/>
+              <path fill="#81bc06" d="M12 1h10v10H12z"/>
+              <path fill="#05a6f0" d="M1 12h10v10H1z"/>
+              <path fill="#ffba08" d="M12 12h10v10H12z"/>
+            </svg>
+            Login with Microsoft
           </Button>
           <Button 
             type="button" 
