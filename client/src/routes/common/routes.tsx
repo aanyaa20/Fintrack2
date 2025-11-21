@@ -1,6 +1,7 @@
 import { AUTH_ROUTES, PROTECTED_ROUTES } from "./routePath";
 import SignIn from "@/pages/auth/sign-in";
 import SignUp from "@/pages/auth/sign-up";
+import GitHubCallback from "@/pages/auth/github-callback";
 import Dashboard from "@/pages/dashboard";
 import Transactions from "@/pages/transactions";
 import Reports from "@/pages/reports";
@@ -11,6 +12,7 @@ import Appearance from "@/pages/settings/appearance";
 export const authenticationRoutePaths = [
   { path: AUTH_ROUTES.SIGN_IN, element: <SignIn /> },
   { path: AUTH_ROUTES.SIGN_UP, element: <SignUp /> },
+  { path: AUTH_ROUTES.GITHUB_CALLBACK, element: <GitHubCallback /> },
 ];
 
 export const protectedRoutePaths = [

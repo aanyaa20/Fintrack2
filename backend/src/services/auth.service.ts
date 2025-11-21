@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import UserModel from "../models/user.model";
+import UserModel, { UserDocument } from "../models/user.model";
 import { NotFoundException, UnauthorizedException } from "../utils/app-error";
 import {
   LoginSchemaType,
@@ -69,5 +69,33 @@ export const loginService = async (body: LoginSchemaType) => {
     accessToken: token,
     expiresAt,
     reportSetting,
+  };
+};
+
+export const githubAuthService = async (user: UserDocument) => {
+  // Find or create report settings
+  let reportSetting = await ReportSettingModel.findOne({ userId: user._id });
+
+  if (!reportSetting) {
+    reportSetting = await ReportSettingModel.create({
+      userId: user._id,
+      frequency: ReportFrequencyEnum.MONTHLY,
+      isEnabled: true,
+      nextReportDate: calulateNextReportDate(),
+      lastSentDate: null,
+    });
+  }
+
+  const { token, expiresAt } = signJwtToken({ userId: user.id });
+
+  return {
+    user: user.omitPassword(),
+    accessToken: token,
+    expiresAt,
+    reportSetting: {
+      _id: reportSetting._id,
+      frequency: reportSetting.frequency,
+      isEnabled: reportSetting.isEnabled,
+    },
   };
 };

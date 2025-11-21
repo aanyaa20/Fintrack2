@@ -18,6 +18,9 @@ const envConfig = () => ({
       RESEND_API_KEY: getEnv("RESEND_API_KEY"),
   RESEND_MAILER_SENDER: getEnv("RESEND_MAILER_SENDER", ""),
   FRONTEND_ORIGIN: getEnv("FRONTEND_ORIGIN", "localhost"),
+  GITHUB_CLIENT_ID: getEnv("GITHUB_CLIENT_ID"),
+  GITHUB_CLIENT_SECRET: getEnv("GITHUB_CLIENT_SECRET"),
+  GITHUB_CALLBACK_URL: getEnv("GITHUB_CALLBACK_URL", "http://localhost:8000/api/auth/github/callback"),
 }
 );
 export const Env = envConfig();

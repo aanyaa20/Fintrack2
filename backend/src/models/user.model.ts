@@ -4,8 +4,10 @@ import { compareValue, hashValue } from "../utils/bcrypt";
 export interface UserDocument extends Document {
   name: string;
   email: string;
-  password: string;
+  password?: string;
   profilePicture: string | null;
+  githubId?: string;
+  provider?: "local" | "github";
   createdAt: Date;
   updatedAt: Date;
   comparePassword: (password: string) => Promise<boolean>;
@@ -33,7 +35,17 @@ const userSchema = new Schema<UserDocument>(
     password: {
       type: String,
       select: true,
-      required: true,
+      required: false,
+    },
+    githubId: {
+      type: String,
+      unique: true,
+      sparse: true,
+    },
+    provider: {
+      type: String,
+      enum: ["local", "github"],
+      default: "local",
     },
   },
   {
