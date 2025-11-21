@@ -1,6 +1,6 @@
 import SignUpForm from "./_component/signup-form";
 import Logo from "@/components/logo/logo";
-import { useTheme } from "@/context/theme-provider";
+// import { useTheme } from "@/context/theme-provider";
 
 const SignUp = () => {
   return (
