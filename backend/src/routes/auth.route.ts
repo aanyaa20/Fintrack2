@@ -5,6 +5,8 @@ import {
   githubCallbackController,
   googleAuthController,
   microsoftAuthController,
+  forgotPasswordController,
+  resetPasswordController,
 } from "../controllers/auth.controller";
 import passport from "passport";
 
@@ -31,5 +33,8 @@ authRoutes.get(
 authRoutes.post("/google", googleAuthController);
 
 authRoutes.post("/microsoft", microsoftAuthController);
+
+authRoutes.post("/forgot-password", forgotPasswordController);
+authRoutes.post("/reset-password", resetPasswordController);
 
 export default authRoutes;

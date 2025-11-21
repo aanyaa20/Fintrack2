@@ -1,5 +1,5 @@
 import { Env } from "../config/env.config";
-import { resend } from "../config/resend.config";
+import nodemailer from "nodemailer";
 
 type Params = {
   to: string | string[];
@@ -9,7 +9,16 @@ type Params = {
   from?: string;
 };
 
-const mailer_sender = `Fintrack <${Env.RESEND_MAILER_SENDER}>`;
+// Create transporter with Gmail
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: Env.EMAIL_USER,
+    pass: Env.EMAIL_PASS,
+  },
+});
+
+const mailer_sender = `Fintrack <${Env.EMAIL_USER}>`;
 
 export const sendEmail = async ({
   to,
@@ -18,11 +27,13 @@ export const sendEmail = async ({
   text,
   html,
 }: Params) => {
-  return await resend.emails.send({
+  const mailOptions = {
     from,
-    to: Array.isArray(to) ? to : [to],
-    text,
+    to: Array.isArray(to) ? to.join(', ') : to,
     subject,
+    text,
     html,
-  });
+  };
+
+  return await transporter.sendMail(mailOptions);
 };

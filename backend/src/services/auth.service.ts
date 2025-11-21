@@ -4,6 +4,8 @@ import { NotFoundException, UnauthorizedException } from "../utils/app-error";
 import {
   LoginSchemaType,
   RegisterSchemaType,
+  ForgotPasswordSchemaType,
+  ResetPasswordSchemaType,
 } from "../validators/auth.validator";
 import ReportSettingModel, {
   ReportFrequencyEnum,
@@ -11,6 +13,8 @@ import ReportSettingModel, {
 import { calulateNextReportDate } from "../utils/helper";
 import { signJwtToken } from "../utils/jwt";
 import { verifyFirebaseToken } from "../config/firebase.config";
+import { generateResetToken, hashResetToken } from "../utils/token";
+import { sendForgotPasswordEmail } from "../mailers/auth.mailer";
 
 export const registerService = async (body: RegisterSchemaType) => {
   const { email } = body;
@@ -209,4 +213,88 @@ export const microsoftAuthService = async (firebaseToken: string) => {
       isEnabled: reportSetting.isEnabled,
     },
   };
+};
+
+export const forgotPasswordService = async (body: ForgotPasswordSchemaType) => {
+  const { email } = body;
+
+  const user = await UserModel.findOne({ email });
+
+  if (!user) {
+    // Don't reveal if email exists for security
+    return { message: "If the email exists, a reset link has been sent" };
+  }
+
+  // Only allow password reset for local auth users
+  if (user.provider !== "local") {
+    throw new UnauthorizedException(
+      `This account uses ${user.provider} authentication. Please use ${user.provider} to sign in.`
+    );
+  }
+
+  // Generate reset token
+  const resetToken = generateResetToken();
+  const hashedToken = hashResetToken(resetToken);
+
+  // Save hashed token and expiry (1 hour)
+  user.resetPasswordToken = hashedToken;
+  user.resetPasswordExpires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+  await user.save();
+
+  // Log reset URL in development
+  if (process.env.NODE_ENV === "development") {
+    const resetUrl = `${process.env.FRONTEND_ORIGIN}/reset-password?token=${resetToken}`;
+    console.log("\n🔐 PASSWORD RESET LINK:");
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    console.log(`Email: ${user.email}`);
+    console.log(`Reset URL: ${resetUrl}`);
+    console.log("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+  }
+
+  // Send email
+  try {
+    const emailResponse = await sendForgotPasswordEmail({
+      email: user.email,
+      username: user.name,
+      resetToken,
+    });
+    
+    if (process.env.NODE_ENV === "development") {
+      console.log("✅ Email sent successfully via Resend");
+      console.log("Resend Response:", JSON.stringify(emailResponse, null, 2));
+    }
+  } catch (error) {
+    console.error("❌ Email sending failed:", error);
+    // If email fails, clear the reset token
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpires = undefined;
+    await user.save();
+    throw new Error("Failed to send reset email. Please try again later.");
+  }
+
+  return { message: "Password reset email sent successfully" };
+};
+
+export const resetPasswordService = async (body: ResetPasswordSchemaType) => {
+  const { token, newPassword } = body;
+
+  const hashedToken = hashResetToken(token);
+
+  // Find user with valid token and not expired
+  const user = await UserModel.findOne({
+    resetPasswordToken: hashedToken,
+    resetPasswordExpires: { $gt: new Date() },
+  }).select("+resetPasswordToken +resetPasswordExpires");
+
+  if (!user) {
+    throw new UnauthorizedException("Invalid or expired reset token");
+  }
+
+  // Update password (will be hashed by pre-save hook)
+  user.password = newPassword;
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpires = undefined;
+  await user.save();
+
+  return { message: "Password reset successfully" };
 };

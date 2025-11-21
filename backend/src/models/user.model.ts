@@ -10,6 +10,8 @@ export interface UserDocument extends Document {
   googleId?: string;
   microsoftId?: string;
   provider?: "local" | "github" | "google" | "microsoft";
+  resetPasswordToken?: string;
+  resetPasswordExpires?: Date;
   createdAt: Date;
   updatedAt: Date;
   comparePassword: (password: string) => Promise<boolean>;
@@ -58,6 +60,14 @@ const userSchema = new Schema<UserDocument>(
       type: String,
       enum: ["local", "github", "google", "microsoft"],
       default: "local",
+    },
+    resetPasswordToken: {
+      type: String,
+      select: false,
+    },
+    resetPasswordExpires: {
+      type: Date,
+      select: false,
     },
   },
   {
