@@ -28,7 +28,7 @@ import { useEffect } from "react";
 
 const formSchema = z.object({
   email: z.string(),
-  frequency: z.string(),
+  frequency: z.enum(["WEEKLY", "BI_WEEKLY", "MONTHLY"]),
   isEnabled: z.boolean(),
 });
 
@@ -59,14 +59,17 @@ const ScheduleReportForm = ({
       form.reset({
         email: user?.email,
         isEnabled: reportSetting?.isEnabled,
-        frequency: reportSetting?.frequency,
+        frequency: (reportSetting?.frequency as "WEEKLY" | "BI_WEEKLY" | "MONTHLY") || "MONTHLY",
       });
     }
   }, [user, form, reportSetting]);
 
   // Handle form submission
   const onSubmit = (values: FormValues) => {
-    const payload = { isEnabled: values.isEnabled };
+    const payload = { 
+      isEnabled: values.isEnabled,
+      frequency: values.frequency 
+    };
     updateReportSetting(payload)
       .unwrap()
       .then(() => {
@@ -84,7 +87,19 @@ const ScheduleReportForm = ({
     if (!form.watch("isEnabled")) {
       return "Reports are currently deactivated";
     }
-    return "Report will be sent once a month on the 1st day of the next month";
+    
+    const frequency = form.watch("frequency");
+    
+    switch (frequency) {
+      case "WEEKLY":
+        return "Report will be sent once a week";
+      case "BI_WEEKLY":
+        return "Report will be sent every 2 weeks (15 days)";
+      case "MONTHLY":
+        return "Report will be sent once a month on the 1st day of the next month";
+      default:
+        return "Report will be sent based on selected frequency";
+    }
   };
 
   return (
@@ -152,8 +167,8 @@ const ScheduleReportForm = ({
                     <FormLabel>Repeat On</FormLabel>
                     <Select
                       onValueChange={field.onChange}
-                      defaultValue={field.value}
-                      disabled={true}
+                      value={field.value}
+                      disabled={!form.watch("isEnabled")}
                     >
                       <FormControl className="w-full">
                         <SelectTrigger>
@@ -161,6 +176,8 @@ const ScheduleReportForm = ({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
+                        <SelectItem value="WEEKLY">Weekly</SelectItem>
+                        <SelectItem value="BI_WEEKLY">Every 15 Days</SelectItem>
                         <SelectItem value="MONTHLY">Monthly</SelectItem>
                       </SelectContent>
                     </Select>
@@ -171,7 +188,7 @@ const ScheduleReportForm = ({
 
               {/* Disabled overlay */}
               {!form.watch("isEnabled") && (
-                <div className="absolute inset-0 bg-white/50 dark:bg-black/50 z-10" />
+                <div className="absolute inset-0 bg-white/50 dark:bg-black/50 rounded-lg z-10" />
               )}
             </div>
 

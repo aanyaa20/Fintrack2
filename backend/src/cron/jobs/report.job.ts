@@ -93,7 +93,7 @@ export const processReportJob = async () => {
                   update: {
                     $set: {
                       lastSentDate: now,
-                      nextReportDate: calulateNextReportDate(now),
+                      nextReportDate: calulateNextReportDate(now, setting.frequency),
                       updatedAt: now,
                     },
                   },
@@ -123,7 +123,7 @@ export const processReportJob = async () => {
                   update: {
                     $set: {
                       lastSentDate: null,
-                      nextReportDate: calulateNextReportDate(now),
+                      nextReportDate: calulateNextReportDate(now, setting.frequency),
                       updatedAt: now,
                     },
                   },

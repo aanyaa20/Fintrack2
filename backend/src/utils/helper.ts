@@ -1,14 +1,30 @@
 import { addDays, addMonths, addWeeks, addYears, startOfMonth } from "date-fns";
 import { RecurringIntervalEnum } from "../models/transaction.model";
+import { ReportFrequencyEnum } from "../models/report-setting.model";
 
-export function calulateNextReportDate(lastSentDate?: Date): Date {
+export function calulateNextReportDate(
+  lastSentDate?: Date,
+  frequency: keyof typeof ReportFrequencyEnum = "MONTHLY"
+): Date {
   const now = new Date();
   const lastSent = lastSentDate || now;
+  let nextDate: Date;
 
-  const nextDate = startOfMonth(addMonths(lastSent, 1));
+  switch (frequency) {
+    case ReportFrequencyEnum.WEEKLY:
+      nextDate = addWeeks(lastSent, 1);
+      break;
+    case ReportFrequencyEnum.BI_WEEKLY:
+      nextDate = addWeeks(lastSent, 2);
+      break;
+    case ReportFrequencyEnum.MONTHLY:
+    default:
+      nextDate = startOfMonth(addMonths(lastSent, 1));
+      break;
+  }
+
   nextDate.setHours(0, 0, 0, 0);
-
-  console.log(nextDate, "nextDate");
+  console.log(nextDate, "nextReportDate");
   return nextDate;
 }
 
