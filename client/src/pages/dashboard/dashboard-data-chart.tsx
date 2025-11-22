@@ -101,8 +101,8 @@ const DashboardDataChart: React.FC<PropsType> = (props) => {
       <CardContent className="px-2 pt-2 sm:px-6 sm:pt-2 h-[300px]">
         {chartData?.length === 0 ? (
           <EmptyState
-            title="No transaction data"
-            description="There are no transactions recorded for this period."
+            title={t("dashboard.no_transaction_data")}
+            description={t("dashboard.no_transactions_recorded")}
           />
         ) : (
           <ChartContainer
@@ -160,7 +160,7 @@ const DashboardDataChart: React.FC<PropsType> = (props) => {
                             isExpense,
                           })}
                         </span>,
-                        isExpense ? "Expenses" : "Income",
+                        isExpense ? t("dashboard.expenses") : t("dashboard.income"),
                       ];
                     }}
                   />

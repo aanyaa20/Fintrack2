@@ -7,6 +7,7 @@ import { useAppDispatch } from "@/app/hook";
 import { logout } from "@/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { AUTH_ROUTES } from "@/routes/common/routePath";
+import { useTranslation } from "react-i18next";
 
 interface LogoutDialogProps {
     isOpen: boolean;
@@ -14,6 +15,7 @@ interface LogoutDialogProps {
 }
 
 const LogoutDialog = ({ isOpen, setIsOpen }: LogoutDialogProps) => {
+    const { t } = useTranslation();
     const [isPending, startTransition] = useTransition();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -29,16 +31,15 @@ const LogoutDialog = ({ isOpen, setIsOpen }: LogoutDialogProps) => {
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Are you sure you want to log out?</DialogTitle>
+            <DialogTitle>{t("common.logout_confirm_title")}</DialogTitle>
             <DialogDescription>
-              This will end your current session and you will need to log in
-              again to access your account.
+              {t("common.logout_confirm_desc")}
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button className="text-white !bg-red-500" disabled={isPending} type="button" onClick={handleLogout}>
               {isPending && <Loader className="animate-spin" />}
-              Yes
+              {t("common.yes")}
             </Button>
           </DialogFooter>
         </DialogContent>

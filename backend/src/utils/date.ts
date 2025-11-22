@@ -54,8 +54,8 @@ export const getDateRange = (
       };
     case DateRangeEnum.LAST_3_MONTHS:
       return {
-        from: startOfMonth(subMonths(now, 3)),
-        to: endOfMonth(subMonths(now, 1)),
+        from: startOfMonth(subMonths(today, 3)),
+        to: today,
         value: DateRangeEnum.LAST_3_MONTHS,
         label: "Last 3 Months",
       };

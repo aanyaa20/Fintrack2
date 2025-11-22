@@ -3,9 +3,11 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "@/context/theme-provider"
+import { useTranslation } from "react-i18next"
 
 export function AppearanceTheme() {
   const { theme, setTheme } = useTheme()
+  const { t } = useTranslation();
 
   const [selectedTheme, setSelectedTheme] = useState(theme)
 
@@ -21,9 +23,9 @@ export function AppearanceTheme() {
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <h4 className="text-sm font-medium">Theme</h4>
+        <h4 className="text-sm font-medium">{t("settings.theme")}</h4>
         <p className="text-sm text-muted-foreground">
-          Select the theme for the dashboard.
+          {t("settings.theme_desc")}
         </p>
         <RadioGroup
           value={selectedTheme}
@@ -50,7 +52,7 @@ export function AppearanceTheme() {
                 </div>
               </div>
               <p className="!block w-full p-2 text-center font-normal">
-                Light
+                {t("settings.light")}
               </p>
             </Label>
           </div>
@@ -74,7 +76,7 @@ export function AppearanceTheme() {
                 </div>
               </div>
               <p className="block w-full p-2 text-center font-normal">
-                Dark
+                {t("settings.dark")}
               </p>
             </Label>
           </div>
@@ -84,7 +86,7 @@ export function AppearanceTheme() {
       type="button"
       className="mt-4 text-white"
       onClick={handleUpdateTheme}
-      >Update preferences</Button>
+      >{t("settings.update_preferences")}</Button>
     </div>
   )
 }

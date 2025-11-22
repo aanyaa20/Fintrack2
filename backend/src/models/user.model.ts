@@ -6,6 +6,9 @@ export interface UserDocument extends Document {
   email: string;
   password?: string;
   profilePicture: string | null;
+  gender?: "male" | "female" | "other" | "prefer_not_to_say";
+  country?: string;
+  language?: string;
   location?: string;
   mobileNumber?: string;
   githubId?: string;
@@ -37,6 +40,21 @@ const userSchema = new Schema<UserDocument>(
     profilePicture: {
       type: String,
       default: null,
+    },
+    gender: {
+      type: String,
+      enum: ["male", "female", "other", "prefer_not_to_say"],
+      required: false,
+    },
+    country: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    language: {
+      type: String,
+      trim: true,
+      required: false,
     },
     location: {
       type: String,

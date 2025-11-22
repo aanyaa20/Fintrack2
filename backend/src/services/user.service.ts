@@ -21,6 +21,9 @@ export const updateUserService = async (
 
   user.set({
     name: body.name,
+    gender: body.gender,
+    country: body.country,
+    language: body.language,
   });
 
   await user.save();

@@ -8,6 +8,7 @@ import {
   useGetAllTransactionsQuery,
 } from "@/features/transaction/transactionAPI";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 type FilterType = {
   type?: _TransactionType | undefined;
@@ -20,6 +21,7 @@ const TransactionTable = (props: {
   pageSize?: number;
   isShowPagination?: boolean;
 }) => {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState<FilterType>({
     type: undefined,
     recurringStatus: undefined,
@@ -76,7 +78,7 @@ const TransactionTable = (props: {
     bulkDeleteTransaction(transactionIds)
       .unwrap()
       .then(() => {
-        toast.success("Transactions deleted successfully");
+        toast.success(t("transactions.deleted_successfully"));
       })
       .catch((error) => {
         toast.error(error.data?.message || "Failed to delete transactions");
@@ -87,7 +89,7 @@ const TransactionTable = (props: {
     <DataTable
       data={transactions} //transactions
       columns={transactionColumns}
-      searchPlaceholder="Search transactions..."
+      searchPlaceholder={t("transactions.search_placeholder")}
       isLoading={isFetching}
       isBulkDeleting={isBulkDeleting}
       isShowPagination={props.isShowPagination}
@@ -95,18 +97,18 @@ const TransactionTable = (props: {
       filters={[
         {
           key: "type",
-          label: "All Types",
+          label: t("transactions.all_types"),
           options: [
-            { value: _TRANSACTION_TYPE.INCOME, label: "Income" },
-            { value: _TRANSACTION_TYPE.EXPENSE, label: "Expense" },
+            { value: _TRANSACTION_TYPE.INCOME, label: t("dashboard.income") },
+            { value: _TRANSACTION_TYPE.EXPENSE, label: t("dashboard.expenses") },
           ],
         },
         {
           key: "frequently",
-          label: "Frequently",
+          label: t("transactions.frequently"),
           options: [
-            { value: "RECURRING", label: "Recurring" },
-            { value: "NON_RECURRING", label: "Non-Recurring" },
+            { value: "RECURRING", label: t("transactions.recurring") },
+            { value: "NON_RECURRING", label: t("transactions.non_recurring") },
           ],
         },
       ]}

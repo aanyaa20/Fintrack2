@@ -13,12 +13,20 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAppDispatch, useTypedSelector } from "@/app/hook";
 import { Loader } from "lucide-react";
 import { useUpdateUserMutation } from "@/features/user/userAPI";
 import { updateCredentials } from "@/features/auth/authSlice";
+import { useTranslation } from "react-i18next";
 
 const accountFormSchema = z.object({
   name: z
@@ -28,11 +36,69 @@ const accountFormSchema = z.object({
     })
     .optional(),
   profilePicture: z.string(),
+  gender: z.enum(["male", "female", "other", "prefer_not_to_say"]).optional(),
+  country: z.string().optional(),
+  language: z.string().optional(),
 });
 
 type AccountFormValues = z.infer<typeof accountFormSchema>;
 
+const COUNTRIES = [
+  "United States",
+  "United Kingdom",
+  "Canada",
+  "Australia",
+  "Germany",
+  "France",
+  "Spain",
+  "Italy",
+  "Netherlands",
+  "Belgium",
+  "Switzerland",
+  "Austria",
+  "Sweden",
+  "Norway",
+  "Denmark",
+  "Finland",
+  "Poland",
+  "Czech Republic",
+  "Portugal",
+  "Greece",
+  "Ireland",
+  "India",
+  "China",
+  "Japan",
+  "South Korea",
+  "Singapore",
+  "Malaysia",
+  "Thailand",
+  "Indonesia",
+  "Philippines",
+  "Vietnam",
+  "Brazil",
+  "Mexico",
+  "Argentina",
+  "Chile",
+  "Colombia",
+  "Peru",
+  "South Africa",
+  "Nigeria",
+  "Egypt",
+  "Kenya",
+  "Morocco",
+  "Saudi Arabia",
+  "United Arab Emirates",
+  "Turkey",
+  "Russia",
+  "Ukraine",
+  "New Zealand",
+  "Israel",
+  "Pakistan",
+  "Bangladesh",
+];
+
 export function AccountForm() {
+  const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
   const { user } = useTypedSelector((state) => state.auth);
 
@@ -46,6 +112,9 @@ export function AccountForm() {
     defaultValues: {
       name: user?.name || "",
       profilePicture: user?.profilePicture || "",
+      gender: user?.gender || undefined,
+      country: user?.country || undefined,
+      language: user?.language || undefined,
     },
   });
 
@@ -55,6 +124,9 @@ export function AccountForm() {
 
     const formData = new FormData();
     formData.append("name", values.name || "");
+    if (values.gender) formData.append("gender", values.gender);
+    if (values.country) formData.append("country", values.country);
+    if (values.language) formData.append("language", values.language);
     if (file) formData.append("profilePicture", file);
 
     updateUserMutation(formData)
@@ -65,6 +137,9 @@ export function AccountForm() {
             user: {
               profilePicture: response.data.profilePicture,
               name: response.data.name,
+              gender: response.data.gender,
+              country: response.data.country,
+              language: response.data.language,
             },
           })
         );
@@ -94,11 +169,22 @@ export function AccountForm() {
     reader.readAsDataURL(file);
   };
 
+  const languages = [
+    { code: "en", name: "English", flag: "🇺🇸" },
+    { code: "es", name: "Español", flag: "🇪🇸" },
+    { code: "fr", name: "Français", flag: "🇫🇷" },
+    { code: "de", name: "Deutsch", flag: "🇩🇪" },
+    { code: "hi", name: "हिंदी", flag: "🇮🇳" },
+    { code: "zh", name: "中文", flag: "🇨🇳" },
+    { code: "ja", name: "日本語", flag: "🇯🇵" },
+    { code: "pt", name: "Português", flag: "🇵🇹" },
+  ];
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <div className="flex flex-col items-start space-y-4">
-          <FormLabel>Profile Picture</FormLabel>
+          <FormLabel>{t("settings.profile_picture")}</FormLabel>
           <div className="flex items-center gap-4">
             <Avatar className="h-20 w-20">
               <AvatarImage
@@ -117,7 +203,7 @@ export function AccountForm() {
                 className="max-w-[250px]"
               />
               <p className="text-xs text-muted-foreground">
-                Recommended: Square JPG, PNG, at least 300x300px.
+                {t("settings.profile_picture_hint")}
               </p>
             </div>
           </div>
@@ -127,17 +213,98 @@ export function AccountForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>{t("settings.name")}</FormLabel>
               <FormControl>
-                <Input placeholder="Your name" {...field} />
+                <Input placeholder={t("settings.name_placeholder")} {...field} />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormItem>
+          <FormLabel>{t("settings.email")}</FormLabel>
+          <FormControl>
+            <Input value={user?.email || ""} disabled className="bg-muted" />
+          </FormControl>
+        </FormItem>
+        <FormField
+          control={form.control}
+          name="gender"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t("settings.gender")}</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder={t("settings.gender_placeholder")} />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="male">{t("settings.male")}</SelectItem>
+                  <SelectItem value="female">{t("settings.female")}</SelectItem>
+                  <SelectItem value="other">{t("settings.other")}</SelectItem>
+                  <SelectItem value="prefer_not_to_say">
+                    {t("settings.prefer_not_to_say")}
+                  </SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="country"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t("settings.country")}</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder={t("settings.country_placeholder")} />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {COUNTRIES.map((country) => (
+                    <SelectItem key={country} value={country}>
+                      {country}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="language"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t("settings.language")}</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder={t("settings.language_placeholder")} />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {languages.map((lang) => (
+                    <SelectItem key={lang.code} value={lang.code}>
+                      <span className="flex items-center gap-2">
+                        {lang.flag} {lang.name}
+                      </span>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button disabled={isLoading} type="submit">
           {isLoading && <Loader className="h-4 w-4 animate-spin" />}
-          Update account
+          {t("settings.update_account")}
         </Button>
       </form>
     </Form>

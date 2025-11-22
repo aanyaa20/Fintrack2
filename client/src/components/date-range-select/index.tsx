@@ -6,7 +6,9 @@ import {
   subMonths,
   subYears,
   startOfMonth,
+  endOfMonth,
   startOfYear,
+  endOfYear,
   endOfDay,
 } from "date-fns";
 import { Button } from "@/components/ui/button";
@@ -74,11 +76,11 @@ export const DateRangeSelect = ({
       }),
     },
     {
-      label: t("dashboard.last_7_days"),
+      label: t("dashboard.last_month"),
       value: DateRangeEnum.LAST_MONTH,
       getRange: () => ({
         from: startOfMonth(subMonths(today, 1)),
-        to: startOfMonth(today),
+        to: endOfMonth(subMonths(today, 1)),
         value: DateRangeEnum.LAST_MONTH,
         label: t("dashboard.for_past") + " " + t("dateRange.month"),
       }),
@@ -88,7 +90,7 @@ export const DateRangeSelect = ({
       value: DateRangeEnum.LAST_3_MONTHS,
       getRange: () => ({
         from: startOfMonth(subMonths(today, 3)),
-        to: startOfMonth(today),
+        to: today,
         value: DateRangeEnum.LAST_3_MONTHS,
         label: t("dashboard.for_past") + " 3 " + t("dateRange.months"),
       }),
@@ -98,7 +100,7 @@ export const DateRangeSelect = ({
       value: DateRangeEnum.LAST_YEAR,
       getRange: () => ({
         from: startOfYear(subYears(today, 1)),
-        to: startOfYear(today),
+        to: endOfYear(subYears(today, 1)),
         value: DateRangeEnum.LAST_YEAR,
         label: t("dashboard.for_past") + " " + t("dateRange.year"),
       }),
@@ -172,19 +174,18 @@ export const DateRangeSelect = ({
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
-          variant="outline"
+        <button
           className={cn(
-            `w-[200px] flex items-center justify-between text-left font-normal !bg-[var(--secondary-dark-color)]
-            border-gray-700 !text-white !cursor-pointer`,
+            `w-[200px] h-10 px-4 py-2 flex items-center justify-between text-left font-normal bg-[var(--secondary-dark-color)]
+            border border-gray-700 text-white cursor-pointer hover:bg-gray-700 hover:border-gray-600 rounded-md text-sm`,
             !dateRange && "text-muted-foreground"
           )}
         >
           {displayText}
           <ChevronDownIcon className="ml-2 h-4 w-4 opacity-50" />
-        </Button>
+        </button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
+      <PopoverContent className="w-auto p-0 z-50" align="start">
         <div className="grid py-1">
           {presets.map((preset) => (
             <Button

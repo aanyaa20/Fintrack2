@@ -89,8 +89,8 @@ const ExpensePieChart = (props: { dateRange?: DateRangeType }) => {
         <div className=" w-full">
           {categories?.length === 0 ? (
             <EmptyState
-              title="No expenses found"
-              description="There are no expenses recorded for this period."
+              title={t("dashboard.no_expenses_found")}
+              description={t("dashboard.no_expenses_recorded")}
             />
           ) : (
             <ChartContainer

@@ -7,6 +7,7 @@ import { formatPercentage } from "@/lib/format-percentage";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { DateRangeEnum, DateRangeType } from "@/components/date-range-select";
+import { useTranslation } from "react-i18next";
 
 type CardType = "balance" | "income" | "expenses" | "savings";
 type CardStatus = {
@@ -29,12 +30,13 @@ interface SummaryCardProps {
 const getCardStatus = (
   value: number,
   cardType: CardType,
-  expenseRatio?: number
+  expenseRatio?: number,
+  t?: (key: string) => string
 ): CardStatus => {
  if (cardType === "savings") {
     if (value === 0) {
       return {
-        label: "No Savings Record",
+        label: t ? t("dashboard.no_savings_record") : "No Savings Record",
         color: "text-gray-400",
         Icon: TrendingDownIcon,
       };
@@ -43,43 +45,43 @@ const getCardStatus = (
     // Check savings percentage first
     if (value < 10) {
       return {
-        label: "Low Savings",
+        label: t ? t("dashboard.low_savings") : "Low Savings",
         color: "text-red-400",
         Icon: TrendingDownIcon,
-        description: `Only ${value.toFixed(1)}% saved`,
+        description: `${t ? t("dashboard.only") : "Only"} ${value.toFixed(1)}% ${t ? t("dashboard.saved") : "saved"}`,
       };
     }
 
     if (value < 20) {
       return {
-        label: "Moderate",
+        label: t ? t("dashboard.moderate") : "Moderate",
         color: "text-yellow-400",
         Icon: TrendingDownIcon,
-        description: `${expenseRatio?.toFixed(0)}% spent`,
+        description: `${expenseRatio?.toFixed(0)}% ${t ? t("dashboard.spent") : "spent"}`,
       };
     }
 
     // High savings → check if expense ratio is unusually high for warning
     if (expenseRatio && expenseRatio > 75) {
       return {
-        label: "High Spend",
+        label: t ? t("dashboard.high_spend") : "High Spend",
         color: "text-red-400",
         Icon: TrendingDownIcon,
-        description: `${expenseRatio.toFixed(0)}% spent`,
+        description: `${expenseRatio.toFixed(0)}% ${t ? t("dashboard.spent") : "spent"}`,
       };
     }
 
     if (expenseRatio && expenseRatio > 60) {
       return {
-        label: "Warning: High Spend",
+        label: t ? t("dashboard.warning_high_spend") : "Warning: High Spend",
         color: "text-orange-400",
         Icon: TrendingDownIcon,
-        description: `${expenseRatio.toFixed(0)}% spent`,
+        description: `${expenseRatio.toFixed(0)}% ${t ? t("dashboard.spent") : "spent"}`,
       };
     }
 
     return {
-      label: "Good Savings",
+      label: t ? t("dashboard.good_savings") : "Good Savings",
       color: "text-green-400",
       Icon: TrendingUpIcon,
     };
@@ -88,13 +90,13 @@ const getCardStatus = (
   if (value === 0) {
     const typeLabel =
       cardType === "income"
-        ? "Income"
+        ? t ? t("dashboard.income") : "Income"
         : cardType === "expenses"
-          ? "Expenses"
-          : "Balance";
+          ? t ? t("dashboard.expenses") : "Expenses"
+          : t ? t("dashboard.balance") : "Balance";
 
     return {
-      label: `No ${typeLabel}`,
+      label: `${t ? t("dashboard.no_income").replace("No Income", "").replace("कोई आय नहीं", "").replace("No ", "").replace("कोई ", "").replace(" नहीं", "") : "No"} ${typeLabel}`,
       color: "text-gray-400",
       Icon: TrendingDownIcon,
       description: ``,
@@ -104,10 +106,10 @@ const getCardStatus = (
   // For balance card when negative
   if (cardType === "balance" && value < 0) {
     return {
-      label: "Overdrawn",
+      label: t ? t("dashboard.overdrawn") : "Overdrawn",
       color: "text-red-400",
       Icon: TrendingDownIcon,
-      description: "Balance is negative",
+      description: t ? t("dashboard.balance_is_negative") : "Balance is negative",
     };
   }
 
@@ -137,7 +139,8 @@ const SummaryCard: FC<SummaryCardProps> = ({
   expenseRatio,
   cardType = "balance",
 }) => {
-  const status = getCardStatus(value, cardType, expenseRatio);
+  const { t } = useTranslation();
+  const status = getCardStatus(value, cardType, expenseRatio, t);
   const showTrend =
     percentageChange !== undefined &&
     percentageChange !== null &&
@@ -212,7 +215,7 @@ const SummaryCard: FC<SummaryCardProps> = ({
               )}
             </div>
           ) : dateRange?.value === DateRangeEnum.ALL_TIME ? (
-            <span className="text-gray-400">Showing {dateRange?.label}</span>
+            <span className="text-gray-400">{t("dashboard.showing")} {dateRange?.label}</span>
           ) : value === 0 || status.label ? (
             <div className="flex items-center gap-1.5">
               <status.Icon className={cn("size-3.5", status.color)} />

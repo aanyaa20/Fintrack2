@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { useTranslation } from "react-i18next";
 
 export function UserNav({
   userName,
@@ -24,6 +25,7 @@ export function UserNav({
   profilePicture: string;
   onLogout: () => void;
 }) {
+  const { t } = useTranslation();
   return (
     <DropdownMenu>
       {/* ---- FIXED TRIGGER ---- */}
@@ -61,7 +63,7 @@ export function UserNav({
             className="hover:bg-gray-800 hover:text-white cursor-pointer"
           >
             <LogOut className="w-4 h-4 mr-2" />
-            Log out
+            {t("common.log_out")}
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

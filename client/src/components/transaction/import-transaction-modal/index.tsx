@@ -9,9 +9,11 @@ import FileUploadStep from "./fileupload-step";
 import ColumnMappingStep from "./column-mapping-step";
 import { CsvColumn, TransactionField } from "@/@types/transaction.type";
 import ConfirmationStep from "./confirmation-step";
+import { useTranslation } from "react-i18next";
 
 
 const ImportTransactionModal = () => {
+  const { t } = useTranslation();
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [file, setFile] = useState<File | null>(null);
   const [csvColumns, setCsvColumns] = useState<CsvColumn[]>([]);
@@ -103,7 +105,7 @@ const ImportTransactionModal = () => {
       onClick={() => setOpen(true)}
     >
       <ImportIcon className="!w-5 !h-5" />
-      Bulk Import
+      {t("transactions.bulk_import")}
     </Button>
   <DialogContent className="max-w-2xl min-h-[40vh]">
     {renderStep()}
