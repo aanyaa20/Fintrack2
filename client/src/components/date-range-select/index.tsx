@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   format,
   subDays,
@@ -53,85 +54,86 @@ interface DateRangeSelectProps {
 const now = new Date();
 const today = endOfDay(now);
 
-const presets: DateRangePreset[] = [
-  {
-    label: "Last 30 Days",
-    value: DateRangeEnum.LAST_30_DAYS,
-    getRange: () => ({
-      from: subDays(today, 29),
-      to: today,
-      value: DateRangeEnum.LAST_30_DAYS,
-      label: "for Past 30 Days",
-    }),
-  },
-  {
-    label: "Last Month",
-    value: DateRangeEnum.LAST_MONTH,
-    getRange: () => ({
-      from: startOfMonth(subMonths(today, 1)),
-      to: startOfMonth(today),
-      value: DateRangeEnum.LAST_MONTH,
-      label: "for Last Month",
-    }),
-  },
-  {
-    label: "Last 3 Months",
-    value: DateRangeEnum.LAST_3_MONTHS,
-    getRange: () => ({
-      from: startOfMonth(subMonths(today, 3)),
-      to: startOfMonth(today),
-      value: DateRangeEnum.LAST_3_MONTHS,
-      label: "for Past 3 Months",
-    }),
-  },
-  {
-    label: "Last Year",
-    value: DateRangeEnum.LAST_YEAR,
-    getRange: () => ({
-      from: startOfYear(subYears(today, 1)),
-      to: startOfYear(today),
-      value: DateRangeEnum.LAST_YEAR,
-      label: "for Past Year",
-    }),
-  },
-  {
-    label: "This Month",
-    value: DateRangeEnum.THIS_MONTH,
-    getRange: () => ({
-      from: startOfMonth(today),
-      to: today,
-      value: DateRangeEnum.THIS_MONTH,
-      label: "for This Month",
-    }),
-  },
-  {
-    label: "This Year",
-    value: DateRangeEnum.THIS_YEAR,
-    getRange: () => ({
-      from: startOfYear(today),
-      to: today,
-      value: DateRangeEnum.THIS_YEAR,
-      label: "for This Year",
-    }),
-  },
-  {
-    label: "All Time",
-    value: DateRangeEnum.ALL_TIME,
-    getRange: () => ({
-      from: null,
-      to: null,
-      value: DateRangeEnum.ALL_TIME,
-      label: "across All Time",
-    }),
-  },
-];
-
 export const DateRangeSelect = ({
   dateRange,
   setDateRange,
   defaultRange = DateRangeEnum.LAST_30_DAYS,
 }: DateRangeSelectProps) => {
   const [open, setOpen] = useState(false);
+  const { t, i18n } = useTranslation();
+
+  const presets: DateRangePreset[] = [
+    {
+      label: t("dashboard.last_30_days"),
+      value: DateRangeEnum.LAST_30_DAYS,
+      getRange: () => ({
+        from: subDays(today, 29),
+        to: today,
+        value: DateRangeEnum.LAST_30_DAYS,
+        label: t("dashboard.for_past") + " 30 " + t("dateRange.days"),
+      }),
+    },
+    {
+      label: t("dashboard.last_7_days"),
+      value: DateRangeEnum.LAST_MONTH,
+      getRange: () => ({
+        from: startOfMonth(subMonths(today, 1)),
+        to: startOfMonth(today),
+        value: DateRangeEnum.LAST_MONTH,
+        label: t("dashboard.for_past") + " " + t("dateRange.month"),
+      }),
+    },
+    {
+      label: t("dashboard.last_90_days"),
+      value: DateRangeEnum.LAST_3_MONTHS,
+      getRange: () => ({
+        from: startOfMonth(subMonths(today, 3)),
+        to: startOfMonth(today),
+        value: DateRangeEnum.LAST_3_MONTHS,
+        label: t("dashboard.for_past") + " 3 " + t("dateRange.months"),
+      }),
+    },
+    {
+      label: t("dateRange.last_year"),
+      value: DateRangeEnum.LAST_YEAR,
+      getRange: () => ({
+        from: startOfYear(subYears(today, 1)),
+        to: startOfYear(today),
+        value: DateRangeEnum.LAST_YEAR,
+        label: t("dashboard.for_past") + " " + t("dateRange.year"),
+      }),
+    },
+    {
+      label: t("dashboard.this_month"),
+      value: DateRangeEnum.THIS_MONTH,
+      getRange: () => ({
+        from: startOfMonth(today),
+        to: today,
+        value: DateRangeEnum.THIS_MONTH,
+        label: t("dateRange.for_this_month"),
+      }),
+    },
+    {
+      label: t("dashboard.this_year"),
+      value: DateRangeEnum.THIS_YEAR,
+      getRange: () => ({
+        from: startOfYear(today),
+        to: today,
+        value: DateRangeEnum.THIS_YEAR,
+        label: t("dateRange.for_this_year"),
+      }),
+    },
+    {
+      label: t("dashboard.all_time"),
+      value: DateRangeEnum.ALL_TIME,
+      getRange: () => ({
+        from: null,
+        to: null,
+        value: DateRangeEnum.ALL_TIME,
+        label: t("dateRange.across_all_time"),
+      }),
+    },
+  ];
 
   const displayText = dateRange
     ? presets.find((p) => p.value === dateRange.value)?.label ||
@@ -147,11 +149,25 @@ export const DateRangeSelect = ({
     if (!dateRange) {
       const defaultPreset = presets.find((p) => p.value === defaultRange);
       if (defaultPreset) {
-        // console.log(defaultPreset.getRange(),"defaultPreset.getRange()")
         setDateRange(defaultPreset.getRange());
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange, defaultRange, setDateRange]);
+
+  // Update dateRange label when language changes
+  useEffect(() => {
+    if (dateRange?.value) {
+      const currentPreset = presets.find((p) => p.value === dateRange.value);
+      if (currentPreset) {
+        const updatedRange = currentPreset.getRange();
+        if (updatedRange.label !== dateRange.label) {
+          setDateRange(updatedRange);
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>

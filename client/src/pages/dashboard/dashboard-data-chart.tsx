@@ -1,6 +1,7 @@
 import * as React from "react";
 import { format } from "date-fns";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
+import { useTranslation } from "react-i18next";
 import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Card,
@@ -44,6 +45,7 @@ const chartConfig = {
 
 const DashboardDataChart: React.FC<PropsType> = (props) => {
   const { dateRange } = props;
+  const { t } = useTranslation();
   const isMobile = useIsMobile();
 
   const { data, isFetching } = useChartAnalyticsQuery({
@@ -64,9 +66,9 @@ const DashboardDataChart: React.FC<PropsType> = (props) => {
       dark:border-border !p-0 pr-1 sm:flex-row"
       >
         <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-0 sm:py-0">
-          <CardTitle className="text-lg">Transaction Overview</CardTitle>
+          <CardTitle className="text-lg">{t("dashboard.transaction_overview")}</CardTitle>
           <CardDescription>
-            <span>Showing total transactions {dateRange?.label}</span>
+            <span>{t("dashboard.showing_transactions")} {dateRange?.label}</span>
           </CardDescription>
         </div>
         <div className="flex">
@@ -79,7 +81,7 @@ const DashboardDataChart: React.FC<PropsType> = (props) => {
                 sm:border-l border-gray-100 dark:border-border sm:px-4 sm:py-6 min-w-36"
               >
                 <span className="w-full block text-xs text-muted-foreground">
-                  No of {chartConfig[chart].label}
+                  {key === TRANSACTION_TYPES[0] ? t("dashboard.no_of_income") : t("dashboard.no_of_expenses")}
                 </span>
                 <span className="flex items-center justify-center gap-2 text-lg font-semibold leading-none sm:text-3xl">
                   {key === TRANSACTION_TYPES[0] ? (

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Label, Pie, PieChart, Cell } from "recharts";
+import { useTranslation } from "react-i18next";
 
 import {
   Card,
@@ -38,6 +39,7 @@ const chartConfig = {
 
 const ExpensePieChart = (props: { dateRange?: DateRangeType }) => {
   const { dateRange } = props;
+  const { t } = useTranslation();
 
   const { data, isFetching } = useExpensePieChartBreakdownQuery({
     preset: dateRange?.value,
@@ -80,8 +82,8 @@ const ExpensePieChart = (props: { dateRange?: DateRangeType }) => {
   return (
     <Card className="!shadow-none border-1 border-gray-100 dark:border-border">
       <CardHeader className="pb-2">
-        <CardTitle className="text-lg">Expenses Breakdown</CardTitle>
-        <CardDescription>Total expenses {dateRange?.label}</CardDescription>
+        <CardTitle className="text-lg">{t("dashboard.expenses_breakdown")}</CardTitle>
+        <CardDescription>{t("dashboard.total_expenses_for")} {dateRange?.label}</CardDescription>
       </CardHeader>
       <CardContent className="h-[313px]">
         <div className=" w-full">
@@ -140,7 +142,7 @@ const ExpensePieChart = (props: { dateRange?: DateRangeType }) => {
                               y={(viewBox.cy || 0) + 20}
                               className="fill-muted-foreground text-xs"
                             >
-                              Total Spent
+                              {t("dashboard.total_spent")}
                             </tspan>
                           </text>
                         );

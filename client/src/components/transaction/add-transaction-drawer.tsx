@@ -56,6 +56,7 @@
 
 
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 import {
   Drawer,
   DrawerClose,
@@ -70,6 +71,7 @@ import { PlusIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 
 const AddTransactionDrawer = () => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   const onCloseDrawer = () => {
@@ -81,14 +83,14 @@ const AddTransactionDrawer = () => {
       <DrawerTrigger asChild>
         <Button className="!cursor-pointer !text-white">
           <PlusIcon className="h-4 w-4" />
-          Add Transaction
+          {t("dashboard.add_transaction")}
         </Button>
       </DrawerTrigger>
       <DrawerContent className="max-w-md overflow-hidden overflow-y-auto">
         <DrawerHeader className="relative">
           <div>
             <DrawerTitle className="text-xl font-semibold">
-              Add Transaction
+              {t("dashboard.add_transaction")}
             </DrawerTitle>
             <DrawerDescription>
               Add a new transaction to track your finances

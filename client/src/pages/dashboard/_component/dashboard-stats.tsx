@@ -1,8 +1,10 @@
 import { useSummaryAnalyticsQuery } from "@/features/analytics/analyticsAPI";
+import { useTranslation } from "react-i18next";
 import SummaryCard from "./summary-card";
 import { DateRangeType } from "@/components/date-range-select";
 
 const DashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
+  const { t } = useTranslation();
   const { data, isFetching } = useSummaryAnalyticsQuery(
     { preset: dateRange?.value },
     { skip: !dateRange }
@@ -13,7 +15,7 @@ const DashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
     <div className="flex flex-row items-center">
       <div className="flex-1 lg:flex-[1] grid grid-cols-1 lg:grid-cols-4 gap-4">
         <SummaryCard
-          title="Available Balance"
+          title={t("dashboard.available_balance")}
           value={summaryData?.availableBalance}
           dateRange={dateRange}
           percentageChange={summaryData?.percentageChange?.balance}
@@ -21,7 +23,7 @@ const DashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
           cardType="balance"
         />
         <SummaryCard
-          title="Total Income"
+          title={t("dashboard.total_income")}
           value={summaryData?.totalIncome}
           percentageChange={summaryData?.percentageChange?.income}
           dateRange={dateRange}
@@ -29,7 +31,7 @@ const DashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
           cardType="income"
         />
         <SummaryCard
-          title="Total Expenses"
+          title={t("dashboard.total_expenses")}
           value={summaryData?.totalExpenses}
           dateRange={dateRange}
           percentageChange={summaryData?.percentageChange?.expenses}
@@ -37,7 +39,7 @@ const DashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
           cardType="expenses"
         />
         <SummaryCard
-          title="Savings Rate"
+          title={t("dashboard.savings_rate")}
           value={summaryData?.savingRate?.percentage}
           expenseRatio={summaryData?.savingRate?.expenseRatio}
           isPercentageValue

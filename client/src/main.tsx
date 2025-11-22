@@ -4,6 +4,7 @@ import { NuqsAdapter } from "nuqs/adapters/react";
 // @ts-ignore
 
 import "./index.css";
+import "./i18n/config";
 import App from "./App.tsx";
 import { Toaster } from "sonner";
 import { Provider } from "react-redux";
@@ -21,7 +22,7 @@ createRoot(document.getElementById("root")!).render(
         <Toaster
           position="top-center"
           expand={true}
-          duration={5000}
+          duration={1000}
           richColors
           closeButton
         />

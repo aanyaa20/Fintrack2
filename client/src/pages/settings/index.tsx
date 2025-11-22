@@ -1,4 +1,5 @@
 import PageLayout from "@/components/page-layout";
+import { useTranslation } from "react-i18next";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -12,14 +13,15 @@ interface ItemPropsType {
 }
 
 const Settings = () => {
+  const { t } = useTranslation();
   const sidebarNavItems = [
-    { title: "Account", href: PROTECTED_ROUTES.SETTINGS },
-    { title: "Appearance", href: PROTECTED_ROUTES.SETTINGS_APPEARANCE },
+    { title: t("settings.account"), href: PROTECTED_ROUTES.SETTINGS },
+    { title: t("settings.appearance"), href: PROTECTED_ROUTES.SETTINGS_APPEARANCE },
   ];
   return (
     <PageLayout
-      title="Settings"
-      subtitle="Manage your account settings and set e-mail preferences."
+      title={t("settings.title")}
+      subtitle={t("settings.subtitle")}
       addMarginTop
     >
       <Card className="border shadow-none">

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import TransactionTable from "@/components/transaction/transaction-table";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,18 +14,20 @@ import { Separator } from "@/components/ui/separator";
 import { PROTECTED_ROUTES } from "@/routes/common/routePath";
 
 const DashboardRecentTransactions = () => {
+  const { t } = useTranslation();
+  
   return (
     <Card className="!shadow-none border-1 border-gray-100 dark:border-border">
       <CardHeader className="!pb-0">
-        <CardTitle className="text-xl">Recent Transactions</CardTitle>
-        <CardDescription>Showing all recent transactions</CardDescription>
+        <CardTitle className="text-xl">{t("dashboard.recent_transactions")}</CardTitle>
+        <CardDescription>{t("dashboard.showing_all_recent")}</CardDescription>
         <CardAction>
           <Button
             asChild
             variant="link"
             className="!text-gray-700 dark:!text-gray-200 !font-normal"
           >
-            <Link to={PROTECTED_ROUTES.TRANSACTIONS}>View all</Link>
+            <Link to={PROTECTED_ROUTES.TRANSACTIONS}>{t("common.view_all")}</Link>
           </Button>
         </CardAction>
         <Separator className="mt-3 !bg-gray-100 dark:!bg-gray-800" />

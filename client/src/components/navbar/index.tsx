@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { PROTECTED_ROUTES } from "@/routes/common/routePath";
 import { cn } from "@/lib/utils";
 import Logo from "../logo/logo";
@@ -9,10 +10,12 @@ import { Sheet, SheetContent } from "../ui/sheet";
 import { UserNav } from "./user-nav";
 import LogoutDialog from "./logout-dialog";
 import { useTypedSelector } from "@/app/hook";
+import { LanguageSelector } from "./language-selector";
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const { user } = useTypedSelector((state) => state.auth);
+  const { t } = useTranslation();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isLogoutDialogOpen, setIsLogoutDialogOpen] = useState(false);
@@ -20,19 +23,19 @@ const Navbar = () => {
   const routes = [
     {
       href: PROTECTED_ROUTES.OVERVIEW,
-      label: "Overview",
+      label: t("navbar.overview"),
     },
     {
       href: PROTECTED_ROUTES.TRANSACTIONS,
-      label: "Transactions",
+      label: t("navbar.transactions"),
     },
     {
       href: PROTECTED_ROUTES.REPORTS,
-      label: "Reports",
+      label: t("navbar.reports"),
     },
     {
       href: PROTECTED_ROUTES.SETTINGS,
-      label: "Settings",
+      label: t("navbar.settings"),
     },
   ];
 
@@ -112,7 +115,8 @@ const Navbar = () => {
 
             {/* {} */}
             {/* Right side - User actions */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
+              <LanguageSelector />
               <UserNav
                 userName={user?.name || ""}
                 profilePicture={user?.profilePicture || ""}
