@@ -6,6 +6,8 @@ export interface UserDocument extends Document {
   email: string;
   password?: string;
   profilePicture: string | null;
+  location?: string;
+  mobileNumber?: string;
   githubId?: string;
   googleId?: string;
   microsoftId?: string;
@@ -35,6 +37,16 @@ const userSchema = new Schema<UserDocument>(
     profilePicture: {
       type: String,
       default: null,
+    },
+    location: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+    mobileNumber: {
+      type: String,
+      trim: true,
+      required: false,
     },
     password: {
       type: String,

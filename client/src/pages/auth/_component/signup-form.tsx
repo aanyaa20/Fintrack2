@@ -15,6 +15,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useRegisterMutation } from "@/features/auth/authAPI";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider, microsoftProvider } from "@/config/firebase.config";
@@ -26,9 +33,30 @@ const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
+  location: z.string().optional(),
+  mobileNumber: z.string().max(20, "Mobile number too long").optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
+
+// Country code mapping
+const countryCodeMap: Record<string, string> = {
+  "United States": "+1",
+  "United Kingdom": "+44",
+  "Canada": "+1",
+  "Australia": "+61",
+  "Germany": "+49",
+  "France": "+33",
+  "India": "+91",
+  "Japan": "+81",
+  "China": "+86",
+  "Brazil": "+55",
+  "Mexico": "+52",
+  "Spain": "+34",
+  "Italy": "+39",
+  "Netherlands": "+31",
+  "Singapore": "+65",
+};
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -36,13 +64,20 @@ const SignUpForm = () => {
   const [register, { isLoading }] = useRegisterMutation();
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const [isMicrosoftLoading, setIsMicrosoftLoading] = useState(false);
+  const [countryCode, setCountryCode] = useState("+1");
 
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
   });
 
   const onSubmit = (values: FormValues) => {
-    register(values)
+    // Combine country code with mobile number if mobile number is provided
+    const submitData = {
+      ...values,
+      mobileNumber: values.mobileNumber ? `${countryCode} ${values.mobileNumber}` : undefined,
+    };
+    
+    register(submitData)
       .unwrap()
       .then(() => {
         form.reset();
@@ -138,9 +173,9 @@ const SignUpForm = () => {
         className="flex flex-col gap-6"
       >
         <div className="flex flex-col items-center gap-2 text-center">
-          <h1 className="text-2xl font-bold">Sign up to Acme Inc.</h1>
+          <h1 className="text-2xl font-bold">Create your account</h1>
           <p className="text-balance text-sm text-muted-foreground">
-            Fill information below to sign up
+            Fill your information below to sign up
           </p>
         </div>
         <div className="grid gap-6">
@@ -178,6 +213,74 @@ const SignUpForm = () => {
                 <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input type="password" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="location"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Location (Optional)</FormLabel>
+                <Select 
+                  onValueChange={(value) => {
+                    field.onChange(value);
+                    const code = countryCodeMap[value] || "+1";
+                    setCountryCode(code);
+                  }} 
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select your country" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="United States">United States</SelectItem>
+                    <SelectItem value="United Kingdom">United Kingdom</SelectItem>
+                    <SelectItem value="Canada">Canada</SelectItem>
+                    <SelectItem value="Australia">Australia</SelectItem>
+                    <SelectItem value="Germany">Germany</SelectItem>
+                    <SelectItem value="France">France</SelectItem>
+                    <SelectItem value="India">India</SelectItem>
+                    <SelectItem value="Japan">Japan</SelectItem>
+                    <SelectItem value="China">China</SelectItem>
+                    <SelectItem value="Brazil">Brazil</SelectItem>
+                    <SelectItem value="Mexico">Mexico</SelectItem>
+                    <SelectItem value="Spain">Spain</SelectItem>
+                    <SelectItem value="Italy">Italy</SelectItem>
+                    <SelectItem value="Netherlands">Netherlands</SelectItem>
+                    <SelectItem value="Singapore">Singapore</SelectItem>
+                    <SelectItem value="Other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="mobileNumber"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Mobile Number (Optional)</FormLabel>
+                <FormControl>
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-2 border rounded-md bg-muted text-sm min-w-[60px] text-center">
+                      {countryCode}
+                    </span>
+                    <Input 
+                      placeholder="234 567 8900" 
+                      {...field} 
+                      onChange={(e) => {
+                        // Only allow numbers
+                        const value = e.target.value.replace(/[^0-9]/g, '');
+                        field.onChange(value);
+                      }}
+                    />
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
