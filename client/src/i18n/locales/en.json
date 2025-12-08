@@ -114,7 +114,8 @@
     "log_out": "Log out",
     "logout_confirm_title": "Are you sure you want to log out?",
     "logout_confirm_desc": "This will end your current session and you will need to log in again to access your account.",
-    "yes": "Yes"
+    "yes": "Yes",
+    "error": "Error"
   },
   "transactions": {
     "title": "All Transactions",
@@ -171,9 +172,10 @@
   },
   "settings": {
     "title": "Settings",
-    "subtitle": "Manage your account settings and set e-mail preferences.",
+    "subtitle": "Manage your profile settings and preferences",
     "account": "Account",
     "appearance": "Appearance",
+    "notifications": "Notifications",
     "account_desc": "Update your account settings.",
     "profile_picture": "Profile Picture",
     "profile_picture_hint": "Recommended: Square JPG, PNG, at least 300x300px.",
@@ -196,7 +198,25 @@
     "theme_desc": "Select the theme for the dashboard.",
     "light": "Light",
     "dark": "Dark",
-    "update_preferences": "Update preferences"
+    "update_preferences": "Update preferences",
+    "email_notifications": "Email Notifications",
+    "email_notifications_desc": "Receive notifications via email",
+    "profile_updates": "Profile Updates",
+    "profile_updates_desc": "Get notified when your profile is updated",
+    "password_changes": "Password Changes",
+    "password_changes_desc": "Get notified when your password is changed",
+    "new_device_login": "New Device Login",
+    "new_device_login_desc": "Get notified when you login from a new device",
+    "negative_balance": "Negative Balance Alert",
+    "negative_balance_desc": "Get notified when your balance goes negative",
+    "transaction_alerts": "Transaction Alerts",
+    "transaction_alerts_desc": "Get notified for every transaction you make",
+    "high_spending_alert": "High Spending Alert",
+    "high_spending_alert_desc": "Get notified when spending exceeds income",
+    "monthly_report": "Monthly Report",
+    "monthly_report_desc": "Receive monthly financial summary on 1st of every month",
+    "notifications_updated": "Notifications updated",
+    "notifications_updated_desc": "Your notification preferences have been saved"
   },
   "dateRange": {
     "days": "Days",

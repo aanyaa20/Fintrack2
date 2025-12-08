@@ -163,7 +163,7 @@ export const DateRangeSelect = ({
       const currentPreset = presets.find((p) => p.value === dateRange.value);
       if (currentPreset) {
         const updatedRange = currentPreset.getRange();
-        if (updatedRange.label !== dateRange.label) {
+        if (updatedRange && updatedRange.label !== dateRange.label) {
           setDateRange(updatedRange);
         }
       }
