@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Label, Pie, PieChart, Cell } from "recharts";
 import { useTranslation } from "react-i18next";
 

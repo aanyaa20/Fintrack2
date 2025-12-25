@@ -98,7 +98,7 @@ const COUNTRIES = [
 ];
 
 export function AccountForm() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { user } = useTypedSelector((state) => state.auth);
 
