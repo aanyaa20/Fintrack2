@@ -30,9 +30,21 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(passport.initialize());
 
+// CORS configuration - supports multiple origins
+const allowedOrigins = Env.FRONTEND_ORIGIN.split(',').map(origin => origin.trim());
+
 app.use(
   cors({
-    origin: Env.FRONTEND_ORIGIN,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.indexOf(origin) !== -1 || allowedOrigins.includes('*')) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
@@ -40,9 +52,21 @@ app.use(
 app.get(
   "/",
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
-    throw new BadRequestException("This is a test error");
     res.status(HTTPSTATUS.OK).json({
-      message: "Hello Subcribe to the channel",
+      message: "FinTrack API is running",
+      version: "1.0.0",
+      status: "healthy"
+    });
+  })
+);
+
+// Health check endpoint for Render
+app.get(
+  `${BASE_PATH}/health`,
+  asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
+    res.status(HTTPSTATUS.OK).json({
+      status: "healthy",
+      timestamp: new Date().toISOString()
     });
   })
 );

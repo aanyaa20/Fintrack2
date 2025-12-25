@@ -19,7 +19,7 @@ const envConfig = () => ({
   EMAIL_USER: getEnv("EMAIL_USER"),
   EMAIL_PASS: getEnv("EMAIL_PASS"),
   
-  FRONTEND_ORIGIN: getEnv("FRONTEND_ORIGIN", "localhost"),
+  FRONTEND_ORIGIN: getEnv("FRONTEND_ORIGIN", "http://localhost:5173"),
   GITHUB_CLIENT_ID: getEnv("GITHUB_CLIENT_ID"),
   GITHUB_CLIENT_SECRET: getEnv("GITHUB_CLIENT_SECRET"),
   GITHUB_CALLBACK_URL: getEnv("GITHUB_CALLBACK_URL", "http://localhost:8000/api/auth/github/callback"),

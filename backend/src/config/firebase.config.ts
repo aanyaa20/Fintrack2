@@ -1,20 +1,37 @@
 import admin from "firebase-admin";
 import path from "path";
 import * as fs from "fs";
+import { Env } from "./env.config";
 
 let firebaseInitialized = false;
 
 export const initializeFirebase = () => {
   if (!firebaseInitialized) {
     try {
-      const serviceAccountPath = path.join(__dirname, "../../firebase-service-account.json");
-      
-      if (!fs.existsSync(serviceAccountPath)) {
-        console.warn("Firebase service account file not found. Google auth will not work.");
-        return;
+      let serviceAccount;
+
+      // Production: Try environment variable first
+      if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+        try {
+          serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+          console.log("Using Firebase credentials from environment variable");
+        } catch (error) {
+          console.error("Failed to parse FIREBASE_SERVICE_ACCOUNT env variable:", error);
+        }
       }
 
-      const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, "utf8"));
+      // Development: Fall back to file
+      if (!serviceAccount) {
+        const serviceAccountPath = path.join(__dirname, "../../firebase-service-account.json");
+        
+        if (!fs.existsSync(serviceAccountPath)) {
+          console.warn("Firebase service account not found. Google auth will not work.");
+          return;
+        }
+
+        serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, "utf8"));
+        console.log("Using Firebase credentials from file");
+      }
 
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
