@@ -33,7 +33,7 @@ const GoogleCallback = () => {
 
         // Fetch user data with the token
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/user/current-user`,
+          `${import.meta.env.VITE_API_BASE_URL}/user/current-user`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

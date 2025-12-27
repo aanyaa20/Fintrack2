@@ -68,7 +68,7 @@ const SignInForm = ({
       const idToken = await result.user.getIdToken();
 
       // Send Firebase token to backend
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/google`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/google`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -106,7 +106,7 @@ const SignInForm = ({
       const idToken = await result.user.getIdToken();
 
       // Send Firebase token to backend
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/microsoft`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/microsoft`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
