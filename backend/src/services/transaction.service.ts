@@ -11,6 +11,7 @@ import {
 import { genAI, genAIModel } from "../config/google-ai.config";
 import { createPartFromBase64, createUserContent } from "@google/genai";
 import { receiptPrompt } from "../utils/prompt";
+import { Env } from "../config/env.config";
 
 export const createTransactionService = async (
   body: CreateTransactionType,
@@ -266,10 +267,15 @@ export const scanReceiptService = async (
 ) => {
   if (!file) throw new BadRequestException("No file uploaded");
 
+  // Check if Gemini API key is configured
+  if (!Env.GEMINI_API_KEY) {
+    throw new BadRequestException("AI service is not configured. Please contact administrator.");
+  }
+
   try {
     if (!file.path) throw new BadRequestException("failed to upload file");
 
-    console.log(file.path);
+    console.log("📄 Receipt file path:", file.path);
 
     const responseData = await axios.get(file.path, {
       responseType: "arraybuffer",
@@ -318,6 +324,9 @@ export const scanReceiptService = async (
       receiptUrl: file.path,
     };
   } catch (error) {
-    return { error: "Reciept scanning  service unavailable" };
+    console.error("❌ Receipt scanning error:", error);
+    throw new BadRequestException(
+      error instanceof Error ? error.message : "Receipt scanning service unavailable"
+    );
   }
 };
