@@ -8,12 +8,16 @@ import BaseLayout from "@/layouts/base-layout";
 import AuthRoute from "./authRoute";
 import ProtectedRoute from "./protectedRoute";
 import useAuthExpiration from "@/hooks/use-auth-expiration";
+import LandingPage from "@/pages/landing";
 
 function AppRoutes() {
   useAuthExpiration();
   return (
     <BrowserRouter>
       <Routes>
+        {/* Landing Page */}
+        <Route path="/landing" element={<LandingPage />} />
+        
         <Route path="/" element={<AuthRoute />}>
           <Route element={<BaseLayout />}>
             {authenticationRoutePaths.map((route) => (
