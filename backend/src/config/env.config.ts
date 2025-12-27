@@ -19,6 +19,10 @@ const envConfig = () => ({
   EMAIL_USER: getEnv("EMAIL_USER"),
   EMAIL_PASS: getEnv("EMAIL_PASS"),
   
+  // MSG91 (Optional)
+  MSG91_AUTH_KEY: getEnv("MSG91_AUTH_KEY", ""),
+  MSG91_SENDER_ID: getEnv("MSG91_SENDER_ID", ""),
+  
   FRONTEND_ORIGIN: getEnv("FRONTEND_ORIGIN", "http://localhost:5173"),
   GITHUB_CLIENT_ID: getEnv("GITHUB_CLIENT_ID"),
   GITHUB_CLIENT_SECRET: getEnv("GITHUB_CLIENT_SECRET"),
