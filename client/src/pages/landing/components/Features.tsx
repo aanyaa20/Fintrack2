@@ -31,25 +31,25 @@ const Features = () => {
   ];
 
   return (
-    <section id="features" className="py-24 px-6 lg:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section id="features" className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="max-w-2xl mb-16">
-          <h2 className="text-3xl font-semibold text-slate-900 mb-4">
+        <div className="max-w-2xl mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3 sm:mb-4">
             Core Capabilities
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-slate-600">
             Essential tools for managing your financial data with precision and
             clarity.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="space-y-24">
+        <div className="space-y-16 sm:space-y-24">
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`grid lg:grid-cols-2 gap-12 lg:gap-16 items-center ${
+              className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
                 index % 2 === 1 ? "lg:grid-flow-dense" : ""
               }`}
             >

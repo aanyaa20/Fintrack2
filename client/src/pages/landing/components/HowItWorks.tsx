@@ -24,14 +24,14 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 px-6 lg:px-8 bg-slate-50">
-      <div className="max-w-7xl mx-auto">
+    <section id="how-it-works" className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
-        <div className="max-w-2xl mb-16">
-          <h2 className="text-3xl font-semibold text-slate-900 mb-4">
-            How FinTrak Works
+        <div className="max-w-2xl mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3 sm:mb-4">
+            How Fintrack Works
           </h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-slate-600">
             Start tracking your finances in three straightforward steps.
           </p>
         </div>

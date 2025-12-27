@@ -9,9 +9,9 @@ import LandingFooter from "./components/LandingFooter";
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen w-full bg-gray-50 overflow-x-hidden">
       <LandingHeader />
-      <main>
+      <main className="w-full">
         <Hero />
         <TrustSection />
         <Features />

@@ -25,11 +25,11 @@ const LandingHeader = () => {
         <nav className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5">
-            <div className="bg-slate-900 text-white h-8 w-8 rounded flex items-center justify-center">
+            <div className="bg-green-500 text-white h-8 w-8 rounded flex items-center justify-center">
               <GalleryVerticalEnd className="size-5" />
             </div>
             <span className="font-semibold text-lg text-slate-900">
-              FinTrak
+              Fintrack
             </span>
           </Link>
 
@@ -70,7 +70,7 @@ const LandingHeader = () => {
           {/* CTA Button */}
           <Link
             to="/sign-up"
-            className="px-5 py-2 bg-slate-900 text-white text-sm font-medium rounded-md hover:bg-slate-800 transition-colors"
+            className="px-5 py-2 bg-green-500 text-white text-sm font-medium rounded-md hover:bg-green-600 transition-colors"
           >
             Get Started
           </Link>

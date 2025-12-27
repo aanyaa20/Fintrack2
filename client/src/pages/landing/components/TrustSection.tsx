@@ -20,14 +20,14 @@ const TrustSection = () => {
   ];
 
   return (
-    <section className="py-16 px-6 lg:px-8 bg-slate-50 border-y border-slate-200">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8">
+    <section className="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-y border-slate-200">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {trustPoints.map((point, index) => {
             const Icon = point.icon;
             return (
               <div key={index} className="flex flex-col items-start">
-                <div className="mb-4 p-2.5 bg-slate-900 rounded-md">
+                <div className="mb-4 p-2.5 bg-green-500 rounded-md">
                   <Icon className="size-5 text-white" />
                 </div>
                 <h3 className="text-base font-semibold text-slate-900 mb-2">

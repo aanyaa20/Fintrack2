@@ -3,23 +3,23 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="pt-32 pb-20 px-6 lg:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section className="w-full pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left: Text Content */}
-          <div className="max-w-xl">
-            <h1 className="text-4xl lg:text-5xl font-semibold text-slate-900 leading-tight mb-6">
+          <div className="w-full max-w-xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-slate-900 leading-tight mb-4 sm:mb-6">
               Financial tracking, designed for clarity.
             </h1>
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              FinTrak helps you track income, expenses, and financial patterns
+            <p className="text-base sm:text-lg text-slate-600 mb-6 sm:mb-8 leading-relaxed">
+              Fintrack helps you track income, expenses, and financial patterns
               with structured records and clear insights. Built for people who
               value control over their financial data.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/sign-up"
-                className="inline-flex items-center justify-center px-6 py-3 bg-slate-900 text-white font-medium rounded-md hover:bg-slate-800 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 transition-colors"
               >
                 Start Tracking
                 <ArrowRight className="ml-2 size-4" />

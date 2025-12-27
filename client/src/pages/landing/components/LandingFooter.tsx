@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 
 const LandingFooter = () => {
   return (
-    <footer className="py-12 px-6 lg:px-8 bg-white border-t border-slate-200">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+    <footer className="w-full py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="bg-slate-900 text-white h-8 w-8 rounded flex items-center justify-center">
+              <div className="bg-green-500 text-white h-8 w-8 rounded flex items-center justify-center">
                 <GalleryVerticalEnd className="size-5" />
               </div>
               <span className="font-semibold text-lg text-slate-900">
-                FinTrak
+                Fintrack
               </span>
             </Link>
             <p className="text-sm text-slate-600">

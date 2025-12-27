@@ -15,10 +15,10 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Landing Page */}
-        <Route path="/landing" element={<LandingPage />} />
+        {/* Landing Page - Root */}
+        <Route path="/" element={<LandingPage />} />
         
-        <Route path="/" element={<AuthRoute />}>
+        <Route element={<AuthRoute />}>
           <Route element={<BaseLayout />}>
             {authenticationRoutePaths.map((route) => (
               <Route
