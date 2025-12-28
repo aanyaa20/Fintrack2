@@ -393,44 +393,20 @@ const TransactionForm = (props: {
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel className="text-green-500">Choose Date for Older Transactions</FormLabel>
-                  <Popover modal={false}>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button
-                          variant={"outline"}
-                          className={cn(
-                            "w-full pl-3 text-left font-normal border-green-500/50 hover:border-green-500",
-                            !field.value && "text-muted-foreground"
-                          )}
-                          disabled={isScanning}
-                        >
-                          {field.value ? (
-                            format(field.value, "PPP")
-                          ) : (
-                            <span>Select date for past transaction</span>
-                          )}
-                          <Calendar className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent
-                      className="w-auto p-0"
-                      align="start"
-                    >
-                      <CalendarComponent
-                        mode="single"
-                        selected={field.value}
-                        onSelect={(date) => {
-                          field.onChange(date);
-                        }}
-                        disabled={(date) => 
-                          date < new Date("2020-01-01") || 
-                          date > new Date()
-                        }
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
+                  <FormControl>
+                    <Input
+                      type="date"
+                      max={format(new Date(), "yyyy-MM-dd")}
+                      min="2020-01-01"
+                      value={field.value ? format(field.value, "yyyy-MM-dd") : ""}
+                      onChange={(e) => {
+                        const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
+                        field.onChange(selectedDate);
+                      }}
+                      disabled={isScanning}
+                      className="w-full border-green-500/50 focus:border-green-500"
+                    />
+                  </FormControl>
                   <p className="text-xs text-muted-foreground">
                     Use this calendar if you need to add a transaction from a previous date
                   </p>
