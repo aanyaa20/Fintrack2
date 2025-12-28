@@ -1,9 +1,6 @@
 import { Handshake, Building2, TrendingUp, Globe, ArrowRight } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 const PartnerWithUs = () => {
-  const { t } = useTranslation();
-
   const benefits = [
     {
       icon: Building2,

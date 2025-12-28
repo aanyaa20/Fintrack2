@@ -1,9 +1,6 @@
 import { BookOpen, HelpCircle, Video, Sparkles, FileText, Users, MessageCircle, Lightbulb, Mail } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
 const Resources = () => {
-  const { t } = useTranslation();
-
   const resources = [
     {
       icon: BookOpen,

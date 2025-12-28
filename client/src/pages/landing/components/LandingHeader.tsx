@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 const LandingHeader = () => {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
