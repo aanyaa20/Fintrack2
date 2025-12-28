@@ -210,70 +210,70 @@
   },
   "landing": {
     "header": {
-      "product": "Product",
-      "features": "Features",
-      "how_it_works": "How it Works",
-      "security": "Security",
-      "pricing": "Pricing",
-      "get_started": "Get Started"
+      "product": "उत्पाद",
+      "features": "विशेषताएँ",
+      "how_it_works": "यह कैसे काम करता है",
+      "security": "सुरक्षा",
+      "pricing": "मूल्य निर्धारण",
+      "get_started": "शुरू करें"
     },
     "hero": {
-      "title": "Financial tracking, designed for clarity.",
-      "description": "Fintrack helps you track income, expenses, and financial patterns with structured records and clear insights. Built for people who value control over their financial data.",
-      "start_tracking": "Start Tracking",
-      "see_how_it_works": "See How It Works"
+      "title": "वित्तीय ट्रैकिंग, स्पष्टता के लिए डिज़ाइन किया गया।",
+      "description": "Fintrack आपको संरचित रिकॉर्ड और स्पष्ट जानकारी के साथ आय, व्यय और वित्तीय पैटर्न को ट्रैक करने में मदद करता है। उन लोगों के लिए बनाया गया जो अपने वित्तीय डेटा पर नियंत्रण को महत्व देते हैं।",
+      "start_tracking": "ट्रैकिंग शुरू करें",
+      "see_how_it_works": "देखें यह कैसे काम करता है"
     },
     "trust": {
-      "privacy_title": "Privacy-first by design",
-      "privacy_desc": "Your financial data stays yours. No third-party tracking.",
-      "security_title": "Built with secure architecture",
-      "security_desc": "Bank-grade encryption and secure data storage practices.",
-      "reliability_title": "Designed for reliability",
-      "reliability_desc": "Consistent performance and accurate financial tracking."
+      "privacy_title": "डिज़ाइन द्वारा गोपनीयता-प्रथम",
+      "privacy_desc": "आपका वित्तीय डेटा आपका है। कोई तृतीय-पक्ष ट्रैकिंग नहीं।",
+      "security_title": "सुरक्षित आर्किटेक्चर के साथ निर्मित",
+      "security_desc": "बैंक-ग्रेड एन्क्रिप्शन और सुरक्षित डेटा स्टोरेज प्रथाएँ।",
+      "reliability_title": "विश्वसनीयता के लिए डिज़ाइन किया गया",
+      "reliability_desc": "सुसंगत प्रदर्शन और सटीक वित्तीय ट्रैकिंग।"
     },
     "features": {
-      "title": "Core Capabilities",
-      "subtitle": "Essential tools for managing your financial data with precision and clarity.",
-      "transaction_title": "Structured Transaction Records",
-      "transaction_desc": "Maintain organized financial records with categorized income and expenses. Clear data structure for easy reference.",
-      "analytics_title": "Spending Pattern Analysis",
-      "analytics_desc": "Understand where your money goes with visual breakdowns and category-based analytics. Identify trends over time.",
-      "receipt_title": "AI Receipt Scanning",
-      "receipt_desc": "Upload receipts and extract transaction details automatically. Save time on manual data entry.",
-      "account_title": "Create Your Account",
-      "account_desc": "Sign up in seconds with email or use Google, GitHub, or Microsoft. Set your preferred currency and start tracking."
+      "title": "मुख्य क्षमताएँ",
+      "subtitle": "सटीकता और स्पष्टता के साथ अपने वित्तीय डेटा को प्रबंधित करने के लिए आवश्यक उपकरण।",
+      "transaction_title": "संरचित लेनदेन रिकॉर्ड",
+      "transaction_desc": "श्रेणीबद्ध आय और व्यय के साथ संगठित वित्तीय रिकॉर्ड बनाए रखें। आसान संदर्भ के लिए स्पष्ट डेटा संरचना।",
+      "analytics_title": "खर्च पैटर्न विश्लेषण",
+      "analytics_desc": "दृश्य विवरण और श्रेणी-आधारित विश्लेषण के साथ समझें कि आपका पैसा कहाँ जाता है। समय के साथ रुझानों की पहचान करें।",
+      "receipt_title": "एआई रसीद स्कैनिंग",
+      "receipt_desc": "रसीदें अपलोड करें और स्वचालित रूप से लेनदेन विवरण निकालें। मैनुअल डेटा प्रविष्टि पर समय बचाएं।",
+      "account_title": "अपना खाता बनाएं",
+      "account_desc": "ईमेल के साथ सेकंड में साइन अप करें या Google, GitHub या Microsoft का उपयोग करें। अपनी पसंदीदा मुद्रा सेट करें और ट्रैकिंग शुरू करें।"
     },
     "how_it_works": {
-      "title": "How Fintrack Works",
-      "subtitle": "Start tracking your finances in three straightforward steps.",
-      "step1_title": "Create Your Account",
-      "step1_desc": "Sign up in seconds. Set your preferred currency and financial tracking preferences.",
-      "step2_title": "Record Transactions",
-      "step2_desc": "Add income and expenses manually or scan receipts. Categorize transactions for organized records.",
-      "step3_title": "Track and Analyze",
-      "step3_desc": "View spending breakdowns, track patterns, and generate reports. Make informed financial decisions."
+      "title": "Fintrack कैसे काम करता है",
+      "subtitle": "तीन सीधे चरणों में अपने वित्त को ट्रैक करना शुरू करें।",
+      "step1_title": "अपना खाता बनाएं",
+      "step1_desc": "सेकंड में साइन अप करें। अपनी पसंदीदा मुद्रा और वित्तीय ट्रैकिंग प्राथमिकताएँ सेट करें।",
+      "step2_title": "लेनदेन रिकॉर्ड करें",
+      "step2_desc": "मैनुअल रूप से आय और व्यय जोड़ें या रसीदें स्कैन करें। संगठित रिकॉर्ड के लिए लेनदेन को श्रेणीबद्ध करें।",
+      "step3_title": "ट्रैक और विश्लेषण करें",
+      "step3_desc": "खर्च विवरण देखें, पैटर्न ट्रैक करें और रिपोर्ट उत्पन्न करें। सूचित वित्तीय निर्णय लें।"
     },
     "philosophy": {
-      "title": "Product Philosophy",
-      "subtitle": "FinTrak is built on principles that prioritize your needs and respect your time.",
-      "principle1_title": "Clarity over complexity",
-      "principle1_desc": "We focus on presenting your financial data in a way that's easy to understand. No confusing jargon or overwhelming interfaces.",
-      "principle2_title": "Practical insights over noisy dashboards",
-      "principle2_desc": "Our analytics show you what matters: spending patterns, category breakdowns, and trends that help you make decisions.",
-      "principle3_title": "User control over automation",
-      "principle3_desc": "You decide how to categorize and track your finances. FinTrak supports your workflow, not the other way around."
+      "title": "उत्पाद दर्शन",
+      "subtitle": "FinTrak उन सिद्धांतों पर बनाया गया है जो आपकी आवश्यकताओं को प्राथमिकता देते हैं और आपके समय का सम्मान करते हैं।",
+      "principle1_title": "जटिलता पर स्पष्टता",
+      "principle1_desc": "हम आपके वित्तीय डेटा को समझने में आसान तरीके से प्रस्तुत करने पर ध्यान केंद्रित करते हैं। कोई भ्रमित करने वाली शब्दावली या भारी इंटरफेस नहीं।",
+      "principle2_title": "शोर वाले डैशबोर्ड पर व्यावहारिक जानकारी",
+      "principle2_desc": "हमारे विश्लेषण आपको दिखाते हैं कि क्या मायने रखता है: खर्च पैटर्न, श्रेणी विवरण और रुझान जो आपको निर्णय लेने में मदद करते हैं।",
+      "principle3_title": "स्वचालन पर उपयोगकर्ता नियंत्रण",
+      "principle3_desc": "आप तय करते हैं कि अपने वित्त को कैसे श्रेणीबद्ध और ट्रैक करें। FinTrak आपके वर्कफ़्लो का समर्थन करता है, उल्टा नहीं।"
     },
     "cta": {
-      "title": "Start Tracking Your Finances Today",
-      "description": "Join others who have taken control of their financial data with Fintrack.",
-      "create_account": "Create Your Free Account"
+      "title": "आज ही अपने वित्त को ट्रैक करना शुरू करें",
+      "description": "उन लोगों में शामिल हों जिन्होंने Fintrack के साथ अपने वित्तीय डेटा पर नियंत्रण लिया है।",
+      "create_account": "अपना मुफ़्त खाता बनाएं"
     },
     "footer": {
-      "tagline": "Financial tracking designed for clarity and control.",
-      "product_title": "Product",
-      "web_app": "Web App",
-      "features": "Features",
-      "contact_title": "Contact"
+      "tagline": "स्पष्टता और नियंत्रण के लिए डिज़ाइन किया गया वित्तीय ट्रैकिंग।",
+      "product_title": "उत्पाद",
+      "web_app": "वेब ऐप",
+      "features": "विशेषताएँ",
+      "contact_title": "संपर्क"
     }
   }
 }

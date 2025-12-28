@@ -210,69 +210,69 @@
   },
   "landing": {
     "header": {
-      "product": "Product",
-      "features": "Features",
-      "how_it_works": "How it Works",
-      "security": "Security",
-      "pricing": "Pricing",
-      "get_started": "Get Started"
+      "product": "Produit",
+      "features": "Fonctionnalités",
+      "how_it_works": "Comment ça marche",
+      "security": "Sécurité",
+      "pricing": "Tarifs",
+      "get_started": "Commencer"
     },
     "hero": {
-      "title": "Financial tracking, designed for clarity.",
-      "description": "Fintrack helps you track income, expenses, and financial patterns with structured records and clear insights. Built for people who value control over their financial data.",
-      "start_tracking": "Start Tracking",
-      "see_how_it_works": "See How It Works"
+      "title": "Suivi financier, conçu pour la clarté.",
+      "description": "Fintrack vous aide à suivre les revenus, les dépenses et les modèles financiers avec des enregistrements structurés et des informations claires. Conçu pour les personnes qui valorisent le contrôle de leurs données financières.",
+      "start_tracking": "Commencer le Suivi",
+      "see_how_it_works": "Voir Comment Ça Marche"
     },
     "trust": {
-      "privacy_title": "Privacy-first by design",
-      "privacy_desc": "Your financial data stays yours. No third-party tracking.",
-      "security_title": "Built with secure architecture",
-      "security_desc": "Bank-grade encryption and secure data storage practices.",
-      "reliability_title": "Designed for reliability",
-      "reliability_desc": "Consistent performance and accurate financial tracking."
+      "privacy_title": "Confidentialité d'abord par conception",
+      "privacy_desc": "Vos données financières vous appartiennent. Pas de suivi tiers.",
+      "security_title": "Construit avec une architecture sécurisée",
+      "security_desc": "Chiffrement de niveau bancaire et pratiques de stockage de données sécurisées.",
+      "reliability_title": "Conçu pour la fiabilité",
+      "reliability_desc": "Performance cohérente et suivi financier précis."
     },
     "features": {
-      "title": "Core Capabilities",
-      "subtitle": "Essential tools for managing your financial data with precision and clarity.",
-      "transaction_title": "Structured Transaction Records",
-      "transaction_desc": "Maintain organized financial records with categorized income and expenses. Clear data structure for easy reference.",
-      "analytics_title": "Spending Pattern Analysis",
-      "analytics_desc": "Understand where your money goes with visual breakdowns and category-based analytics. Identify trends over time.",
-      "receipt_title": "AI Receipt Scanning",
-      "receipt_desc": "Upload receipts and extract transaction details automatically. Save time on manual data entry.",
-      "account_title": "Create Your Account",
-      "account_desc": "Sign up in seconds with email or use Google, GitHub, or Microsoft. Set your preferred currency and start tracking."
+      "title": "Capacités Principales",
+      "subtitle": "Outils essentiels pour gérer vos données financières avec précision et clarté.",
+      "transaction_title": "Enregistrements de Transactions Structurés",
+      "transaction_desc": "Maintenez des enregistrements financiers organisés avec des revenus et dépenses catégorisés. Structure de données claire pour une référence facile.",
+      "analytics_title": "Analyse des Modèles de Dépenses",
+      "analytics_desc": "Comprenez où va votre argent avec des ventilations visuelles et des analyses basées sur les catégories. Identifiez les tendances au fil du temps.",
+      "receipt_title": "Numérisation de Reçus par IA",
+      "receipt_desc": "Téléchargez des reçus et extrayez automatiquement les détails des transactions. Gagnez du temps sur la saisie manuelle des données.",
+      "account_title": "Créez Votre Compte",
+      "account_desc": "Inscrivez-vous en quelques secondes avec un email ou utilisez Google, GitHub ou Microsoft. Définissez votre devise préférée et commencez le suivi."
     },
     "how_it_works": {
-      "title": "How Fintrack Works",
-      "subtitle": "Start tracking your finances in three straightforward steps.",
-      "step1_title": "Create Your Account",
-      "step1_desc": "Sign up in seconds. Set your preferred currency and financial tracking preferences.",
-      "step2_title": "Record Transactions",
-      "step2_desc": "Add income and expenses manually or scan receipts. Categorize transactions for organized records.",
-      "step3_title": "Track and Analyze",
-      "step3_desc": "View spending breakdowns, track patterns, and generate reports. Make informed financial decisions."
+      "title": "Comment Fonctionne Fintrack",
+      "subtitle": "Commencez à suivre vos finances en trois étapes simples.",
+      "step1_title": "Créez Votre Compte",
+      "step1_desc": "Inscrivez-vous en quelques secondes. Définissez votre devise préférée et vos préférences de suivi financier.",
+      "step2_title": "Enregistrez les Transactions",
+      "step2_desc": "Ajoutez des revenus et des dépenses manuellement ou numérisez des reçus. Catégorisez les transactions pour des enregistrements organisés.",
+      "step3_title": "Suivez et Analysez",
+      "step3_desc": "Consultez les ventilations des dépenses, suivez les modèles et générez des rapports. Prenez des décisions financières éclairées."
     },
     "philosophy": {
-      "title": "Product Philosophy",
-      "subtitle": "FinTrak is built on principles that prioritize your needs and respect your time.",
-      "principle1_title": "Clarity over complexity",
-      "principle1_desc": "We focus on presenting your financial data in a way that's easy to understand. No confusing jargon or overwhelming interfaces.",
-      "principle2_title": "Practical insights over noisy dashboards",
-      "principle2_desc": "Our analytics show you what matters: spending patterns, category breakdowns, and trends that help you make decisions.",
-      "principle3_title": "User control over automation",
-      "principle3_desc": "You decide how to categorize and track your finances. FinTrak supports your workflow, not the other way around."
+      "title": "Philosophie du Produit",
+      "subtitle": "FinTrak est construit sur des principes qui privilégient vos besoins et respectent votre temps.",
+      "principle1_title": "Clarté plutôt que complexité",
+      "principle1_desc": "Nous nous concentrons sur la présentation de vos données financières de manière facile à comprendre. Pas de jargon confus ou d'interfaces écrasantes.",
+      "principle2_title": "Insights pratiques plutôt que tableaux de bord bruyants",
+      "principle2_desc": "Nos analyses vous montrent ce qui compte : modèles de dépenses, ventilations par catégorie et tendances qui vous aident à prendre des décisions.",
+      "principle3_title": "Contrôle utilisateur plutôt qu'automatisation",
+      "principle3_desc": "Vous décidez comment catégoriser et suivre vos finances. FinTrak soutient votre flux de travail, pas l'inverse."
     },
     "cta": {
-      "title": "Start Tracking Your Finances Today",
-      "description": "Join others who have taken control of their financial data with Fintrack.",
-      "create_account": "Create Your Free Account"
+      "title": "Commencez à Suivre Vos Finances Aujourd'hui",
+      "description": "Rejoignez d'autres personnes qui ont pris le contrôle de leurs données financières avec Fintrack.",
+      "create_account": "Créez Votre Compte Gratuit"
     },
     "footer": {
-      "tagline": "Financial tracking designed for clarity and control.",
-      "product_title": "Product",
-      "web_app": "Web App",
-      "features": "Features",
+      "tagline": "Suivi financier conçu pour la clarté et le contrôle.",
+      "product_title": "Produit",
+      "web_app": "Application Web",
+      "features": "Fonctionnalités",
       "contact_title": "Contact"
     }
   }

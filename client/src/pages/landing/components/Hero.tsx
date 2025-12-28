@@ -6,8 +6,22 @@ const Hero = () => {
   const { t } = useTranslation();
   
   return (
-    <section className="w-full pt-32 pb-20 px-6 sm:px-12 lg:px-20 bg-[#0f1419]">
-      <div className="w-full">
+    <section className="w-full pt-32 pb-20 px-6 sm:px-12 lg:px-20 bg-[#0f1419] relative overflow-hidden">
+      {/* Background Dashboard Image - Blended across entire section */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
+        style={{
+          backgroundImage: 'url(/assets/landing/image-1766883635155.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      />
+      
+      {/* Gradient overlay to blend with dark background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0f1419]/95 via-[#0f1419]/80 to-[#0f1419]/60" />
+      
+      {/* Content */}
+      <div className="w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Text Content */}
           <div className="w-full">
@@ -34,18 +48,9 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Product Preview Image */}
-          <div className="relative">
-            <div className="relative rounded-lg overflow-hidden">
-              {/* Dashboard screenshot with transparency */}
-              <div className="aspect-[4/3] bg-[#0f1419] flex items-center justify-center">
-                <img
-                  src="/assets/landing/image-1766883635155.png"
-                  alt="Dashboard Preview"
-                  className="w-full h-full object-contain opacity-70"
-                />
-              </div>
-            </div>
+          {/* Right: Empty space for dashboard image visibility */}
+          <div className="w-full h-64 lg:h-96">
+            {/* This space allows the background image to show through */}
           </div>
         </div>
       </div>
