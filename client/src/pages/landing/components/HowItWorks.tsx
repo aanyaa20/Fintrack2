@@ -22,10 +22,10 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#1a1e2a]">
-      <div className="max-w-7xl mx-auto w-full">
+    <section id="how-it-works" className="w-full py-16 sm:py-24 px-6 sm:px-12 lg:px-20 bg-[#1a1e2a]">
+      <div className="w-full">
         {/* Section Header */}
-        <div className="max-w-2xl mb-12 sm:mb-16">
+        <div className="mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-3 sm:mb-4">
             {t('landing.how_it_works.title')}
           </h2>

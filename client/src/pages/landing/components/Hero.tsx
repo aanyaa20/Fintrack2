@@ -6,11 +6,11 @@ const Hero = () => {
   const { t } = useTranslation();
   
   return (
-    <section className="w-full pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[#0f1419]">
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <section className="w-full pt-32 pb-20 px-6 sm:px-12 lg:px-20 bg-[#0f1419]">
+      <div className="w-full">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Text Content */}
-          <div className="w-full max-w-xl">
+          <div className="w-full">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-4 sm:mb-6">
               {t('landing.hero.title')}
             </h1>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GalleryVerticalEnd } from "lucide-react";
 import { LanguageSelector } from "@/components/navbar/language-selector";
-import { useTranslation } from "react-i18n";
+import { useTranslation } from "react-i18next";
 
 const LandingHeader = () => {
   const { t } = useTranslation();
@@ -24,7 +24,7 @@ const LandingHeader = () => {
           : "bg-[#1a1e2a]"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="w-full px-6 lg:px-20">
         <nav className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5">

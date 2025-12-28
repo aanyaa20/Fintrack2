@@ -6,8 +6,8 @@ const FinalCTA = () => {
   const { t } = useTranslation();
   
   return (
-    <section className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#1a1e2a]">
-      <div className="max-w-3xl mx-auto w-full text-center">
+    <section className="w-full py-16 sm:py-24 px-6 sm:px-12 lg:px-20 bg-[#1a1e2a]">
+      <div className="w-full max-w-4xl mx-auto text-center">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-4 sm:mb-6 px-4">
           {t('landing.cta.title')}
         </h2>

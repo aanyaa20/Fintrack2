@@ -1,7 +1,10 @@
 import { useTranslation } from "react-i18next";
+import { useEffect, useRef, useState } from "react";
 
 const Features = () => {
   const { t } = useTranslation();
+  const [visibleImages, setVisibleImages] = useState<number[]>([]);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   const features = [
     {
@@ -30,11 +33,37 @@ const Features = () => {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number(entry.target.getAttribute('data-index'));
+          if (entry.isIntersecting) {
+            setVisibleImages((prev) => [...new Set([...prev, index])]);
+          } else {
+            // Remove from visible when scrolled out of view to re-trigger animation
+            setVisibleImages((prev) => prev.filter((i) => i !== index));
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '50px',
+      }
+    );
+
+    imageRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="features" className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0f1419]">
-      <div className="max-w-7xl mx-auto w-full">
+    <section id="features" className="w-full py-16 sm:py-24 px-6 sm:px-12 lg:px-20 bg-[#0f1419]">
+      <div className="w-full">
         {/* Section Header */}
-        <div className="max-w-2xl mb-12 sm:mb-16">
+        <div className="mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-3 sm:mb-4">
             {t('landing.features.title')}
           </h2>
@@ -64,19 +93,23 @@ const Features = () => {
 
               {/* Feature Image */}
               <div 
+                ref={(el) => (imageRefs.current[index] = el)}
+                data-index={index}
                 className={`${index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""} 
-                  animate-fade-in-up opacity-0`}
-                style={{
-                  animationDelay: `${index * 200}ms`,
-                  animationFillMode: 'forwards'
-                }}
+                  group cursor-pointer`}
               >
-                <div className="relative rounded-lg border border-gray-700 overflow-hidden shadow-md bg-gray-900">
+                <div className={`relative rounded-lg border border-gray-700 overflow-hidden shadow-md bg-gray-900
+                  transition-all duration-1000 ease-out
+                  ${visibleImages.includes(index) 
+                    ? 'opacity-100 translate-x-0' 
+                    : `opacity-0 ${index % 2 === 0 ? '-translate-x-20' : 'translate-x-20'}`
+                  }
+                  group-hover:scale-105 group-hover:shadow-2xl group-hover:border-green-500`}>
                   <div className="bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
                     <img
                       src={feature.image}
                       alt={feature.imageAlt}
-                      className="w-full h-auto object-contain"
+                      className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110"
                       onError={(e) => {
                         e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23f1f5f9'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, system-ui' font-size='16' fill='%2364748b'%3E${feature.imageAlt}%3C/text%3E%3C/svg%3E`;
                       }}

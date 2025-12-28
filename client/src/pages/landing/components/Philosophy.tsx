@@ -19,8 +19,8 @@ const Philosophy = () => {
   ];
 
   return (
-    <section className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0f1419]">
-      <div className="max-w-4xl mx-auto w-full">
+    <section className="w-full py-16 sm:py-24 px-6 sm:px-12 lg:px-20 bg-[#0f1419]">
+      <div className="w-full max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-3 sm:mb-4">

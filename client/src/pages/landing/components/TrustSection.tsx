@@ -23,8 +23,8 @@ const TrustSection = () => {
   ];
 
   return (
-    <section className="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#1a1e2a] border-y border-gray-800">
-      <div className="max-w-7xl mx-auto w-full">
+    <section className="w-full py-12 sm:py-16 px-6 sm:px-12 lg:px-20 bg-[#1a1e2a] border-y border-gray-800">
+      <div className="w-full">
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {trustPoints.map((point, index) => {
             const Icon = point.icon;
