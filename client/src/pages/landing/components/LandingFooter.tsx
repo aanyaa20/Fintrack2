@@ -1,104 +1,84 @@
-import { GalleryVerticalEnd } from "lucide-react";
+import { GalleryVerticalEnd, Mail, Phone, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const LandingFooter = () => {
   return (
-    <footer className="w-full py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
+    <footer className="w-full py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[#1a1e2a] border-t border-gray-800">
       <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-2.5 mb-4">
               <div className="bg-green-500 text-white h-8 w-8 rounded flex items-center justify-center">
                 <GalleryVerticalEnd className="size-5" />
               </div>
-              <span className="font-semibold text-lg text-slate-900">
+              <span className="font-semibold text-lg text-white">
                 Fintrack
               </span>
             </Link>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-gray-400">
               Financial tracking designed for clarity and control.
             </p>
           </div>
 
           {/* Product */}
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 mb-3">
+            <h3 className="text-sm font-semibold text-white mb-3">
               Product
             </h3>
             <ul className="space-y-2">
               <li>
+                <Link
+                  to="/sign-in"
+                  className="text-sm text-gray-400 hover:text-white transition-colors"
+                >
+                  Web App
+                </Link>
+              </li>
+              <li>
                 <a
                   href="#features"
-                  className="text-sm text-slate-600 hover:text-slate-900"
+                  className="text-sm text-gray-400 hover:text-white transition-colors"
                 >
                   Features
                 </a>
               </li>
-              <li>
-                <a
-                  href="#pricing"
-                  className="text-sm text-slate-600 hover:text-slate-900"
-                >
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#security"
-                  className="text-sm text-slate-600 hover:text-slate-900"
-                >
-                  Security
-                </a>
-              </li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 mb-3">
-              Company
+            <h3 className="text-sm font-semibold text-white mb-3">
+              Contact
             </h3>
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#about"
-                  className="text-sm text-slate-600 hover:text-slate-900"
+                  href="tel:+919837985367"
+                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-2"
                 >
-                  About
+                  <Phone className="w-4 h-4" />
+                  9837985367
                 </a>
               </li>
               <li>
                 <a
-                  href="#contact"
-                  className="text-sm text-slate-600 hover:text-slate-900"
+                  href="mailto:arjunbrt1303@gmail.com"
+                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-2"
                 >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="text-sm font-semibold text-slate-900 mb-3">
-              Legal
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#privacy"
-                  className="text-sm text-slate-600 hover:text-slate-900"
-                >
-                  Privacy Policy
+                  <Mail className="w-4 h-4" />
+                  arjunbrt1303@gmail.com
                 </a>
               </li>
               <li>
                 <a
-                  href="#terms"
-                  className="text-sm text-slate-600 hover:text-slate-900"
+                  href="https://github.com/arjunbrt1303"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-2"
                 >
-                  Terms of Service
+                  <Github className="w-4 h-4" />
+                  GitHub
                 </a>
               </li>
             </ul>
@@ -106,9 +86,9 @@ const LandingFooter = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-200">
-          <p className="text-sm text-slate-600 text-center">
-            © {new Date().getFullYear()} FinTrak. All rights reserved.
+        <div className="pt-8 border-t border-gray-800">
+          <p className="text-sm text-gray-400 text-center">
+            © {new Date().getFullYear()} Fintrack. All rights reserved.
           </p>
         </div>
       </div>

@@ -3,15 +3,15 @@ import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="w-full pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="w-full pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[#0f1419]">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left: Text Content */}
           <div className="w-full max-w-xl">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-slate-900 leading-tight mb-4 sm:mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-4 sm:mb-6">
               Financial tracking, designed for clarity.
             </h1>
-            <p className="text-base sm:text-lg text-slate-600 mb-6 sm:mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 leading-relaxed">
               Fintrack helps you track income, expenses, and financial patterns
               with structured records and clear insights. Built for people who
               value control over their financial data.
@@ -26,7 +26,7 @@ const Hero = () => {
               </Link>
               <a
                 href="#how-it-works"
-                className="inline-flex items-center justify-center px-6 py-3 border border-slate-300 text-slate-700 font-medium rounded-md hover:bg-slate-50 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 border border-gray-600 text-gray-300 font-medium rounded-md hover:bg-gray-800 transition-colors"
               >
                 See How It Works
               </a>
@@ -35,7 +35,7 @@ const Hero = () => {
 
           {/* Right: Product Preview Image */}
           <div className="relative">
-            <div className="relative rounded-lg border border-slate-200 shadow-xl overflow-hidden bg-white">
+            <div className="relative rounded-lg border border-gray-700 shadow-xl overflow-hidden bg-gray-900">
               {/* Placeholder for dashboard screenshot */}
               <div className="aspect-[4/3] bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
                 <img

@@ -24,14 +24,14 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
+    <section id="how-it-works" className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#1a1e2a]">
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
         <div className="max-w-2xl mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3 sm:mb-4">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-3 sm:mb-4">
             How Fintrack Works
           </h2>
-          <p className="text-base sm:text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-gray-300">
             Start tracking your finances in three straightforward steps.
           </p>
         </div>
@@ -45,20 +45,20 @@ const HowItWorks = () => {
             >
               {/* Step Number and Content */}
               <div>
-                <div className="text-6xl font-bold text-slate-200 mb-4">
+                <div className="text-6xl font-bold text-gray-800 mb-4">
                   {step.number}
                 </div>
-                <h3 className="text-2xl font-semibold text-slate-900 mb-4">
+                <h3 className="text-2xl font-semibold text-white mb-4">
                   {step.title}
                 </h3>
-                <p className="text-base text-slate-600 leading-relaxed">
+                <p className="text-base text-gray-300 leading-relaxed">
                   {step.description}
                 </p>
               </div>
 
               {/* Step Visual */}
               <div>
-                <div className="relative rounded-lg border border-slate-200 overflow-hidden shadow-md bg-white">
+                <div className="relative rounded-lg border border-gray-700 overflow-hidden shadow-md bg-gray-900">
                   <div className="aspect-[16/10] bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
                     <img
                       src={step.image}

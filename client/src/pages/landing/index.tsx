@@ -9,7 +9,7 @@ import LandingFooter from "./components/LandingFooter";
 
 const LandingPage = () => {
   return (
-    <div className="min-h-screen w-full bg-gray-50 overflow-x-hidden">
+    <div className="dark min-h-screen w-full bg-[#0f1419] overflow-x-hidden">
       <LandingHeader />
       <main className="w-full">
         <Hero />

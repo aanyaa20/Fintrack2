@@ -18,14 +18,14 @@ const Philosophy = () => {
   ];
 
   return (
-    <section className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0f1419]">
       <div className="max-w-4xl mx-auto w-full">
         {/* Section Header */}
         <div className="mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 mb-3 sm:mb-4">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-3 sm:mb-4">
             Product Philosophy
           </h2>
-          <p className="text-base sm:text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-gray-300">
             FinTrak is built on principles that prioritize your needs and
             respect your time.
           </p>
@@ -36,12 +36,12 @@ const Philosophy = () => {
           {principles.map((principle, index) => (
             <div
               key={index}
-              className="pb-8 border-b border-slate-200 last:border-0"
+              className="pb-8 border-b border-gray-800 last:border-0"
             >
-              <h3 className="text-xl font-semibold text-slate-900 mb-3">
+              <h3 className="text-xl font-semibold text-white mb-3">
                 {principle.title}
               </h3>
-              <p className="text-base text-slate-600 leading-relaxed">
+              <p className="text-base text-gray-300 leading-relaxed">
                 {principle.description}
               </p>
             </div>
