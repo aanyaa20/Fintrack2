@@ -1,23 +1,24 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const FinalCTA = () => {
+  const { t } = useTranslation();
+  
   return (
     <section className="w-full py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#1a1e2a]">
       <div className="max-w-3xl mx-auto w-full text-center">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-4 sm:mb-6 px-4">
-          Built for people who want clarity and control over their financial
-          data.
+          {t('landing.cta.title')}
         </h2>
         <p className="text-lg text-gray-300 mb-10">
-          Start tracking your finances with Fintrack today. No credit card
-          required.
+          {t('landing.cta.description')}
         </p>
         <Link
           to="/sign-up"
           className="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 transition-colors"
         >
-          Get Started
+          {t('landing.cta.create_account')}
           <ArrowRight className="ml-2 size-5" />
         </Link>
       </div>

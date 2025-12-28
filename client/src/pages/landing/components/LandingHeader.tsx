@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { GalleryVerticalEnd } from "lucide-react";
 import { LanguageSelector } from "@/components/navbar/language-selector";
+import { useTranslation } from "react-i18n";
 
 const LandingHeader = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -40,31 +42,31 @@ const LandingHeader = () => {
               href="#product"
               className="text-sm text-gray-300 hover:text-white transition-colors"
             >
-              Product
+              {t('landing.header.product')}
             </a>
             <a
               href="#features"
               className="text-sm text-gray-300 hover:text-white transition-colors"
             >
-              Features
+              {t('landing.header.features')}
             </a>
             <a
               href="#how-it-works"
               className="text-sm text-gray-300 hover:text-white transition-colors"
             >
-              How it Works
+              {t('landing.header.how_it_works')}
             </a>
             <a
               href="#security"
               className="text-sm text-gray-300 hover:text-white transition-colors"
             >
-              Security
+              {t('landing.header.security')}
             </a>
             <a
               href="#pricing"
               className="text-sm text-gray-300 hover:text-white transition-colors"
             >
-              Pricing
+              {t('landing.header.pricing')}
             </a>
           </div>
 
@@ -75,7 +77,7 @@ const LandingHeader = () => {
               to="/sign-up"
               className="px-5 py-2 bg-green-500 text-white text-sm font-medium rounded-md hover:bg-green-600 transition-colors"
             >
-              Get Started
+              {t('landing.header.get_started')}
             </Link>
           </div>
         </nav>

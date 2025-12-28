@@ -1,19 +1,20 @@
+import { useTranslation } from "react-i18next";
+
 const Philosophy = () => {
+  const { t } = useTranslation();
+  
   const principles = [
     {
-      title: "Clarity over complexity",
-      description:
-        "We focus on presenting your financial data in a way that's easy to understand. No confusing jargon or overwhelming interfaces.",
+      title: t('landing.philosophy.principle1_title'),
+      description: t('landing.philosophy.principle1_desc'),
     },
     {
-      title: "Practical insights over noisy dashboards",
-      description:
-        "Our analytics show you what matters: spending patterns, category breakdowns, and trends that help you make decisions.",
+      title: t('landing.philosophy.principle2_title'),
+      description: t('landing.philosophy.principle2_desc'),
     },
     {
-      title: "User control over automation",
-      description:
-        "You decide how to categorize and track your finances. FinTrak supports your workflow, not the other way around.",
+      title: t('landing.philosophy.principle3_title'),
+      description: t('landing.philosophy.principle3_desc'),
     },
   ];
 
@@ -23,11 +24,10 @@ const Philosophy = () => {
         {/* Section Header */}
         <div className="mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-3 sm:mb-4">
-            Product Philosophy
+            {t('landing.philosophy.title')}
           </h2>
           <p className="text-base sm:text-lg text-gray-300">
-            FinTrak is built on principles that prioritize your needs and
-            respect your time.
+            {t('landing.philosophy.subtitle')}
           </p>
         </div>
 

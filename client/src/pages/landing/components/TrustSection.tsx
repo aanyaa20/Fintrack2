@@ -1,21 +1,24 @@
 import { Shield, Lock, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const TrustSection = () => {
+  const { t } = useTranslation();
+  
   const trustPoints = [
     {
       icon: Shield,
-      title: "Privacy-first by design",
-      description: "Your financial data stays yours. No third-party tracking.",
+      title: t('landing.trust.privacy_title'),
+      description: t('landing.trust.privacy_desc'),
     },
     {
       icon: Lock,
-      title: "Built with secure architecture",
-      description: "Bank-grade encryption and secure data storage practices.",
+      title: t('landing.trust.security_title'),
+      description: t('landing.trust.security_desc'),
     },
     {
       icon: CheckCircle2,
-      title: "Designed for reliability",
-      description: "Consistent performance and accurate financial tracking.",
+      title: t('landing.trust.reliability_title'),
+      description: t('landing.trust.reliability_desc'),
     },
   ];
 

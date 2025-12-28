@@ -1,25 +1,23 @@
+import { useTranslation } from "react-i18next";
+
 const HowItWorks = () => {
+  const { t } = useTranslation();
+  
   const steps = [
     {
       number: "01",
-      title: "Create Your Account",
-      description:
-        "Sign up in seconds. Set your preferred currency and financial tracking preferences.",
-      image: "/assets/landing/step-signup.png",
+      title: t('landing.how_it_works.step1_title'),
+      description: t('landing.how_it_works.step1_desc'),
     },
     {
       number: "02",
-      title: "Record Transactions",
-      description:
-        "Add income and expenses manually or scan receipts. Categorize transactions for organized records.",
-      image: "/assets/landing/step-record.png",
+      title: t('landing.how_it_works.step2_title'),
+      description: t('landing.how_it_works.step2_desc'),
     },
     {
       number: "03",
-      title: "Track and Analyze",
-      description:
-        "View spending breakdowns, track patterns, and generate reports. Make informed financial decisions.",
-      image: "/assets/landing/step-analyze.png",
+      title: t('landing.how_it_works.step3_title'),
+      description: t('landing.how_it_works.step3_desc'),
     },
   ];
 
@@ -29,10 +27,10 @@ const HowItWorks = () => {
         {/* Section Header */}
         <div className="max-w-2xl mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-3 sm:mb-4">
-            How Fintrack Works
+            {t('landing.how_it_works.title')}
           </h2>
           <p className="text-base sm:text-lg text-gray-300">
-            Start tracking your finances in three straightforward steps.
+            {t('landing.how_it_works.subtitle')}
           </p>
         </div>
 
@@ -41,7 +39,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+              className="flex flex-col gap-4"
             >
               {/* Step Number and Content */}
               <div>
@@ -54,22 +52,6 @@ const HowItWorks = () => {
                 <p className="text-base text-gray-300 leading-relaxed">
                   {step.description}
                 </p>
-              </div>
-
-              {/* Step Visual */}
-              <div>
-                <div className="relative rounded-lg border border-gray-700 overflow-hidden shadow-md bg-gray-900">
-                  <div className="aspect-[16/10] bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
-                    <img
-                      src={step.image}
-                      alt={`Step ${step.number}: ${step.title}`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='500'%3E%3Crect width='800' height='500' fill='%23f1f5f9'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, system-ui' font-size='16' fill='%2364748b'%3EStep ${step.number}%3C/text%3E%3C/svg%3E`;
-                      }}
-                    />
-                  </div>
-                </div>
               </div>
             </div>
           ))}

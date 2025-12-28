@@ -1,7 +1,10 @@
 import { GalleryVerticalEnd, Mail, Phone, Github } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const LandingFooter = () => {
+  const { t } = useTranslation();
+  
   return (
     <footer className="w-full py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[#1a1e2a] border-t border-gray-800">
       <div className="max-w-7xl mx-auto w-full">
@@ -17,14 +20,14 @@ const LandingFooter = () => {
               </span>
             </Link>
             <p className="text-sm text-gray-400">
-              Financial tracking designed for clarity and control.
+              {t('landing.footer.tagline')}
             </p>
           </div>
 
           {/* Product */}
           <div>
             <h3 className="text-sm font-semibold text-white mb-3">
-              Product
+              {t('landing.footer.product_title')}
             </h3>
             <ul className="space-y-2">
               <li>
@@ -32,7 +35,7 @@ const LandingFooter = () => {
                   to="/sign-in"
                   className="text-sm text-gray-400 hover:text-white transition-colors"
                 >
-                  Web App
+                  {t('landing.footer.web_app')}
                 </Link>
               </li>
               <li>
@@ -40,7 +43,7 @@ const LandingFooter = () => {
                   href="#features"
                   className="text-sm text-gray-400 hover:text-white transition-colors"
                 >
-                  Features
+                  {t('landing.footer.features')}
                 </a>
               </li>
             </ul>
@@ -49,7 +52,7 @@ const LandingFooter = () => {
           {/* Contact */}
           <div>
             <h3 className="text-sm font-semibold text-white mb-3">
-              Contact
+              {t('landing.footer.contact_title')}
             </h3>
             <ul className="space-y-2">
               <li>
