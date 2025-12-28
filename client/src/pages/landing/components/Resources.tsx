@@ -1,60 +1,73 @@
 import { BookOpen, HelpCircle, Video, Sparkles, FileText, Users, MessageCircle, Lightbulb, Mail } from "lucide-react";
 
 const Resources = () => {
+  const handleEmailClick = () => {
+    window.location.href = "mailto:arjunbrt1303@gmail.com?subject=Fintrack Inquiry";
+  };
+
   const resources = [
     {
       icon: BookOpen,
       title: "Help Documents",
-      description: "Stuck at some point while using Fintrack? Our detailed help documents will get you out of any sticky situation.",
-      action: "View the help docs"
+      description: "Stuck at some point using Fintrack? Our detailed help documents will get you out of any sticky situation.",
+      action: "View the help docs",
+      onClick: () => window.location.href = '/resources/help-docs'
     },
     {
       icon: HelpCircle,
       title: "FAQs",
       description: "We strive to leave no question unanswered. Find answers to all the frequently asked questions about Fintrack.",
-      action: "Check out the FAQs"
+      action: "Check out the FAQs",
+      onClick: () => window.location.href = '/resources/faqs'
     },
     {
       icon: Video,
       title: "Webinars",
-      description: "Join our weekly webinars to see a walkthrough of the product and get your questions answered.",
-      action: "Save your seat now"
+      description: "Join our weekly webinars every Tuesday at 6 PM IST. See a walkthrough of the product and get your questions answered.",
+      action: "Join next webinar",
+      onClick: () => window.location.href = '/resources/webinars'
     },
     {
       icon: Sparkles,
       title: "What's New",
-      description: "View a timeline of all the latest updates made to Fintrack.",
-      action: "See what's new"
+      description: "View a timeline of all the latest updates and new features added to Fintrack.",
+      action: "See what's new",
+      onClick: () => window.location.href = '/resources/whats-new'
     },
     {
       icon: FileText,
       title: "Blogs",
-      description: "Keep up with the latest developments and features at Fintrack. Get useful tips and tricks to make your expense tracking better.",
-      action: "Access blogs"
+      description: "Keep up with the latest developments and features. Get useful tips and tricks to make your expense tracking better.",
+      action: "Access blogs",
+      onClick: () => window.location.href = '/resources/blogs'
     },
     {
       icon: Users,
       title: "Business Guides",
       description: "Get useful information on how you can manage your finances and control your spending with our complete business guides.",
-      action: "View guides"
+      action: "View guides",
+      onClick: () => window.location.href = '/resources/guides'
     },
     {
       icon: MessageCircle,
       title: "Forums",
-      description: "Get in touch with the Fintrack community and participate in discussions about the product and its features. Our team will help you out with queries here as well.",
-      action: "Access forums"
+      description: "Get in touch with the Fintrack community and participate in discussions about the product and its features.",
+      action: "Access forums",
+      onClick: () => window.location.href = '/resources/forums'
     },
     {
       icon: Lightbulb,
       title: "Request a feature",
-      description: "We are constantly working on expanding Fintrack's capabilities. If you'd like to see a feature in our product, let us know and we'll try to add it for you.",
-      action: "Request"
+      description: "We are constantly working on expanding Fintrack's capabilities. If you'd like to see a feature in our product, let us know.",
+      action: "Request",
+      onClick: () => { window.location.href = '#footer'; }
     },
     {
       icon: Mail,
       title: "Send us an email",
       description: "Write to us and we'll get back to you.",
-      action: "Contact Us"
+      action: "Contact Us",
+      onClick: handleEmailClick
     }
   ];
 
@@ -76,7 +89,8 @@ const Resources = () => {
             return (
               <div
                 key={index}
-                className="group p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10"
+                className="group p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer"
+                onClick={resource.onClick}
               >
                 <div className="mb-4">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-green-500/10 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">

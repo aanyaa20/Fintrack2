@@ -58,13 +58,19 @@ const PartnerWithUs = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="inline-flex items-center justify-center px-6 py-3 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 transition-colors">
+              <a 
+                href="#footer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 transition-colors"
+              >
                 Become a partner
                 <ArrowRight className="ml-2 size-4" />
-              </button>
-              <button className="inline-flex items-center justify-center px-6 py-3 border border-gray-600 text-gray-300 font-medium rounded-md hover:bg-gray-800 transition-colors">
+              </a>
+              <a 
+                href="#footer"
+                className="inline-flex items-center justify-center px-6 py-3 border border-gray-600 text-gray-300 font-medium rounded-md hover:bg-gray-800 transition-colors"
+              >
                 Contact us
-              </button>
+              </a>
             </div>
           </div>
 

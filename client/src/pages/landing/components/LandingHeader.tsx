@@ -1,12 +1,24 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { GalleryVerticalEnd, Search } from "lucide-react";
-import { LanguageSelector } from "@/components/navbar/language-selector";
+import { GalleryVerticalEnd, Search, X } from "lucide-react";
+import { LandingLanguageSelector } from "./LandingLanguageSelector";
 import { useTranslation } from "react-i18next";
 
 const LandingHeader = () => {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState<string[]>([]);
+  const [showResults, setShowResults] = useState(false);
+
+  // Define searchable sections
+  const sections = [
+    { id: "features", keywords: ["features", "expense tracking", "ai insights", "analytics", "dashboard"] },
+    { id: "how-it-works", keywords: ["how it works", "getting started", "account", "transactions", "ai receipt"] },
+    { id: "partner", keywords: ["partner", "partnership", "become partner", "collaborate"] },
+    { id: "resources", keywords: ["resources", "help", "faq", "blog", "webinar", "guide", "forum"] },
+    { id: "footer", keywords: ["contact", "email", "support", "about"] }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +27,39 @@ const LandingHeader = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSearch = (value: string) => {
+    setSearchTerm(value);
+    
+    if (value.trim().length < 2) {
+      setSearchResults([]);
+      setShowResults(false);
+      return;
+    }
+
+    const query = value.toLowerCase();
+    const matches = sections.filter(section => 
+      section.keywords.some(keyword => keyword.includes(query))
+    ).map(section => section.id);
+
+    setSearchResults(matches);
+    setShowResults(true);
+  };
+
+  const handleResultClick = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    setSearchTerm("");
+    setShowResults(false);
+  };
+
+  const clearSearch = () => {
+    setSearchTerm("");
+    setSearchResults([]);
+    setShowResults(false);
+  };
 
   return (
     <header
@@ -43,9 +88,43 @@ const LandingHeader = () => {
               <input
                 type="text"
                 placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => handleSearch(e.target.value)}
+                onFocus={() => searchTerm.length >= 2 && setShowResults(true)}
                 className="w-32 md:w-48 lg:w-64 px-4 py-1.5 bg-[#0f1419] border border-gray-700 rounded-md text-sm text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition-colors"
               />
+              {searchTerm && (
+                <button
+                  onClick={clearSearch}
+                  className="absolute right-10 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300"
+                >
+                  <X className="size-4" />
+                </button>
+              )}
               <Search className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-gray-500" />
+              
+              {/* Search Results Dropdown */}
+              {showResults && (
+                <div className="absolute top-full mt-2 w-full bg-[#0f1419] border border-gray-700 rounded-md shadow-lg max-h-64 overflow-y-auto z-50">
+                  {searchResults.length > 0 ? (
+                    <div className="py-2">
+                      {searchResults.map((result) => (
+                        <button
+                          key={result}
+                          onClick={() => handleResultClick(result)}
+                          className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors capitalize"
+                        >
+                          {result.replace('-', ' ')}
+                        </button>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="px-4 py-3 text-sm text-gray-500">
+                      No results found
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Mobile Search Icon */}
@@ -81,7 +160,7 @@ const LandingHeader = () => {
               </a>
             </div>
 
-            <LanguageSelector />
+            <LandingLanguageSelector />
             
             <Link
               to="/sign-up"

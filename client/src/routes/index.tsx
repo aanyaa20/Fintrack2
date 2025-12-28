@@ -9,6 +9,13 @@ import AuthRoute from "./authRoute";
 import ProtectedRoute from "./protectedRoute";
 import useAuthExpiration from "@/hooks/use-auth-expiration";
 import LandingPage from "@/pages/landing";
+import HelpDocs from "@/pages/resources/HelpDocs";
+import Faqs from "@/pages/resources/Faqs";
+import WhatsNew from "@/pages/resources/WhatsNew";
+import Blogs from "@/pages/resources/Blogs";
+import Guides from "@/pages/resources/Guides";
+import Forums from "@/pages/resources/Forums";
+import Webinars from "@/pages/resources/Webinars";
 
 function AppRoutes() {
   useAuthExpiration();
@@ -17,6 +24,15 @@ function AppRoutes() {
       <Routes>
         {/* Landing Page - Root */}
         <Route path="/" element={<LandingPage />} />
+        
+        {/* Resource Pages */}
+        <Route path="/resources/help-docs" element={<HelpDocs />} />
+        <Route path="/resources/faqs" element={<Faqs />} />
+        <Route path="/resources/whats-new" element={<WhatsNew />} />
+        <Route path="/resources/blogs" element={<Blogs />} />
+        <Route path="/resources/guides" element={<Guides />} />
+        <Route path="/resources/forums" element={<Forums />} />
+        <Route path="/resources/webinars" element={<Webinars />} />
         
         <Route element={<AuthRoute />}>
           <Route element={<BaseLayout />}>

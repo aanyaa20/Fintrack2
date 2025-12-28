@@ -6,7 +6,7 @@ const LandingFooter = () => {
   const { t } = useTranslation();
   
   return (
-    <footer className="w-full py-8 sm:py-12 px-6 sm:px-12 lg:px-20 bg-[#1a1e2a] border-t border-gray-800">
+    <footer id="footer" className="w-full py-8 sm:py-12 px-6 sm:px-12 lg:px-20 bg-[#1a1e2a] border-t border-gray-800">
       <div className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
