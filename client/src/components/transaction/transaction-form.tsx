@@ -58,6 +58,7 @@ const formSchema = z.object({
   date: z.date({
     required_error: "Please select a date.",
   }),
+  alternativeDate: z.date().optional(),
   paymentMethod: z
     .string()
     .min(1, { message: "Please select a payment method." }),
@@ -106,6 +107,7 @@ const TransactionForm = (props: {
       type: _TRANSACTION_TYPE.INCOME,
       category: "",
       date: new Date(),
+      alternativeDate: undefined,
       paymentMethod: "",
       isRecurring: false,
       frequency: null,
@@ -158,6 +160,10 @@ const TransactionForm = (props: {
   const onSubmit = (values: FormValues) => {
     // if (isCreating || isUpdating) return;
     console.log("Form submitted:", values);
+    
+    // Use alternative date if provided, otherwise use default date
+    const finalDate = values.alternativeDate || values.date;
+    
     const payload = {
       title: values.title,
       type: values.type,
@@ -165,7 +171,7 @@ const TransactionForm = (props: {
       paymentMethod: values.paymentMethod,
       description: values.description || "",
       amount: Number(values.amount),
-      date: values.date.toISOString(),
+      date: finalDate.toISOString(),
       isRecurring: values.isRecurring || false,
       recurringInterval: values.frequency || null,
     };
@@ -375,6 +381,59 @@ const TransactionForm = (props: {
                       />
                     </PopoverContent>
                   </Popover>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Alternative Date Picker for Older Transactions */}
+            <FormField
+              control={form.control}
+              name="alternativeDate"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel className="text-green-500">Choose Date for Older Transactions</FormLabel>
+                  <Popover modal={false}>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={"outline"}
+                          className={cn(
+                            "w-full pl-3 text-left font-normal border-green-500/50 hover:border-green-500",
+                            !field.value && "text-muted-foreground"
+                          )}
+                          disabled={isScanning}
+                        >
+                          {field.value ? (
+                            format(field.value, "PPP")
+                          ) : (
+                            <span>Select date for past transaction</span>
+                          )}
+                          <Calendar className="ml-auto h-4 w-4 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent
+                      className="w-auto p-0"
+                      align="start"
+                    >
+                      <CalendarComponent
+                        mode="single"
+                        selected={field.value}
+                        onSelect={(date) => {
+                          field.onChange(date);
+                        }}
+                        disabled={(date) => 
+                          date < new Date("2020-01-01") || 
+                          date > new Date()
+                        }
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <p className="text-xs text-muted-foreground">
+                    Use this calendar if you need to add a transaction from a previous date
+                  </p>
                   <FormMessage />
                 </FormItem>
               )}
