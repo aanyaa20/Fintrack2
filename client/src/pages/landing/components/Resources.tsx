@@ -1,4 +1,4 @@
-import { BookOpen, HelpCircle, Video, Sparkles, FileText, Users, MessageCircle, Lightbulb, Mail } from "lucide-react";
+import { BookOpen, HelpCircle, Sparkles, FileText, Users, MessageCircle, Lightbulb, Mail } from "lucide-react";
 
 const Resources = () => {
   const handleEmailClick = () => {
@@ -19,13 +19,6 @@ const Resources = () => {
       description: "We strive to leave no question unanswered. Find answers to all the frequently asked questions about Fintrack.",
       action: "Check out the FAQs",
       onClick: () => window.location.href = '/resources/faqs'
-    },
-    {
-      icon: Video,
-      title: "Webinars",
-      description: "Join our weekly webinars every Tuesday at 6 PM IST. See a walkthrough of the product and get your questions answered.",
-      action: "Coming Soon",
-      onClick: () => {}
     },
     {
       icon: Sparkles,
@@ -83,8 +76,9 @@ const Resources = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {resources.map((resource, index) => {
+        {/* First Row - 3 items */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          {resources.slice(0, 3).map((resource, index) => {
             const Icon = resource.icon;
             return (
               <div
@@ -110,6 +104,68 @@ const Resources = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Second Row - 3 items */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+          {resources.slice(3, 6).map((resource, index) => {
+            const Icon = resource.icon;
+            return (
+              <div
+                key={index + 3}
+                className="group p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer"
+                onClick={resource.onClick}
+              >
+                <div className="mb-4">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-green-500/10 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                    <Icon className="size-6" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  {resource.title}
+                </h3>
+                <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+                  {resource.description}
+                </p>
+                <button className="text-green-500 font-medium text-sm hover:text-green-400 transition-colors flex items-center gap-1">
+                  {resource.action}
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Third Row - 2 items (centered) */}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl">
+            {resources.slice(6, 8).map((resource, index) => {
+              const Icon = resource.icon;
+              return (
+                <div
+                  key={index + 6}
+                  className="group p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer"
+                  onClick={resource.onClick}
+                >
+                  <div className="mb-4">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-green-500/10 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                      <Icon className="size-6" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-3">
+                    {resource.title}
+                  </h3>
+                  <p className="text-gray-400 mb-4 text-sm leading-relaxed">
+                    {resource.description}
+                  </p>
+                  <button className="text-green-500 font-medium text-sm hover:text-green-400 transition-colors flex items-center gap-1">
+                    {resource.action}
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

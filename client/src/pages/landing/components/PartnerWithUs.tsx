@@ -76,31 +76,31 @@ const PartnerWithUs = () => {
 
           {/* Right: Visual */}
           <div className="relative">
-            <div className="aspect-square rounded-2xl bg-gradient-to-br from-green-500/20 to-blue-500/20 p-8 lg:p-12 border border-green-500/30">
-              <div className="h-full flex flex-col justify-center items-center text-center space-y-6">
-                <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <Handshake className="size-10 text-green-500" />
+            <div className="rounded-2xl bg-gradient-to-br from-green-500/20 to-blue-500/20 p-6 sm:p-8 lg:p-12 border border-green-500/30">
+              <div className="h-full flex flex-col justify-center items-center text-center space-y-4 sm:space-y-6">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-500/20 flex items-center justify-center">
+                  <Handshake className="size-8 sm:size-10 text-green-500" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Who can partner with us?</h3>
-                  <p className="text-gray-300">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Who can partner with us?</h3>
+                  <p className="text-sm sm:text-base text-gray-300">
                     Fintrack is designed to solve diversified use cases across industries, 
                     irrespective of business size. Professionals in sectors ranging from 
                     accounting and finance to IT and travel can partner with Fintrack.
                   </p>
                 </div>
-                <div className="grid grid-cols-2 gap-4 w-full mt-4">
-                  <div className="p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
-                    <p className="text-green-500 font-semibold">Finance</p>
+                <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full mt-4">
+                  <div className="p-2 sm:p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
+                    <p className="text-green-500 font-semibold text-sm sm:text-base">Finance</p>
                   </div>
-                  <div className="p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
-                    <p className="text-green-500 font-semibold">IT Services</p>
+                  <div className="p-2 sm:p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
+                    <p className="text-green-500 font-semibold text-sm sm:text-base">IT Services</p>
                   </div>
-                  <div className="p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
-                    <p className="text-green-500 font-semibold">Accounting</p>
+                  <div className="p-2 sm:p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
+                    <p className="text-green-500 font-semibold text-sm sm:text-base">Accounting</p>
                   </div>
-                  <div className="p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
-                    <p className="text-green-500 font-semibold">Travel</p>
+                  <div className="p-2 sm:p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
+                    <p className="text-green-500 font-semibold text-sm sm:text-base">Travel</p>
                   </div>
                 </div>
               </div>

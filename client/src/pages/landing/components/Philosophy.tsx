@@ -22,8 +22,8 @@ const Philosophy = () => {
     <section className="w-full py-16 sm:py-24 px-6 sm:px-12 lg:px-20 bg-[#0f1419]">
       <div className="w-full max-w-5xl mx-auto">
         {/* Section Header */}
-        <div className="mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-3 sm:mb-4">
+        <div className="mb-8 sm:mb-12 text-center">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-3 sm:mb-4">
             {t('landing.philosophy.title')}
           </h2>
           <p className="text-base sm:text-lg text-gray-300">

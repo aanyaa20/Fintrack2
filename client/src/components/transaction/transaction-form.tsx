@@ -58,6 +58,8 @@ const formSchema = z.object({
   date: z.date({
     required_error: "Please select a date.",
   }),
+  useCustomDate: z.boolean().optional(),
+  customDate: z.date().optional(),
   paymentMethod: z
     .string()
     .min(1, { message: "Please select a payment method." }),
@@ -106,6 +108,8 @@ const TransactionForm = (props: {
       type: _TRANSACTION_TYPE.INCOME,
       category: "",
       date: new Date(),
+      useCustomDate: false,
+      customDate: undefined,
       paymentMethod: "",
       isRecurring: false,
       frequency: null,
@@ -158,6 +162,12 @@ const TransactionForm = (props: {
   const onSubmit = (values: FormValues) => {
     // if (isCreating || isUpdating) return;
     console.log("Form submitted:", values);
+    
+    // Use custom date if selected, otherwise use today's date
+    const finalDate = values.useCustomDate && values.customDate 
+      ? values.customDate 
+      : values.date;
+    
     const payload = {
       title: values.title,
       type: values.type,
@@ -165,7 +175,7 @@ const TransactionForm = (props: {
       paymentMethod: values.paymentMethod,
       description: values.description || "",
       amount: Number(values.amount),
-      date: values.date.toISOString(),
+      date: finalDate.toISOString(),
       isRecurring: values.isRecurring || false,
       recurringInterval: values.frequency || null,
     };
@@ -339,7 +349,7 @@ const TransactionForm = (props: {
   name="date"
   render={({ field }) => (
     <FormItem className="flex flex-col">
-      <FormLabel>Date</FormLabel>
+      <FormLabel>Date (Today's Date - Default)</FormLabel>
       <Popover modal={false}>
         <PopoverTrigger asChild>
           <FormControl>
@@ -349,6 +359,7 @@ const TransactionForm = (props: {
                 "w-full pl-3 text-left font-normal",
                 !field.value && "text-muted-foreground"
               )}
+              disabled
             >
               {field.value ? (
                 format(field.value, "PPP")
@@ -375,10 +386,84 @@ const TransactionForm = (props: {
           />
         </PopoverContent>
       </Popover>
+      <p className="text-xs text-muted-foreground">
+        This is automatically set to today's date. Use the option below to select a different date.
+      </p>
       <FormMessage />
     </FormItem>
   )}
 />
+
+{/* Custom Date Option */}
+<FormField
+  control={form.control}
+  name="useCustomDate"
+  render={({ field }) => (
+    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+      <div className="space-y-0.5">
+        <FormLabel>Use a Different Date</FormLabel>
+        <p className="text-xs text-muted-foreground">
+          Enable this to select a past or future date for forgotten transactions
+        </p>
+      </div>
+      <FormControl>
+        <Switch
+          checked={field.value}
+          onCheckedChange={field.onChange}
+        />
+      </FormControl>
+    </FormItem>
+  )}
+/>
+
+{/* Custom Date Picker */}
+{form.watch("useCustomDate") && (
+  <FormField
+    control={form.control}
+    name="customDate"
+    render={({ field }) => (
+      <FormItem className="flex flex-col">
+        <FormLabel>Select Custom Date</FormLabel>
+        <Popover modal={false}>
+          <PopoverTrigger asChild>
+            <FormControl>
+              <Button
+                variant={"outline"}
+                className={cn(
+                  "w-full pl-3 text-left font-normal",
+                  !field.value && "text-muted-foreground"
+                )}
+              >
+                {field.value ? (
+                  format(field.value, "PPP")
+                ) : (
+                  <span>Pick a custom date</span>
+                )}
+                <Calendar className="ml-auto h-4 w-4 opacity-50" />
+              </Button>
+            </FormControl>
+          </PopoverTrigger>
+          <PopoverContent
+            className="w-auto p-0 !pointer-events-auto"
+            align="start"
+          >
+            <CalendarComponent
+              mode="single"
+              selected={field.value}
+              onSelect={(date) => {
+                console.log(date);
+                field.onChange(date);
+              }}
+              disabled={(date) => date < new Date("2023-01-01") || date > new Date("2030-12-31")}
+              initialFocus
+            />
+          </PopoverContent>
+        </Popover>
+        <FormMessage />
+      </FormItem>
+    )}
+  />
+)}
             
 
             {/* Payment Method */}
