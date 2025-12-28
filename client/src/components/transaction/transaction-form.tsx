@@ -1,6 +1,6 @@
 import * as z from "zod";
 import { useEffect, useState } from "react";
-import { Calendar, Loader } from "lucide-react";
+import { Loader } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
@@ -22,14 +22,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import RecieptScanner from "./reciept-scanner";
 import {
   _TRANSACTION_FREQUENCY,
@@ -58,7 +52,6 @@ const formSchema = z.object({
   date: z.date({
     required_error: "Please select a date.",
   }),
-  alternativeDate: z.date().optional(),
   paymentMethod: z
     .string()
     .min(1, { message: "Please select a payment method." }),
@@ -107,7 +100,6 @@ const TransactionForm = (props: {
       type: _TRANSACTION_TYPE.INCOME,
       category: "",
       date: new Date(),
-      alternativeDate: undefined,
       paymentMethod: "",
       isRecurring: false,
       frequency: null,
@@ -160,10 +152,6 @@ const TransactionForm = (props: {
   const onSubmit = (values: FormValues) => {
     // if (isCreating || isUpdating) return;
     console.log("Form submitted:", values);
-    
-    // Use alternative date if provided, otherwise use default date
-    const finalDate = values.alternativeDate || values.date;
-    
     const payload = {
       title: values.title,
       type: values.type,
@@ -171,7 +159,7 @@ const TransactionForm = (props: {
       paymentMethod: values.paymentMethod,
       description: values.description || "",
       amount: Number(values.amount),
-      date: finalDate.toISOString(),
+      date: values.date.toISOString(),
       isRecurring: values.isRecurring || false,
       recurringInterval: values.frequency || null,
     };
@@ -346,53 +334,6 @@ const TransactionForm = (props: {
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel>Date</FormLabel>
-                  <Popover modal={false}>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button
-                          variant={"outline"}
-                          className={cn(
-                            "w-full pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground"
-                          )}
-                        >
-                          {field.value ? (
-                            format(field.value, "PPP")
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
-                          <Calendar className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent
-                      className="w-auto p-0 !pointer-events-auto"
-                      align="start"
-                    >
-                      <CalendarComponent
-                        mode="single"
-                        selected={field.value}
-                        onSelect={(date) => {
-                          console.log(date);
-                          field.onChange(date);
-                        }}
-                        disabled={(date) => date < new Date("2023-01-01")}
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Alternative Date Picker for Older Transactions */}
-            <FormField
-              control={form.control}
-              name="alternativeDate"
-              render={({ field }) => (
-                <FormItem className="flex flex-col">
-                  <FormLabel className="text-green-500">Choose Date for Older Transactions</FormLabel>
                   <FormControl>
                     <Input
                       type="date"
@@ -400,16 +341,13 @@ const TransactionForm = (props: {
                       min="2020-01-01"
                       value={field.value ? format(field.value, "yyyy-MM-dd") : ""}
                       onChange={(e) => {
-                        const selectedDate = e.target.value ? new Date(e.target.value) : undefined;
+                        const selectedDate = e.target.value ? new Date(e.target.value) : new Date();
                         field.onChange(selectedDate);
                       }}
                       disabled={isScanning}
-                      className="w-full border-green-500/50 focus:border-green-500"
+                      className="w-full"
                     />
                   </FormControl>
-                  <p className="text-xs text-muted-foreground">
-                    Use this calendar if you need to add a transaction from a previous date
-                  </p>
                   <FormMessage />
                 </FormItem>
               )}
