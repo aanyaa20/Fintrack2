@@ -7,24 +7,10 @@ const Hero = () => {
   
   return (
     <section className="w-full pt-32 pb-20 px-6 sm:px-12 lg:px-20 bg-[#0f1419] relative overflow-hidden">
-      {/* Background Dashboard Image - Blended across entire section */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70"
-        style={{
-          backgroundImage: 'url(/assets/landing/image-1766883635155.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-      
-      {/* Gradient overlay to blend with dark background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0f1419]/95 via-[#0f1419]/80 to-[#0f1419]/60" />
-      
-      {/* Content */}
-      <div className="w-full relative z-10">
+      <div className="w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Text Content */}
-          <div className="w-full">
+          <div className="w-full relative z-10">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-tight mb-4 sm:mb-6">
               {t('landing.hero.title')}
             </h1>
@@ -48,9 +34,20 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Empty space for dashboard image visibility */}
-          <div className="w-full h-64 lg:h-96">
-            {/* This space allows the background image to show through */}
+          {/* Right: Dashboard Image with Gradient Blend */}
+          <div className="relative">
+            <div className="relative rounded-lg overflow-hidden">
+              {/* Dashboard image */}
+              <div className="aspect-[4/3] relative h-[450px] lg:h-[550px]">
+                <img
+                  src="/assets/landing/image-1766883635155.png"
+                  alt="Dashboard Preview"
+                  className="w-full h-full object-contain opacity-70"
+                />
+                {/* Gradient overlay from left to right - creates blending effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0f1419] via-[#0f1419]/50 to-transparent pointer-events-none" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
