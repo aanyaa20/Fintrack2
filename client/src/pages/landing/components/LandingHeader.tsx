@@ -36,43 +36,44 @@ const LandingHeader = () => {
             </span>
           </Link>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center gap-8">
-            <a
-              href="#product"
-              className="text-sm text-gray-300 hover:text-white transition-colors"
-            >
-              {t('landing.header.product')}
-            </a>
-            <a
-              href="#features"
-              className="text-sm text-gray-300 hover:text-white transition-colors"
-            >
-              {t('landing.header.features')}
-            </a>
-            <a
-              href="#how-it-works"
-              className="text-sm text-gray-300 hover:text-white transition-colors"
-            >
-              {t('landing.header.how_it_works')}
-            </a>
-            <a
-              href="#security"
-              className="text-sm text-gray-300 hover:text-white transition-colors"
-            >
-              {t('landing.header.security')}
-            </a>
-            <a
-              href="#pricing"
-              className="text-sm text-gray-300 hover:text-white transition-colors"
-            >
-              {t('landing.header.pricing')}
-            </a>
-          </div>
+          {/* Right Side - Navigation + Language + CTA */}
+          <div className="flex items-center gap-6">
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center gap-6">
+              <a
+                href="#product"
+                className="text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                {t('landing.header.product')}
+              </a>
+              <a
+                href="#features"
+                className="text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                {t('landing.header.features')}
+              </a>
+              <a
+                href="#how-it-works"
+                className="text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                {t('landing.header.how_it_works')}
+              </a>
+              <a
+                href="#security"
+                className="text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                {t('landing.header.security')}
+              </a>
+              <a
+                href="#pricing"
+                className="text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                {t('landing.header.pricing')}
+              </a>
+            </div>
 
-          {/* Right Side - Language + CTA */}
-          <div className="flex items-center gap-4">
             <LanguageSelector />
+            
             <Link
               to="/sign-up"
               className="px-5 py-2 bg-green-500 text-white text-sm font-medium rounded-md hover:bg-green-600 transition-colors"

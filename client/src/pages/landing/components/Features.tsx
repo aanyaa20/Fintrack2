@@ -22,7 +22,7 @@ const Features = () => {
     {
       title: t('landing.features.receipt_title'),
       description: t('landing.features.receipt_desc'),
-      image: "/assets/landing/image-1766881725239.png",
+      image: "/assets/landing/image-1766883729680.png",
       imageAlt: "Receipt scanning feature",
     },
     {

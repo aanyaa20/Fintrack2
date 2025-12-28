@@ -36,14 +36,16 @@ const Hero = () => {
 
           {/* Right: Product Preview Image */}
           <div className="relative">
-            <div className="relative rounded-lg border border-gray-700 shadow-xl overflow-hidden bg-gray-900">
-              {/* Placeholder for dashboard screenshot */}
-              <div className="aspect-[4/3] bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
-                <div className="text-slate-400 text-lg font-medium">Dashboard Preview</div>
+            <div className="relative rounded-lg overflow-hidden">
+              {/* Dashboard screenshot with transparency */}
+              <div className="aspect-[4/3] bg-[#0f1419] flex items-center justify-center">
+                <img
+                  src="/assets/landing/image-1766883635155.png"
+                  alt="Dashboard Preview"
+                  className="w-full h-full object-contain opacity-70"
+                />
               </div>
             </div>
-            {/* Subtle shadow effect */}
-            <div className="absolute -bottom-4 -right-4 w-full h-full bg-slate-900/5 rounded-lg -z-10" />
           </div>
         </div>
       </div>
