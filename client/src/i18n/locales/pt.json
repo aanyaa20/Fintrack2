@@ -233,7 +233,7 @@
     },
     "features": {
       "title": "Core Capabilities",
-      "subtitle": "Essential tools for managing your financial data with precision and clarity.",
+      "subtitle": "Essential ways for managing your financial data with precision and clarity.",
       "transaction_title": "Structured Transaction Records",
       "transaction_desc": "Maintain organized financial records with categorized income and expenses. Clear data structure for easy reference.",
       "analytics_title": "Spending Pattern Analysis",
@@ -258,9 +258,9 @@
       "subtitle": "FinTrak is built on principles that prioritize your needs and respect your time.",
       "principle1_title": "> Clarity over complexity",
       "principle1_desc": "We focus on presenting your financial data in a way that's easy to understand. No confusing jargon or overwhelming interfaces.",
-      "principle2_title": "Practical insights over noisy dashboards",
+      "principle2_title": "> Practical insights over noisy dashboards",
       "principle2_desc": "Our analytics show you what matters: spending patterns, category breakdowns, and trends that help you make decisions.",
-      "principle3_title": "User control over automation",
+      "principle3_title": "> User control over automation",
       "principle3_desc": "You decide how to categorize and track your finances. FinTrak supports your workflow, not the other way around."
     },
     "cta": {
