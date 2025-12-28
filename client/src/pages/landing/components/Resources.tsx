@@ -24,8 +24,8 @@ const Resources = () => {
       icon: Video,
       title: "Webinars",
       description: "Join our weekly webinars every Tuesday at 6 PM IST. See a walkthrough of the product and get your questions answered.",
-      action: "Join next webinar",
-      onClick: () => window.location.href = '/resources/webinars'
+      action: "Coming Soon",
+      onClick: () => {}
     },
     {
       icon: Sparkles,

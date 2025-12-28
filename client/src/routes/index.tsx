@@ -15,7 +15,6 @@ import WhatsNew from "@/pages/resources/WhatsNew";
 import Blogs from "@/pages/resources/Blogs";
 import Guides from "@/pages/resources/Guides";
 import Forums from "@/pages/resources/Forums";
-import Webinars from "@/pages/resources/Webinars";
 
 function AppRoutes() {
   useAuthExpiration();
@@ -32,7 +31,6 @@ function AppRoutes() {
         <Route path="/resources/blogs" element={<Blogs />} />
         <Route path="/resources/guides" element={<Guides />} />
         <Route path="/resources/forums" element={<Forums />} />
-        <Route path="/resources/webinars" element={<Webinars />} />
         
         <Route element={<AuthRoute />}>
           <Route element={<BaseLayout />}>
