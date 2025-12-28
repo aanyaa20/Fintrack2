@@ -3,6 +3,8 @@ import Hero from "./components/Hero";
 import TrustSection from "./components/TrustSection";
 import Features from "./components/Features";
 import HowItWorks from "./components/HowItWorks";
+import PartnerWithUs from "./components/PartnerWithUs";
+import Resources from "./components/Resources";
 import Philosophy from "./components/Philosophy";
 import FinalCTA from "./components/FinalCTA";
 import LandingFooter from "./components/LandingFooter";
@@ -16,6 +18,8 @@ const LandingPage = () => {
         <TrustSection />
         <Features />
         <HowItWorks />
+        <PartnerWithUs />
+        <Resources />
         <Philosophy />
         <FinalCTA />
       </main>

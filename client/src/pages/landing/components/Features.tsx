@@ -93,7 +93,7 @@ const Features = () => {
 
               {/* Feature Image */}
               <div 
-                ref={(el) => { imageRefs.current[index] = el; }}
+                ref={(el) => (imageRefs.current[index] = el)}
                 data-index={index}
                 className={`${index % 2 === 1 ? "lg:col-start-1 lg:row-start-1" : ""} 
                   group cursor-pointer`}
