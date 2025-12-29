@@ -25,6 +25,7 @@ import { useUpdateReportSettingMutation } from "@/features/report/reportAPI";
 import { updateCredentials } from "@/features/auth/authSlice";
 import { toast } from "sonner";
 import { useEffect } from "react";
+import InstantReportGenerator from "./instant-report-generator";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -107,6 +108,19 @@ const ScheduleReportForm = ({
 
   return (
     <div className="pt-5 px-2.5">
+      {/* Instant Report Generation Section */}
+      <div className="mb-6 border-b pb-6">
+        <InstantReportGenerator />
+      </div>
+
+      {/* Scheduled Reports Section */}
+      <div className="px-4 mb-4">
+        <h3 className="text-lg font-semibold mb-1">Automated Email Reports</h3>
+        <p className="text-sm text-muted-foreground">
+          Schedule reports to be sent automatically to your email
+        </p>
+      </div>
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="w-full space-y-6 flex-1 px-4">

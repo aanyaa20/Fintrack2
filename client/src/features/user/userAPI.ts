@@ -10,7 +10,13 @@ export const userApi = apiClient.injectEndpoints({
         body: formData,
       }),
     }),
+    deleteAccount: builder.mutation<void, void>({
+      query: () => ({
+        url: "/user/delete-account",
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useUpdateUserMutation } = userApi;
+export const { useUpdateUserMutation, useDeleteAccountMutation } = userApi;

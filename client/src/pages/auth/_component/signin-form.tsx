@@ -240,7 +240,7 @@ const SignInForm = ({
             variant="outline" 
             className="w-full"
             onClick={() => {
-              window.location.href = "http://localhost:8000/api/auth/github";
+              window.location.href = `${import.meta.env.VITE_API_BASE_URL}/auth/github`;
             }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

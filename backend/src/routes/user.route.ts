@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   getCurrentUserController,
   updateUserController,
+  deleteAccountController,
 } from "../controllers/user.controller";
 import { upload } from "../config/cloudinary.config";
 
@@ -13,5 +14,6 @@ userRoutes.put(
   upload.single("profilePicture"),
   updateUserController
 );
+userRoutes.delete("/delete-account", deleteAccountController);
 
 export default userRoutes;

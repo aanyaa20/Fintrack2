@@ -3,6 +3,7 @@ import { asyncHandler } from "../middlewares/asyncHandler.middlerware";
 import {
   findByIdUserService,
   updateUserService,
+  deleteAccountService,
 } from "../services/user.service";
 import { HTTPSTATUS } from "../config/http.config";
 import { updateUserSchema } from "../validators/user.validator";
@@ -30,6 +31,18 @@ export const updateUserController = asyncHandler(
     return res.status(HTTPSTATUS.OK).json({
       message: "User profile updated successfully",
       data: user,
+    });
+  }
+);
+
+export const deleteAccountController = asyncHandler(
+  async (req: Request, res: Response) => {
+    const userId = req.user?._id;
+
+    await deleteAccountService(userId);
+
+    return res.status(HTTPSTATUS.OK).json({
+      message: "Account deleted successfully",
     });
   }
 );

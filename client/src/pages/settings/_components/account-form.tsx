@@ -23,10 +23,24 @@ import {
 import { toast } from "sonner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAppDispatch, useTypedSelector } from "@/app/hook";
-import { Loader } from "lucide-react";
-import { useUpdateUserMutation } from "@/features/user/userAPI";
-import { updateCredentials } from "@/features/auth/authSlice";
+import { Loader, Trash2 } from "lucide-react";
+import { useUpdateUserMutation, useDeleteAccountMutation } from "@/features/user/userAPI";
+import { logout, updateCredentials } from "@/features/auth/authSlice";
 import { useTranslation } from "react-i18next";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
+import { AUTH_ROUTES } from "@/routes/common/routePath";
 
 const accountFormSchema = z.object({
   name: z
@@ -100,12 +114,14 @@ const COUNTRIES = [
 export function AccountForm() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { user } = useTypedSelector((state) => state.auth);
 
   const [file, setFile] = useState<File | null>(null);
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
   const [updateUserMutation, { isLoading }] = useUpdateUserMutation();
+  const [deleteAccount, { isLoading: isDeleting }] = useDeleteAccountMutation();
 
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
@@ -180,8 +196,20 @@ export function AccountForm() {
     { code: "pt", name: "Português", flag: "🇵🇹" },
   ];
 
+  const handleDeleteAccount = async () => {
+    try {
+      await deleteAccount().unwrap();
+      toast.success("Account deleted successfully");
+      dispatch(logout());
+      navigate(AUTH_ROUTES.SIGN_IN);
+    } catch (error: any) {
+      toast.error(error.data?.message || "Failed to delete account");
+    }
+  };
+
   return (
-    <Form {...form}>
+    <>
+      <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <div className="flex flex-col items-start space-y-4">
           <FormLabel>{t("settings.profile_picture")}</FormLabel>
@@ -308,5 +336,52 @@ export function AccountForm() {
         </Button>
       </form>
     </Form>
+
+    {/* Delete Account Section */}
+    <Card className="border-destructive mt-8">
+      <CardHeader>
+        <CardTitle className="text-destructive flex items-center gap-2">
+          <Trash2 className="h-5 w-5" />
+          Delete Account
+        </CardTitle>
+        <CardDescription>
+          Once you delete your account, there is no going back. All your data including transactions, reports, and settings will be permanently deleted.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="destructive" disabled={isDeleting}>
+              {isDeleting && <Loader className="h-4 w-4 animate-spin mr-2" />}
+              Delete My Account
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete your account and remove all your data from our servers including:
+                <ul className="list-disc list-inside mt-2 space-y-1">
+                  <li>All your transactions</li>
+                  <li>All your reports and report settings</li>
+                  <li>Your profile information</li>
+                  <li>All associated data</li>
+                </ul>
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={handleDeleteAccount}
+                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              >
+                Yes, delete my account
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </CardContent>
+    </Card>
+  </>
   );
 }

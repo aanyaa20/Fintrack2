@@ -5,6 +5,7 @@ import { setCredentials } from "@/features/auth/authSlice";
 import { toast } from "sonner";
 import { PROTECTED_ROUTES, AUTH_ROUTES } from "@/routes/common/routePath";
 import { Loader } from "lucide-react";
+import { Env } from "@/config/env.config";
 
 const GitHubCallback = () => {
   const [searchParams] = useSearchParams();
@@ -24,7 +25,7 @@ const GitHubCallback = () => {
 
     if (token && expiresAt) {
       // Fetch user data with the token
-      fetch("http://localhost:8000/api/user/current-user", {
+      fetch(`${Env.API_URL}/user/current-user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
