@@ -23,7 +23,7 @@ const TrustSection = () => {
     {
       icon: MessageSquare,
       title: "Community-Driven Development",
-      description: "Built with feedback from real users. Regular updates and transparent development process.",
+      description: "Built with feedback from real users, regular updates and transparent development process. Features are refined through actual usage, not assumptions.",
     },
   ];
 

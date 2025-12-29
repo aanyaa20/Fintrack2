@@ -352,7 +352,6 @@ const TransactionForm = (props: {
                 </FormItem>
               )}
             />
-            
 
             {/* Payment Method */}
             <FormField

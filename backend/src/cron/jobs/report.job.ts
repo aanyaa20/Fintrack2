@@ -1,5 +1,5 @@
-import { endOfMonth, format, startOfMonth, subMonths } from "date-fns";
-import ReportSettingModel from "../../models/report-setting.model";
+import { endOfMonth, endOfDay, format, startOfMonth, startOfDay, subMonths, subDays, subWeeks } from "date-fns";
+import ReportSettingModel, { ReportFrequencyEnum } from "../../models/report-setting.model";
 import { UserDocument } from "../../models/user.model";
 import mongoose from "mongoose";
 import { generateReportService } from "../../services/report.service";
@@ -12,14 +12,6 @@ export const processReportJob = async () => {
 
   let processedCount = 0;
   let failedCount = 0;
-
-  //Today july 1, then run report for -> june 1 - 30 
-//Get Last Month because this will run on the first of the month
-  const from = startOfMonth(subMonths(now, 1));
-  const to = endOfMonth(subMonths(now, 1));
-
-  // const from = "2025-04-01T23:00:00.000Z";
-  // const to = "2025-04-T23:00:00.000Z";
 
   try {
     const reportSettingCursor = ReportSettingModel.find({
@@ -38,6 +30,34 @@ export const processReportJob = async () => {
         continue;
       }
 
+      // Calculate date range based on frequency
+      let from: Date;
+      let to: Date;
+
+      switch (setting.frequency) {
+        case ReportFrequencyEnum.DAILY:
+          // Yesterday's transactions
+          from = startOfDay(subDays(now, 1));
+          to = endOfDay(subDays(now, 1));
+          break;
+        case ReportFrequencyEnum.WEEKLY:
+          // Last week's transactions
+          from = startOfDay(subWeeks(now, 1));
+          to = endOfDay(subDays(now, 1));
+          break;
+        case ReportFrequencyEnum.BI_WEEKLY:
+          // Last 15 days
+          from = startOfDay(subDays(now, 15));
+          to = endOfDay(subDays(now, 1));
+          break;
+        case ReportFrequencyEnum.MONTHLY:
+        default:
+          // Last month (runs on 1st of month)
+          from = startOfMonth(subMonths(now, 1));
+          to = endOfMonth(subMonths(now, 1));
+          break;
+      }
+
       const session = await mongoose.startSession();
 
       try {
@@ -48,8 +68,11 @@ export const processReportJob = async () => {
         let emailSent = false;
         if (report) {
           try {
+            // Use custom email if provided, otherwise use user's email
+            const emailToSend = setting.email || user.email!;
+            
             await sendReportEmail({
-              email: user.email!,
+              email: emailToSend,
               username: user.name!,
               report: {
                 period: report.period,

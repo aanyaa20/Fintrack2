@@ -20,6 +20,7 @@ interface User {
 interface ReportSetting {
   userId: string;
   frequency?: string;
+  email?: string;
   isEnabled: boolean;
 }
 

@@ -26,4 +26,6 @@ export interface GetAllReportResponse {
 
 export interface UpdateReportSettingParams {
     isEnabled: boolean;
+    frequency?: "DAILY" | "WEEKLY" | "BI_WEEKLY" | "MONTHLY";
+    email?: string;
 }

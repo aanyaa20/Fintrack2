@@ -239,21 +239,21 @@
     },
     "hero": {
       "title": "Financial tracking, designed for clarity.",
-      "description": "Fintrack helps you track income, expenses, and financial patterns with structured records and clear insights. Built for people who value control over their financial data.",
+      "description": "Fintrack helps you track income, expenses, and financial patterns with structured records and clear insights. Built for people who value control over their financial data, so you always know where your money goes and why.",
       "start_tracking": "Start Tracking",
       "see_how_it_works": "See How It Works"
     },
     "trust": {
       "privacy_title": "Privacy-first by design",
-      "privacy_desc": "Your financial data stays yours. No third-party tracking.",
+      "privacy_desc": "Your financial data stays yours. No third-party tracking. Fintrack does not sell, share, or analyze your data for advertising or third-party services. No ads, no trackers.",
       "security_title": "Built with secure architecture",
-      "security_desc": "Bank-grade encryption and secure data storage practices.",
+      "security_desc": "Fintrack uses industry-standard encryption and secure backend practices to protect sensitive information at every stage with regular security audits and updates.",
       "reliability_title": "Designed for reliability",
-      "reliability_desc": "Consistent performance and accurate financial tracking."
+      "reliability_desc": "Financial records need to be accurate and dependable. Fintrack focuses on consistent and stable performance, predictable behavior, and transparent calculations."
     },
     "features": {
       "title": "Core Capabilities",
-      "subtitle": "Essential ways for managing your financial data with precision and clarity.",
+      "subtitle": "Essential ways for managing your financial data with precision and clarity, while keeping your information private and protected.",
       "transaction_title": "Structured Transaction Records",
       "transaction_desc": "Maintain organized financial records with categorized income and expenses. Clear data structure for easy reference.",
       "analytics_title": "Spending Pattern Analysis",
@@ -265,7 +265,7 @@
     },
     "how_it_works": {
       "title": "How Fintrack Works",
-      "subtitle": "Start tracking your finances in three straightforward steps.",
+      "subtitle": "Start tracking your finances in these hassle-free and straightforward steps:",
       "step1_title": "Create Your Account",
       "step1_desc": "Sign up in seconds. Set your preferred currency and financial tracking preferences.",
       "step2_title": "Record Transactions",
@@ -275,7 +275,7 @@
     },
     "philosophy": {
       "title": "Product Philosophy",
-      "subtitle": "FinTrak is built on principles that prioritize your needs and respect your time.",
+      "subtitle": "FinTrak is designed with a strong emphasis on usability, transparency, and efficient financial management. Its features are built to support accurate record-keeping, clear presentation of financial data, and direct user control over how information is tracked and organized. Rather than relying on excessive automation or visually heavy dashboards, FinTrak focuses on structured data, practical insights, and predictable workflows, making financial tracking consistent, reliable, and easy to maintain over time.",
       "principle1_title": "> Clarity over complexity",
       "principle1_desc": "We focus on presenting your financial data in a way that's easy to understand. No confusing jargon or overwhelming interfaces.",
       "principle2_title": "> Practical insights over noisy dashboards",

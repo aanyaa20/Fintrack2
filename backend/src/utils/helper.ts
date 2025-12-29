@@ -11,6 +11,9 @@ export function calulateNextReportDate(
   let nextDate: Date;
 
   switch (frequency) {
+    case ReportFrequencyEnum.DAILY:
+      nextDate = addDays(lastSent, 1);
+      break;
     case ReportFrequencyEnum.WEEKLY:
       nextDate = addWeeks(lastSent, 1);
       break;

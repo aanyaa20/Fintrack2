@@ -26,7 +26,7 @@ const Philosophy = () => {
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white mb-3 sm:mb-4">
             {t('landing.philosophy.title')}
           </h2>
-          <p className="text-base sm:text-lg text-gray-300">
+          <p className="text-base sm:text-lg text-gray-300 text-justify">
             {t('landing.philosophy.subtitle')}
           </p>
         </div>

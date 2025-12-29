@@ -27,8 +27,8 @@ import { toast } from "sonner";
 import { useEffect } from "react";
 
 const formSchema = z.object({
-  email: z.string(),
-  frequency: z.enum(["WEEKLY", "BI_WEEKLY", "MONTHLY"]),
+  email: z.string().email("Please enter a valid email address"),
+  frequency: z.enum(["DAILY", "WEEKLY", "BI_WEEKLY", "MONTHLY"]),
   isEnabled: z.boolean(),
 });
 
@@ -50,16 +50,16 @@ const ScheduleReportForm = ({
     defaultValues: {
       email: "",
       isEnabled: true,
-      frequency: "MONTHLY",
+      frequency: "DAILY",
     },
   });
 
   useEffect(() => {
     if (user && reportSetting) {
       form.reset({
-        email: user?.email,
+        email: reportSetting?.email || user?.email,
         isEnabled: reportSetting?.isEnabled,
-        frequency: (reportSetting?.frequency as "WEEKLY" | "BI_WEEKLY" | "MONTHLY") || "MONTHLY",
+        frequency: (reportSetting?.frequency as "DAILY" | "WEEKLY" | "BI_WEEKLY" | "MONTHLY") || "DAILY",
       });
     }
   }, [user, form, reportSetting]);
@@ -68,7 +68,8 @@ const ScheduleReportForm = ({
   const onSubmit = (values: FormValues) => {
     const payload = { 
       isEnabled: values.isEnabled,
-      frequency: values.frequency 
+      frequency: values.frequency,
+      email: values.email
     };
     updateReportSetting(payload)
       .unwrap()
@@ -91,6 +92,8 @@ const ScheduleReportForm = ({
     const frequency = form.watch("frequency");
     
     switch (frequency) {
+      case "DAILY":
+        return "Report will be sent daily at 11:59 PM";
       case "WEEKLY":
         return "Report will be sent once a week";
       case "BI_WEEKLY":
@@ -147,12 +150,15 @@ const ScheduleReportForm = ({
                       <FormControl>
                         <Input
                           placeholder="Enter email address"
-                          disabled={true}
+                          disabled={!form.watch("isEnabled")}
                           {...field}
                           className="flex-1"
                         />
                       </FormControl>
                     </div>
+                    <p className="text-xs text-muted-foreground">
+                      Reports will be sent to this email address
+                    </p>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -176,6 +182,7 @@ const ScheduleReportForm = ({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
+                        <SelectItem value="DAILY">Daily</SelectItem>
                         <SelectItem value="WEEKLY">Weekly</SelectItem>
                         <SelectItem value="BI_WEEKLY">Every 15 Days</SelectItem>
                         <SelectItem value="MONTHLY">Monthly</SelectItem>

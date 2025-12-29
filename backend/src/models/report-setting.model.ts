@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 export enum ReportFrequencyEnum {
+  DAILY = "DAILY",
   WEEKLY = "WEEKLY",
   BI_WEEKLY = "BI_WEEKLY",
   MONTHLY = "MONTHLY",
@@ -9,6 +10,7 @@ export enum ReportFrequencyEnum {
 export interface ReportSettingDocument extends Document {
   userId: mongoose.Types.ObjectId;
   frequency: keyof typeof ReportFrequencyEnum;
+  email?: string;
   isEnabled: boolean;
   nextReportDate?: Date;
   lastSentDate?: Date;
@@ -27,6 +29,10 @@ const reportSettingSchema = new mongoose.Schema<ReportSettingDocument>(
       type: String,
       enum: Object.values(ReportFrequencyEnum),
       default: ReportFrequencyEnum.MONTHLY,
+    },
+    email: {
+      type: String,
+      required: false,
     },
     isEnabled: {
       type: Boolean,

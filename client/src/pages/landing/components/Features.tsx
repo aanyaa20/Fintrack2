@@ -9,25 +9,41 @@ const Features = () => {
   const features = [
     {
       title: t('landing.features.transaction_title'),
-      description: t('landing.features.transaction_desc'),
+      points: [
+        "Log income and expenses with clear categories and timestamps",
+        "Maintain a consistent, searchable record of all transactions",
+        "Keep financial data structured for quick review and reference"
+      ],
       image: "/assets/landing/image-1766880354385.png",
       imageAlt: "Transaction recording interface",
     },
     {
       title: t('landing.features.analytics_title'),
-      description: t('landing.features.analytics_desc'),
+      points: [
+        "Visual breakdown of spending by category and time period",
+        "Identify recurring expenses and long-term trends",
+        "Gain clarity on where money is actually being spent"
+      ],
       image: "/assets/landing/image-1766880558860.png",
       imageAlt: "Analytics dashboard showing spending patterns",
     },
     {
       title: t('landing.features.receipt_title'),
-      description: t('landing.features.receipt_desc'),
+      points: [
+        "Extract amounts, dates, and categories directly from receipts",
+        "Reduce manual entry with automated transaction capture",
+        "Store scanned receipts alongside verified financial records"
+      ],
       image: "/assets/landing/image-1766883729680.png",
       imageAlt: "Receipt scanning feature",
     },
     {
       title: t('landing.features.account_title'),
-      description: t('landing.features.account_desc'),
+      points: [
+        "Create an account quickly using email or trusted providers",
+        "Set preferred currency and basic financial preferences",
+        "Start tracking immediately with a clean initial setup"
+      ],
       image: "/assets/landing/image-1766880675915.png",
       imageAlt: "Account creation interface",
     },
@@ -86,9 +102,14 @@ const Features = () => {
                 <h3 className="text-2xl font-semibold text-white mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-base text-gray-300 leading-relaxed">
-                  {feature.description}
-                </p>
+                <ul className="text-base text-gray-300 leading-relaxed space-y-2">
+                  {feature.points.map((point, i) => (
+                    <li key={i} className="flex items-start">
+                      <span className="inline-block w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               {/* Feature Image */}
