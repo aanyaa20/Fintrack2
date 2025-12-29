@@ -20,7 +20,7 @@ import { Loader } from "lucide-react";
 import { useLoginMutation } from "@/features/auth/authAPI";
 import { useAppDispatch } from "@/app/hook";
 import { setCredentials } from "@/features/auth/authSlice";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, linkWithCredential, fetchSignInMethodsForEmail, OAuthProvider } from "firebase/auth";
 import { auth, googleProvider, microsoftProvider } from "@/config/firebase.config";
 import { useState } from "react";
 
@@ -129,9 +129,15 @@ const SignInForm = ({
 
       toast.success("Successfully logged in with Microsoft!");
       navigate(PROTECTED_ROUTES.OVERVIEW);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Microsoft sign-in error:", error);
-      toast.error("Failed to sign in with Microsoft. Please try again.");
+      
+      // Handle account linking error
+      if (error.code === 'auth/account-exists-with-different-credential') {
+        toast.error("An account with this email already exists. Please sign in with your original provider (Google, GitHub, or Email).");
+      } else {
+        toast.error("Failed to sign in with Microsoft. Please try again.");
+      }
     } finally {
       setIsMicrosoftLoading(false);
     }
