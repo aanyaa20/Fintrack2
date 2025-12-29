@@ -92,13 +92,11 @@ export const generatePDFReportController = asyncHandler(
       .text('Financial Report', { align: 'center' })
       .moveDown(0.5);
 
-    // Format the date range properly
-    const dateRange = `${format(fromDate, 'MMMM d, yyyy')} - ${format(toDate, 'MMMM d, yyyy')}`;
-    
+    // Format the date range properly - use the report period from service
     doc
       .fontSize(12)
       .font('Helvetica')
-      .text(dateRange, { align: 'center' })
+      .text(report.period, { align: 'center' })
       .moveDown(1.5);
 
     // Add summary section
@@ -173,11 +171,12 @@ export const generatePDFReportController = asyncHandler(
       doc.moveDown(0.5);
     }
 
-    // Add footer
+    // Add footer with proper timestamp
+    const currentDate = new Date();
     doc
       .fontSize(10)
       .font('Helvetica')
-      .text(`Generated on ${format(new Date(), 'MMMM dd, yyyy')} at ${format(new Date(), 'HH:mm')}`, {
+      .text(`Generated on ${format(currentDate, 'MMMM dd, yyyy')} at ${format(currentDate, 'hh:mm a')}`, {
         align: 'center',
       });
 
