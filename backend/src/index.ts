@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
   // Strict rate limiter for authentication endpoints
   const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 5, // 5 requests per window
+    max: 50, // 50 requests per window (increased from 5)
     message: 'Too many login attempts, please try again after 15 minutes',
     standardHeaders: true,
     legacyHeaders: false,
@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
   // General API rate limiter
   const apiLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // 100 requests per window
+    max: 500, // 500 requests per window (increased from 100)
     message: 'Too many requests, please try again later',
     standardHeaders: true,
     legacyHeaders: false,
