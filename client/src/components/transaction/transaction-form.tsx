@@ -162,6 +162,7 @@ const TransactionForm = (props: {
       date: values.date.toISOString(),
       isRecurring: values.isRecurring || false,
       recurringInterval: values.frequency || null,
+      receiptUrl: values.receiptUrl || "", // Add receiptUrl to payload
     };
     if (isEdit && transactionId) {
       updateTransaction({ id: transactionId, transaction: payload })
