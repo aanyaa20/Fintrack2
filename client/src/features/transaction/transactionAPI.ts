@@ -26,6 +26,7 @@ export const transactionApi = apiClient.injectEndpoints({
         method: "POST",
         body: formData,
       }),
+      invalidatesTags: ["transactions", "analytics"],
     }),
 
     getAllTransactions: builder.query<
