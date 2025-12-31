@@ -20,7 +20,7 @@ import { Loader } from "lucide-react";
 import { useLoginMutation } from "@/features/auth/authAPI";
 import { useAppDispatch } from "@/app/hook";
 import { setCredentials } from "@/features/auth/authSlice";
-import { signInWithPopup, linkWithCredential, fetchSignInMethodsForEmail, OAuthProvider } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider, microsoftProvider } from "@/config/firebase.config";
 import { useState } from "react";
 

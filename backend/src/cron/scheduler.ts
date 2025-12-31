@@ -17,7 +17,7 @@ const scheduleJob = (name: string, time: string, job: Function) => {
     },
     {
       scheduled: true,
-      timezone: "UTC",
+      timezone: "Asia/Kolkata",
     }
   );
 };
