@@ -6,8 +6,8 @@
     "settings": "Settings"
   },
   "dashboard": {
-    "welcome": "Welcome to your dashboard",
-    "overview_report": "This is your overview report for the selected period",
+    "welcome": "Your Financial Overview",
+    "overview_report": "Highlights from your recent transactions:",
     "current_balance": "Current Balance",
     "total_income": "Total Income",
     "total_expenses": "Total Expenses",
@@ -118,8 +118,8 @@
     "error": "Error"
   },
   "transactions": {
-    "title": "All Transactions",
-    "subtitle": "Showing all transactions",
+    "title": "Transactions List",
+    "subtitle": "Complete history of all your recorded transactions for the selected period:",
     "import": "Import",
     "search_placeholder": "Search transactions...",
     "all_types": "All Types",
@@ -171,8 +171,8 @@
     "subtitle": "View and manage your financial reports"
   },
   "settings": {
-    "title": "Settings",
-    "subtitle": "Manage your profile settings and preferences",
+    "title": "Account Configurations",
+    "subtitle": "Configure your account information, preferencesand settings:",
     "account": "Account",
     "appearance": "Appearance",
     "notifications": "Notifications",
