@@ -11,7 +11,7 @@ export const getReportEmailTemplate = (
     period,
     totalIncome,
     totalExpenses,
-    availableBalance,
+    currentBalance,
     savingsRate,
     topSpendingCategories,
     insights,
@@ -68,8 +68,8 @@ export const getReportEmailTemplate = (
                      <td style="text-align: right; font-size: 16px;">${formatCurrency(totalExpenses)}</td>
                    </tr>
                    <tr>
-                     <td style="padding: 8px 0; font-size: 16px;"><strong>Available Balance:</strong></td>
-                     <td style="text-align: right; font-size: 16px;">${formatCurrency(availableBalance)}</td>
+                     <td style="padding: 8px 0; font-size: 16px;"><strong>Current Balance:</strong></td>
+                     <td style="text-align: right; font-size: 16px;">${formatCurrency(currentBalance)}</td>
                    </tr>
                    <tr>
                      <td style="padding: 8px 0; font-size: 16px;"><strong>Savings Rate:</strong></td>

@@ -109,7 +109,7 @@ export const generatePDFReportController = asyncHandler(
     const summary = [
       { label: 'Total Income', value: `$${report.summary.income}` },
       { label: 'Total Expenses', value: `$${report.summary.expenses}` },
-      { label: 'Available Balance', value: `$${report.summary.balance}` },
+      { label: 'Current Balance', value: `$${report.summary.balance}` },
       { label: 'Savings Rate', value: `${report.summary.savingsRate}%` },
     ];
 

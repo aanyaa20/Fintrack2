@@ -5,19 +5,19 @@ const Guides = () => {
   return (
     <div className="min-h-screen bg-[#1a1e2a] text-white">
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <Link to="/" className="inline-flex items-center gap-2 text-green-500 hover:text-green-400 mb-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-cyan-500 hover:text-cyan-400 mb-8">
           <ArrowLeft className="size-5" />
           Back to Home
         </Link>
 
         <div className="flex items-center gap-3 mb-6">
-          <Users className="size-10 text-green-500" />
+          <Users className="size-10 text-cyan-500" />
           <h1 className="text-4xl font-bold">Business & Personal Finance Guides</h1>
         </div>
 
         <div className="prose prose-invert max-w-none">
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4 text-green-500">Complete Guide to Expense Tracking</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-cyan-500">Complete Guide to Expense Tracking</h2>
             <p className="text-gray-300 leading-relaxed mb-4">
               Master the art of expense tracking with our comprehensive guide designed for both individuals and businesses.
               Learn how to categorize expenses effectively, identify spending patterns, and make data-driven financial decisions.
@@ -31,7 +31,7 @@ const Guides = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4 text-green-500">Budget Planning Strategies</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-cyan-500">Budget Planning Strategies</h2>
             <p className="text-gray-300 leading-relaxed mb-4">
               Creating and maintaining a realistic budget is crucial for financial success. Learn proven budgeting methods
               like the 50/30/20 rule, zero-based budgeting, and envelope budgeting. Discover how to set achievable savings
@@ -45,7 +45,7 @@ const Guides = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4 text-green-500">Financial Reporting Best Practices</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-cyan-500">Financial Reporting Best Practices</h2>
             <p className="text-gray-300 leading-relaxed mb-4">
               Generate professional financial reports that provide valuable insights into your spending habits and financial
               health. Learn how to create monthly expense summaries, trend analysis reports, category breakdowns, and

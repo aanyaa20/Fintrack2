@@ -8,7 +8,7 @@
   "dashboard": {
     "welcome": "欢迎回来",
     "overview_report": "这是所选期间的概览报告",
-    "available_balance": "可用余额",
+    "current_balance": "当前余额",
     "total_income": "总收入",
     "total_expenses": "总支出",
     "savings_rate": "储蓄率",

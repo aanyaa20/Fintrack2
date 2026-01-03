@@ -138,14 +138,14 @@ const Webinars = () => {
   return (
     <div className="min-h-screen bg-[#1a1e2a] text-white">
       <div className="max-w-6xl mx-auto px-6 py-12">
-        <Link to="/" className="inline-flex items-center gap-2 text-green-500 hover:text-green-400 mb-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-cyan-500 hover:text-cyan-400 mb-8">
           <ArrowLeft className="size-5" />
           Back to Home
         </Link>
 
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
-            <Video className="size-10 text-green-500" />
+            <Video className="size-10 text-cyan-500" />
             <h1 className="text-4xl font-bold">Webinars</h1>
           </div>
           
@@ -165,7 +165,7 @@ const Webinars = () => {
                   maxAttendees: 100
                 });
               }}
-              className="bg-green-500 hover:bg-green-400 text-gray-900 font-semibold"
+              className="bg-cyan-500 hover:bg-cyan-400 text-gray-900 font-semibold"
             >
               <Plus className="size-5 mr-2" />
               Add Webinar
@@ -190,7 +190,7 @@ const Webinars = () => {
                   type="text"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+                  className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
                   required
                 />
               </div>
@@ -200,7 +200,7 @@ const Webinars = () => {
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500 min-h-[100px]"
+                  className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500 min-h-[100px]"
                   required
                 />
               </div>
@@ -212,7 +212,7 @@ const Webinars = () => {
                     type="text"
                     value={formData.speaker}
                     onChange={(e) => setFormData({ ...formData, speaker: e.target.value })}
-                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
                     required
                   />
                 </div>
@@ -223,7 +223,7 @@ const Webinars = () => {
                     type="date"
                     value={formData.date}
                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
                     required
                   />
                 </div>
@@ -235,7 +235,7 @@ const Webinars = () => {
                     value={formData.time}
                     onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                     placeholder="e.g., 2:00 PM EST"
-                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
                     required
                   />
                 </div>
@@ -247,7 +247,7 @@ const Webinars = () => {
                     value={formData.duration}
                     onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
                     placeholder="e.g., 60 minutes"
-                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
                     required
                   />
                 </div>
@@ -259,7 +259,7 @@ const Webinars = () => {
                     value={formData.meetLink}
                     onChange={(e) => setFormData({ ...formData, meetLink: e.target.value })}
                     placeholder="https://meet.google.com/..."
-                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
                     required
                   />
                 </div>
@@ -271,14 +271,14 @@ const Webinars = () => {
                     value={formData.maxAttendees}
                     onChange={(e) => setFormData({ ...formData, maxAttendees: parseInt(e.target.value) })}
                     min="1"
-                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500"
                     required
                   />
                 </div>
               </div>
 
               <div className="flex gap-3 pt-4">
-                <Button type="submit" className="bg-green-500 hover:bg-green-400 text-gray-900 font-semibold">
+                <Button type="submit" className="bg-cyan-500 hover:bg-cyan-400 text-gray-900 font-semibold">
                   {editingWebinar ? 'Update Webinar' : 'Create Webinar'}
                 </Button>
                 <Button
@@ -308,7 +308,7 @@ const Webinars = () => {
               {upcomingWebinars.map((webinar) => (
                 <div
                   key={webinar.id}
-                  className="bg-[#0f1419] p-6 rounded-lg border border-gray-800 hover:border-green-500 transition-colors"
+                  className="bg-[#0f1419] p-6 rounded-lg border border-gray-800 hover:border-cyan-500 transition-colors"
                 >
                   <div className="flex items-start justify-between mb-3">
                     <h3 className="text-xl font-semibold text-white">{webinar.title}</h3>
@@ -334,19 +334,19 @@ const Webinars = () => {
                   
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center gap-2 text-sm text-gray-300">
-                      <Video className="size-4 text-green-500" />
+                      <Video className="size-4 text-cyan-500" />
                       <span>{webinar.speaker}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-300">
-                      <Calendar className="size-4 text-green-500" />
+                      <Calendar className="size-4 text-cyan-500" />
                       <span>{webinar.date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-300">
-                      <Clock className="size-4 text-green-500" />
+                      <Clock className="size-4 text-cyan-500" />
                       <span>{webinar.time} • {webinar.duration}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-300">
-                      <Users className="size-4 text-green-500" />
+                      <Users className="size-4 text-cyan-500" />
                       <span>{webinar.attendees}/{webinar.maxAttendees} registered</span>
                     </div>
                   </div>
@@ -355,7 +355,7 @@ const Webinars = () => {
                     href={webinar.meetLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-2 bg-green-500 text-gray-900 font-semibold rounded-lg hover:bg-green-400 transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-2 bg-cyan-500 text-gray-900 font-semibold rounded-lg hover:bg-cyan-400 transition-colors"
                   >
                     <ExternalLink className="size-5" />
                     Join Webinar

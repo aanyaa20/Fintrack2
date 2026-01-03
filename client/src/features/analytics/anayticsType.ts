@@ -22,7 +22,7 @@ interface PresetType {
 export interface SummaryAnalyticsResponse {
   message: string;
   data: {
-    availableBalance: number;
+    currentBalance: number;
     totalIncome: number;
     totalExpenses: number;
     transactionCount: number;

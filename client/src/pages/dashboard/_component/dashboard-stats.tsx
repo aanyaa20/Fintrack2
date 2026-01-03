@@ -15,8 +15,8 @@ const DashboardStats = ({ dateRange }: { dateRange?: DateRangeType }) => {
     <div className="flex flex-row items-center">
       <div className="flex-1 lg:flex-[1] grid grid-cols-1 lg:grid-cols-4 gap-4">
         <SummaryCard
-          title={t("dashboard.available_balance")}
-          value={summaryData?.availableBalance}
+          title={t("dashboard.current_balance")}
+          value={summaryData?.currentBalance}
           dateRange={dateRange}
           percentageChange={summaryData?.percentageChange?.balance}
           isLoading={isFetching}

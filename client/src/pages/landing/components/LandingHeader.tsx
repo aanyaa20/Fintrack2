@@ -73,7 +73,7 @@ const LandingHeader = () => {
         <nav className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5">
-            <div className="bg-green-500 text-white h-8 w-8 rounded flex items-center justify-center">
+            <div className="bg-gradient-to-br from-teal-500 to-cyan-500 text-white h-8 w-8 rounded flex items-center justify-center">
               <GalleryVerticalEnd className="size-5" />
             </div>
             <span className="font-semibold text-base sm:text-lg text-white">
@@ -91,7 +91,7 @@ const LandingHeader = () => {
                 value={searchTerm}
                 onChange={(e) => handleSearch(e.target.value)}
                 onFocus={() => searchTerm.length >= 2 && setShowResults(true)}
-                className="w-32 md:w-48 lg:w-64 px-4 py-1.5 bg-[#0f1419] border border-gray-700 rounded-md text-sm text-white placeholder-gray-500 focus:outline-none focus:border-green-500 transition-colors"
+                className="w-32 md:w-48 lg:w-64 px-4 py-1.5 bg-[#0f1419] border border-gray-700 rounded-md text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 transition-colors"
               />
               {searchTerm && (
                 <button
@@ -164,7 +164,7 @@ const LandingHeader = () => {
             
             <Link
               to="/sign-up"
-              className="px-3 sm:px-5 py-2 bg-green-500 text-white text-xs sm:text-sm font-medium rounded-md hover:bg-green-600 transition-colors whitespace-nowrap"
+              className="px-3 sm:px-5 py-2 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-xs sm:text-sm font-medium rounded-md hover:from-teal-600 hover:to-cyan-600 transition-colors whitespace-nowrap shadow-lg shadow-teal-500/20"
             >
               {t('landing.header.get_started')}
             </Link>

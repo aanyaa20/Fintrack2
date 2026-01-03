@@ -105,7 +105,7 @@ const Features = () => {
                 <ul className="text-base text-gray-300 leading-relaxed space-y-2">
                   {feature.points.map((point, i) => (
                     <li key={i} className="flex items-start">
-                      <span className="inline-block w-1.5 h-1.5 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="inline-block w-1.5 h-1.5 bg-cyan-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span>{point}</span>
                     </li>
                   ))}
@@ -125,7 +125,7 @@ const Features = () => {
                     ? 'opacity-100 translate-x-0' 
                     : `opacity-0 ${index % 2 === 0 ? '-translate-x-20' : 'translate-x-20'}`
                   }
-                  group-hover:scale-105 group-hover:shadow-2xl group-hover:border-green-500`}>
+                  group-hover:scale-105 group-hover:shadow-2xl group-hover:border-cyan-500`}>
                   <div className="bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
                     <img
                       src={feature.image}

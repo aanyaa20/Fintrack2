@@ -23,7 +23,7 @@ export const sendReportEmail = async (params: ReportEmailParams) => {
   const text = `Your ${frequency} Financial Report (${report.period})
     Income: ${formatCurrency(report.totalIncome)}
     Expenses: ${formatCurrency(report.totalExpenses)}
-    Balance: ${formatCurrency(report.availableBalance)}
+    Balance: ${formatCurrency(report.currentBalance)}
     Savings Rate: ${report.savingsRate.toFixed(2)}%
 
     ${report.insights.join("\n")}

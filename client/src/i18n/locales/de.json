@@ -8,7 +8,7 @@
   "dashboard": {
     "welcome": "Willkommen zurück",
     "overview_report": "Dies ist Ihr Übersichtsbericht für den ausgewählten Zeitraum",
-    "available_balance": "Verfügbares Guthaben",
+    "current_balance": "Verfügbares Guthaben",
     "total_income": "Gesamteinkommen",
     "total_expenses": "Gesamtausgaben",
     "savings_rate": "Sparquote",

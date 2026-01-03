@@ -20,7 +20,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 to="/sign-up"
-                className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 bg-green-500 text-white text-sm sm:text-base font-medium rounded-md hover:bg-green-600 transition-colors"
+                className="inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-sm sm:text-base font-medium rounded-md hover:from-teal-600 hover:to-cyan-600 transition-colors shadow-lg shadow-teal-500/30"
               >
                 {t('landing.hero.start_tracking')}
                 <ArrowRight className="ml-2 size-4" />

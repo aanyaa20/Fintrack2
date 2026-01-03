@@ -301,7 +301,7 @@ const Forums = () => {
   return (
     <div className="min-h-screen bg-[#1a1e2a] text-white">
       <div className="max-w-6xl mx-auto px-6 py-12">
-        <Link to="/" className="inline-flex items-center gap-2 text-green-500 hover:text-green-400 mb-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-cyan-500 hover:text-cyan-400 mb-8">
           <ArrowLeft className="size-5" />
           Back to Home
         </Link>
@@ -311,7 +311,7 @@ const Forums = () => {
           <div>
             <button
               onClick={() => setSelectedTopic(null)}
-              className="inline-flex items-center gap-2 text-green-500 hover:text-green-400 mb-6"
+              className="inline-flex items-center gap-2 text-cyan-500 hover:text-cyan-400 mb-6"
             >
               <ArrowLeft className="size-5" />
               Back to Forums
@@ -320,7 +320,7 @@ const Forums = () => {
             <div className="bg-[#0f1419] p-6 rounded-lg border border-gray-800 mb-6">
               <h1 className="text-3xl font-bold mb-4">{selectedTopic.title}</h1>
               <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
-                <span className="text-green-500">{selectedTopic.author}</span>
+                <span className="text-cyan-500">{selectedTopic.author}</span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
                   <Clock className="size-4" />
@@ -343,8 +343,8 @@ const Forums = () => {
                   onClick={() => handleLikeTopic(selectedTopic.id)}
                   className={`flex items-center gap-2 transition-colors ${
                     selectedTopic.userLiked 
-                      ? 'text-green-400' 
-                      : 'text-green-500 hover:text-green-400'
+                      ? 'text-cyan-400' 
+                      : 'text-cyan-500 hover:text-cyan-400'
                   }`}
                 >
                   <ThumbsUp className={`size-5 ${selectedTopic.userLiked ? 'fill-current' : ''}`} />
@@ -370,7 +370,7 @@ const Forums = () => {
               {selectedTopic.userReplies?.map((reply) => (
                 <div key={reply.id} className="bg-[#0f1419] p-5 rounded-lg border border-gray-800">
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-green-500 font-semibold">{reply.author}</span>
+                    <span className="text-cyan-500 font-semibold">{reply.author}</span>
                     <span className="text-gray-400 text-sm flex items-center gap-1">
                       <Clock className="size-3" />
                       {reply.timestamp.toLocaleString()}
@@ -382,8 +382,8 @@ const Forums = () => {
                       onClick={() => handleLikeReply(reply.id)}
                       className={`flex items-center gap-2 transition-colors text-sm ${
                         reply.userLiked 
-                          ? 'text-green-400' 
-                          : 'text-green-500 hover:text-green-400'
+                          ? 'text-cyan-400' 
+                          : 'text-cyan-500 hover:text-cyan-400'
                       }`}
                     >
                       <ThumbsUp className={`size-4 ${reply.userLiked ? 'fill-current' : ''}`} />
@@ -413,12 +413,12 @@ const Forums = () => {
                   value={newReplyContent}
                   onChange={(e) => setNewReplyContent(e.target.value)}
                   placeholder="Share your thoughts..."
-                  className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg p-4 text-white placeholder-gray-500 focus:outline-none focus:border-green-500 min-h-[120px] mb-4"
+                  className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg p-4 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 min-h-[120px] mb-4"
                   required
                 />
                 <button
                   type="submit"
-                  className="px-6 py-2 bg-green-500 text-gray-900 font-semibold rounded-lg hover:bg-green-400 transition-colors flex items-center gap-2"
+                  className="px-6 py-2 bg-cyan-500 text-gray-900 font-semibold rounded-lg hover:bg-cyan-400 transition-colors flex items-center gap-2"
                 >
                   <Send className="size-5" />
                   Post Reply
@@ -430,7 +430,7 @@ const Forums = () => {
           /* Forum List View */
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <MessageCircle className="size-10 text-green-500" />
+              <MessageCircle className="size-10 text-cyan-500" />
               <h1 className="text-4xl font-bold">Community Forums</h1>
             </div>
 
@@ -445,7 +445,7 @@ const Forums = () => {
                 placeholder="Search discussions..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#0f1419] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-500"
+                className="w-full bg-[#0f1419] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500"
               />
             </div>
 
@@ -453,7 +453,7 @@ const Forums = () => {
             {!showNewTopicForm && (
               <button
                 onClick={() => setShowNewTopicForm(true)}
-                className="mb-6 px-6 py-3 bg-green-500 text-gray-900 font-semibold rounded-lg hover:bg-green-400 transition-colors"
+                className="mb-6 px-6 py-3 bg-cyan-500 text-gray-900 font-semibold rounded-lg hover:bg-cyan-400 transition-colors"
               >
                 Start a New Discussion
               </button>
@@ -469,20 +469,20 @@ const Forums = () => {
                     value={newTopicTitle}
                     onChange={(e) => setNewTopicTitle(e.target.value)}
                     placeholder="Discussion title..."
-                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-500 mb-4"
+                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 mb-4"
                     required
                   />
                   <textarea
                     value={newTopicContent}
                     onChange={(e) => setNewTopicContent(e.target.value)}
                     placeholder="What would you like to discuss?"
-                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg p-4 text-white placeholder-gray-500 focus:outline-none focus:border-green-500 min-h-[150px] mb-4"
+                    className="w-full bg-[#1a1e2a] border border-gray-700 rounded-lg p-4 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 min-h-[150px] mb-4"
                     required
                   />
                   <div className="flex gap-3">
                     <button
                       type="submit"
-                      className="px-6 py-2 bg-green-500 text-gray-900 font-semibold rounded-lg hover:bg-green-400 transition-colors"
+                      className="px-6 py-2 bg-cyan-500 text-gray-900 font-semibold rounded-lg hover:bg-cyan-400 transition-colors"
                     >
                       Create Discussion
                     </button>
@@ -512,15 +512,15 @@ const Forums = () => {
                   <div
                     key={topic.id}
                     onClick={() => setSelectedTopic(topic)}
-                    className="bg-[#0f1419] p-5 rounded-lg border border-gray-800 hover:border-green-500 transition-colors cursor-pointer"
+                    className="bg-[#0f1419] p-5 rounded-lg border border-gray-800 hover:border-cyan-500 transition-colors cursor-pointer"
                   >
-                    <h3 className="text-lg font-semibold text-white mb-2 hover:text-green-500 transition-colors">
+                    <h3 className="text-lg font-semibold text-white mb-2 hover:text-cyan-500 transition-colors">
                       {topic.title}
                     </h3>
                     <p className="text-gray-400 text-sm mb-3 line-clamp-2">{topic.content}</p>
                     <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
                       <span>
-                        by <span className="text-green-500">{topic.author}</span>
+                        by <span className="text-cyan-500">{topic.author}</span>
                       </span>
                       <span>•</span>
                       <span className="flex items-center gap-1">

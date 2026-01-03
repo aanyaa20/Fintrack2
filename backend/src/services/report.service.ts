@@ -181,7 +181,7 @@ export const generateReportService = async (
     {} as Record<string, { amount: number; percentage: number }>
   );
 
-  const availableBalance = totalIncome - totalExpenses;
+  const currentBalance = totalIncome - totalExpenses;
   const savingsRate = calculateSavingRate(totalIncome, totalExpenses);
 
   const periodLabel = `${format(fromDate, "MMMM d")} - ${format(toDate, "d, yyyy")}`;
@@ -189,7 +189,7 @@ export const generateReportService = async (
   const insights = await generateInsightsAI({
     totalIncome,
     totalExpenses,
-    availableBalance,
+    currentBalance,
     savingsRate,
     categories: byCategory,
     periodLabel: periodLabel,
@@ -200,7 +200,7 @@ export const generateReportService = async (
     summary: {
       income: convertToDollarUnit(totalIncome),
       expenses: convertToDollarUnit(totalExpenses),
-      balance: convertToDollarUnit(availableBalance),
+      balance: convertToDollarUnit(currentBalance),
       savingsRate: Number(savingsRate.toFixed(1)),
       topCategories: Object.entries(byCategory)?.map(([name, cat]: any) => ({
         name,
@@ -215,14 +215,14 @@ export const generateReportService = async (
 async function generateInsightsAI({
   totalIncome,
   totalExpenses,
-  availableBalance,
+  currentBalance,
   savingsRate,
   categories,
   periodLabel,
 }: {
   totalIncome: number;
   totalExpenses: number;
-  availableBalance: number;
+  currentBalance: number;
   savingsRate: number;
   categories: Record<string, { amount: number; percentage: number }>;
   periodLabel: string;
@@ -231,7 +231,7 @@ async function generateInsightsAI({
     const prompt = reportInsightPrompt({
       totalIncome: convertToDollarUnit(totalIncome),
       totalExpenses: convertToDollarUnit(totalExpenses),
-      availableBalance: convertToDollarUnit(availableBalance),
+      currentBalance: convertToDollarUnit(currentBalance),
       savingsRate: Number(savingsRate.toFixed(1)),
       categories,
       periodLabel,

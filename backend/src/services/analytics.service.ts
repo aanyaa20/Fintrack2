@@ -62,7 +62,7 @@ export const summaryAnalyticsService = async (
         totalExpenses: 1,
         transactionCount: 1,
 
-        availableBalance: { $subtract: ["$totalIncome", "$totalExpenses"] },
+        currentBalance: { $subtract: ["$totalIncome", "$totalExpenses"] },
 
         savingData: {
           $let: {
@@ -117,7 +117,7 @@ export const summaryAnalyticsService = async (
   const {
     totalIncome = 0,
     totalExpenses = 0,
-    availableBalance = 0,
+    currentBalance = 0,
     transactionCount = 0,
     savingData = {
       expenseRatio: 0,
@@ -201,7 +201,6 @@ export const summaryAnalyticsService = async (
 
       const currentIncome = totalIncome;
       const currentExpenses = totalExpenses;
-      const currentBalance = availableBalance;
 
       percentageChange = {
         income: calaulatePercentageChange(prevIncome, currentIncome),
@@ -219,7 +218,7 @@ export const summaryAnalyticsService = async (
   }
 
   return {
-    availableBalance: convertToDollarUnit(availableBalance),
+    currentBalance: convertToDollarUnit(currentBalance),
     totalIncome: convertToDollarUnit(totalIncome),
     totalExpenses: convertToDollarUnit(totalExpenses),
     savingRate: {

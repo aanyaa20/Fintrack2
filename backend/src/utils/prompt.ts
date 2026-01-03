@@ -35,14 +35,14 @@ Example valid response:
 export const reportInsightPrompt = ({
   totalIncome,
   totalExpenses,
-  availableBalance,
+  currentBalance,
   savingsRate,
   categories,
   periodLabel,
 }: {
   totalIncome: number;
   totalExpenses: number;
-  availableBalance: number;
+  currentBalance: number;
   savingsRate: number;
   categories: Record<string, { amount: number; percentage: number }>;
   periodLabel: string;
@@ -66,7 +66,7 @@ Each insight should reflect the actual data and sound like something a smart mon
 🧾 Report for: ${periodLabel}
 - Total Income: $${totalIncome.toFixed(2)}
 - Total Expenses: $${totalExpenses.toFixed(2)}
-- Available Balance: $${availableBalance.toFixed(2)}
+- Current Balance: $${currentBalance.toFixed(2)}
 - Savings Rate: ${savingsRate}%
 
 Top Expense Categories:

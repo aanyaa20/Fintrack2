@@ -8,7 +8,7 @@
   "dashboard": {
     "welcome": "Bon retour",
     "overview_report": "Voici votre rapport général pour la période sélectionnée",
-    "available_balance": "Solde disponible",
+    "current_balance": "Solde disponible",
     "total_income": "Revenu total",
     "total_expenses": "Dépenses totales",
     "savings_rate": "Taux d'épargne",

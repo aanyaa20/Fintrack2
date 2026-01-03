@@ -28,13 +28,13 @@ const Faqs = () => {
   return (
     <div className="min-h-screen bg-[#1a1e2a] text-white">
       <div className="max-w-4xl mx-auto px-6 py-12">
-        <Link to="/" className="inline-flex items-center gap-2 text-green-500 hover:text-green-400 mb-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-cyan-500 hover:text-cyan-400 mb-8">
           <ArrowLeft className="size-5" />
           Back to Home
         </Link>
 
         <div className="flex items-center gap-3 mb-6">
-          <HelpCircle className="size-10 text-green-500" />
+          <HelpCircle className="size-10 text-cyan-500" />
           <h1 className="text-4xl font-bold">Frequently Asked Questions</h1>
         </div>
 
@@ -45,18 +45,18 @@ const Faqs = () => {
         <div className="space-y-6">
           {faqs.map((faq, index) => (
             <div key={index} className="bg-[#0f1419] p-6 rounded-lg border border-gray-800">
-              <h3 className="text-xl font-semibold text-green-500 mb-3">{faq.question}</h3>
+              <h3 className="text-xl font-semibold text-cyan-500 mb-3">{faq.question}</h3>
               <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-12 p-6 bg-green-500/10 border border-green-500/30 rounded-lg">
-          <h3 className="text-xl font-semibold text-green-500 mb-3">Still have questions?</h3>
+        <div className="mt-12 p-6 bg-cyan-500/10 border border-cyan-500/30 rounded-lg">
+          <h3 className="text-xl font-semibold text-cyan-500 mb-3">Still have questions?</h3>
           <p className="text-gray-300 mb-4">
             Our support team is here to help. Reach out via email or join our community forums.
           </p>
-          <a href="mailto:arjunbrt1303@gmail.com" className="text-green-500 hover:text-green-400 font-medium">
+          <a href="mailto:arjunbrt1303@gmail.com" className="text-cyan-500 hover:text-cyan-400 font-medium">
             Contact Support →
           </a>
         </div>

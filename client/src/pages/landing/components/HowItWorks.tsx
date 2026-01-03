@@ -54,7 +54,7 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="flex flex-col gap-4 p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-green-500 transition-all duration-300"
+              className="flex flex-col gap-4 p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-cyan-500 transition-all duration-300"
             >
               {/* Step Number and Content */}
               <div>

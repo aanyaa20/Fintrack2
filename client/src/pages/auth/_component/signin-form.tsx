@@ -198,7 +198,7 @@ const SignInForm = ({
               )}
             />
           </div>
-          <Button disabled={isLoading} type="submit" className="w-full">
+          <Button disabled={isLoading} type="submit" className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white border-0 shadow-lg shadow-teal-500/30">
             {isLoading && <Loader className="h-4 w-4 animate-spin" />}
             Login
           </Button>

@@ -35,7 +35,7 @@ const TrustSection = () => {
             const Icon = point.icon;
             return (
               <div key={index} className="flex flex-col items-start">
-                <div className="mb-4 p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg shadow-lg">
+                <div className="mb-4 p-3 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg shadow-lg">
                   <Icon className="size-6 text-white" strokeWidth={2.5} />
                 </div>
                 <h3 className="text-base font-semibold text-white mb-2">

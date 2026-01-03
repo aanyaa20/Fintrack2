@@ -82,7 +82,7 @@ const getCardStatus = (
 
     return {
       label: t ? t("dashboard.good_savings") : "Good Savings",
-      color: "text-green-400",
+      color: "text-cyan-400",
       Icon: TrendingUpIcon,
     };
   }
@@ -234,7 +234,7 @@ const SummaryCard: FC<SummaryCardProps> = ({
                   className={cn(
                     "flex items-center gap-0.5",
                     trendDirection === "positive"
-                      ? "text-green-500"
+                      ? "text-cyan-500"
                       : "text-red-500"
                   )}
                 >

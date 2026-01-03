@@ -8,7 +8,7 @@
   "dashboard": {
     "welcome": "वापसी पर स्वागत है",
     "overview_report": "यह चयनित अवधि के लिए आपकी अवलोकन रिपोर्ट है",
-    "available_balance": "उपलब्ध शेष",
+    "current_balance": "वर्तमान शेष",
     "total_income": "कुल आय",
     "total_expenses": "कुल खर्च",
     "savings_rate": "बचत दर",

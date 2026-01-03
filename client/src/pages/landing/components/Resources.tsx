@@ -83,11 +83,11 @@ const Resources = () => {
             return (
               <div
                 key={index}
-                className="group p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer"
+                className="group p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-cyan-500 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 cursor-pointer"
                 onClick={resource.onClick}
               >
                 <div className="mb-4">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-green-500/10 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-500 group-hover:bg-gradient-to-r group-hover:from-teal-500 group-hover:to-cyan-500 group-hover:text-white transition-all duration-300">
                     <Icon className="size-6" />
                   </div>
                 </div>
@@ -97,7 +97,7 @@ const Resources = () => {
                 <p className="text-gray-400 mb-4 text-sm leading-relaxed">
                   {resource.description}
                 </p>
-                <button className="text-green-500 font-medium text-sm hover:text-green-400 transition-colors flex items-center gap-1">
+                <button className="text-cyan-500 font-medium text-sm hover:text-cyan-400 transition-colors flex items-center gap-1">
                   {resource.action}
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </button>
@@ -113,11 +113,11 @@ const Resources = () => {
             return (
               <div
                 key={index + 3}
-                className="group p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer"
+                className="group p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-cyan-500 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 cursor-pointer"
                 onClick={resource.onClick}
               >
                 <div className="mb-4">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-green-500/10 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-500 group-hover:bg-gradient-to-r group-hover:from-teal-500 group-hover:to-cyan-500 group-hover:text-white transition-all duration-300">
                     <Icon className="size-6" />
                   </div>
                 </div>
@@ -127,7 +127,7 @@ const Resources = () => {
                 <p className="text-gray-400 mb-4 text-sm leading-relaxed">
                   {resource.description}
                 </p>
-                <button className="text-green-500 font-medium text-sm hover:text-green-400 transition-colors flex items-center gap-1">
+                <button className="text-cyan-500 font-medium text-sm hover:text-cyan-400 transition-colors flex items-center gap-1">
                   {resource.action}
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </button>
@@ -144,11 +144,11 @@ const Resources = () => {
               return (
                 <div
                   key={index + 6}
-                  className="group p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-green-500 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10 cursor-pointer"
+                  className="group p-6 bg-[#0f1419] rounded-lg border border-gray-800 hover:border-cyan-500 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 cursor-pointer"
                   onClick={resource.onClick}
                 >
                   <div className="mb-4">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-green-500/10 text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-cyan-500/10 text-cyan-500 group-hover:bg-gradient-to-r group-hover:from-teal-500 group-hover:to-cyan-500 group-hover:text-white transition-all duration-300">
                       <Icon className="size-6" />
                     </div>
                   </div>
@@ -158,7 +158,7 @@ const Resources = () => {
                   <p className="text-gray-400 mb-4 text-sm leading-relaxed">
                     {resource.description}
                   </p>
-                  <button className="text-green-500 font-medium text-sm hover:text-green-400 transition-colors flex items-center gap-1">
+                  <button className="text-cyan-500 font-medium text-sm hover:text-cyan-400 transition-colors flex items-center gap-1">
                     {resource.action}
                     <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </button>

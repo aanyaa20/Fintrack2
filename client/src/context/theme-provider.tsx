@@ -29,11 +29,23 @@ export function ThemeProvider({
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
   )
+  const [currentPath, setCurrentPath] = useState(window.location.pathname)
 
   useEffect(() => {
     const root = window.document.documentElement
+    
+    // Check if we're on auth routes (sign-in, sign-up, or any OAuth callback)
+    const isAuthRoute = currentPath.startsWith('/sign-in') || 
+                       currentPath.startsWith('/sign-up') ||
+                       currentPath.includes('/callback');
 
     root.classList.remove("light", "dark")
+
+    // Force dark mode for auth routes, ignore saved theme
+    if (isAuthRoute) {
+      root.classList.add("dark")
+      return
+    }
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
@@ -46,7 +58,21 @@ export function ThemeProvider({
     }
 
     root.classList.add(theme)
-  }, [theme])
+  }, [theme, currentPath])
+
+  // Monitor route changes
+  useEffect(() => {
+    const checkPathChange = () => {
+      if (window.location.pathname !== currentPath) {
+        setCurrentPath(window.location.pathname)
+      }
+    }
+
+    // Check on interval (React Router doesn't trigger popstate)
+    const interval = setInterval(checkPathChange, 100)
+    
+    return () => clearInterval(interval)
+  }, [currentPath])
 
   const value = {
     theme,

@@ -16,7 +16,7 @@ const FinalCTA = () => {
         </p>
         <Link
           to="/sign-up"
-          className="inline-flex items-center justify-center px-8 py-4 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 transition-colors"
+          className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-medium rounded-md hover:from-teal-600 hover:to-cyan-600 transition-colors shadow-lg shadow-teal-500/30"
         >
           {t('landing.cta.create_account')}
           <ArrowRight className="ml-2 size-5" />

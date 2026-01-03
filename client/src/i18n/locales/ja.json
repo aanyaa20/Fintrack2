@@ -8,7 +8,7 @@
   "dashboard": {
     "welcome": "おかえりなさい",
     "overview_report": "選択した期間の概要レポートです",
-    "available_balance": "利用可能残高",
+    "current_balance": "利用可能残高",
     "total_income": "総収入",
     "total_expenses": "総支出",
     "savings_rate": "貯蓄率",

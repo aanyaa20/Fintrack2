@@ -6,19 +6,22 @@ const features = [
     icon: Shield,
     title: "Secure Multi-Platform Login",
     description: "Sign in seamlessly with Google, GitHub, or Microsoft. Your choice, your security.",
-    gradient: "from-green-500/20 to-emerald-500/20",
+    gradient: "from-teal-500/10 to-cyan-500/10",
+    glowColor: "teal-400/20",
   },
   {
     icon: Scan,
     title: "AI-Powered Receipt Scanning",
     description: "Snap a photo, let AI do the rest. Automatic expense tracking powered by Google Gemini Vision.",
-    gradient: "from-green-500/20 to-teal-500/20",
+    gradient: "from-cyan-500/10 to-blue-500/10",
+    glowColor: "cyan-400/20",
   },
   {
     icon: Mail,
     title: "Smart Email Reports",
     description: "Get personalized financial insights delivered weekly, bi-weekly, or monthly—straight to your inbox.",
-    gradient: "from-green-500/20 to-cyan-500/20",
+    gradient: "from-blue-500/10 to-teal-500/10",
+    glowColor: "blue-400/20",
   },
 ];
 
@@ -39,19 +42,19 @@ export const FeatureCarousel = () => {
   return (
     <div className="w-full h-full flex items-center justify-center relative">
       {/* Animated background shapes */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse delay-1000" />
+      <div className="absolute inset-0 opacity-20">
+        <div className={`absolute top-20 left-20 w-72 h-72 bg-${feature.glowColor} rounded-full blur-3xl animate-pulse`} />
+        <div className={`absolute bottom-20 right-20 w-96 h-96 bg-${feature.glowColor} rounded-full blur-3xl animate-pulse delay-1000`} />
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-lg w-full">
         <div
-          className={`bg-gradient-to-br ${feature.gradient} backdrop-blur-sm rounded-2xl p-8 border border-primary/20 transition-all duration-700 ease-in-out`}
+          className={`bg-gradient-to-br ${feature.gradient} backdrop-blur-xl rounded-2xl p-8 border border-cyan-500/20 shadow-xl shadow-cyan-500/10 transition-all duration-700 ease-in-out`}
           key={currentSlide}
         >
-          <div className="mb-6 inline-block p-4 bg-primary/20 rounded-xl">
-            <Icon className="w-12 h-12 text-primary" />
+          <div className="mb-6 inline-block p-4 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-xl">
+            <Icon className="w-12 h-12 text-cyan-400" />
           </div>
           
           <h3 className="text-2xl font-bold text-foreground mb-4">
@@ -71,8 +74,8 @@ export const FeatureCarousel = () => {
               onClick={() => setCurrentSlide(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === currentSlide
-                  ? "w-8 bg-primary"
-                  : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                  ? "w-8 bg-gradient-to-r from-teal-500 to-cyan-500"
+                  : "w-2 bg-muted-foreground/30 hover:bg-cyan-500/50"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

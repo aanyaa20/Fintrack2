@@ -8,7 +8,7 @@
   "dashboard": {
     "welcome": "Bem-vindo de volta",
     "overview_report": "Este é o seu relatório geral para o período selecionado",
-    "available_balance": "Saldo Disponível",
+    "current_balance": "Saldo Disponível",
     "total_income": "Renda Total",
     "total_expenses": "Despesas Totais",
     "savings_rate": "Taxa de Poupança",

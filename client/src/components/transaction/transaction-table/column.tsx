@@ -113,7 +113,7 @@ export const transactionColumns: ColumnDef<TransactionType>[] = [
         <span
           className={`px-2 py-1 rounded-full text-xs ${
             row.getValue("type") === _TRANSACTION_TYPE.INCOME
-              ? "bg-green-100 text-green-800"
+              ? "bg-cyan-100 text-cyan-800"
               : "bg-red-100 text-red-800"
           }`}
         >
@@ -136,7 +136,7 @@ export const transactionColumns: ColumnDef<TransactionType>[] = [
         <div
           className={`text-right font-medium ${
             type === _TRANSACTION_TYPE.INCOME
-              ? "text-green-600"
+              ? "text-cyan-600"
               : "text-destructive"
           }`}
         >

@@ -8,7 +8,7 @@
   "dashboard": {
     "welcome": "Welcome to your dashboard",
     "overview_report": "This is your overview report for the selected period",
-    "available_balance": "Available Balance",
+    "current_balance": "Current Balance",
     "total_income": "Total Income",
     "total_expenses": "Total Expenses",
     "savings_rate": "Savings Rate",

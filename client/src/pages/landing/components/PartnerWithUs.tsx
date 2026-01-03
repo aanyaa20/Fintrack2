@@ -25,9 +25,9 @@ const PartnerWithUs = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left: Content */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 rounded-full mb-6">
-              <Handshake className="size-5 text-green-500" />
-              <span className="text-green-500 font-medium">Partner Program</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 rounded-full mb-6">
+              <Handshake className="size-5 text-cyan-500" />
+              <span className="text-cyan-500 font-medium">Partner Program</span>
             </div>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
@@ -45,7 +45,7 @@ const PartnerWithUs = () => {
                 const Icon = benefit.icon;
                 return (
                   <div key={index} className="flex items-start gap-4 p-4 bg-[#1a1e2a] rounded-lg border border-gray-800">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-green-500/10 text-green-500 flex items-center justify-center">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-500 flex items-center justify-center">
                       <Icon className="size-5" />
                     </div>
                     <div>
@@ -60,7 +60,7 @@ const PartnerWithUs = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
                 href="#footer"
-                className="inline-flex items-center justify-center px-6 py-3 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-medium rounded-md hover:from-teal-600 hover:to-cyan-600 transition-colors shadow-lg shadow-teal-500/30"
               >
                 Become a partner
                 <ArrowRight className="ml-2 size-4" />
@@ -76,10 +76,10 @@ const PartnerWithUs = () => {
 
           {/* Right: Visual */}
           <div className="relative">
-            <div className="rounded-2xl bg-gradient-to-br from-green-500/20 to-blue-500/20 p-6 sm:p-8 lg:p-12 border border-green-500/30">
+            <div className="rounded-2xl bg-gradient-to-br from-cyan-500/20 to-teal-500/20 p-6 sm:p-8 lg:p-12 border border-cyan-500/30">
               <div className="h-full flex flex-col justify-center items-center text-center space-y-4 sm:space-y-6">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <Handshake className="size-8 sm:size-10 text-green-500" />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                  <Handshake className="size-8 sm:size-10 text-cyan-500" />
                 </div>
                 <div>
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Who can partner with us?</h3>
@@ -91,16 +91,16 @@ const PartnerWithUs = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full mt-4">
                   <div className="p-2 sm:p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
-                    <p className="text-green-500 font-semibold text-sm sm:text-base">Finance</p>
+                    <p className="text-cyan-500 font-semibold text-sm sm:text-base">Finance</p>
                   </div>
                   <div className="p-2 sm:p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
-                    <p className="text-green-500 font-semibold text-sm sm:text-base">IT Services</p>
+                    <p className="text-cyan-500 font-semibold text-sm sm:text-base">IT Services</p>
                   </div>
                   <div className="p-2 sm:p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
-                    <p className="text-green-500 font-semibold text-sm sm:text-base">Accounting</p>
+                    <p className="text-cyan-500 font-semibold text-sm sm:text-base">Accounting</p>
                   </div>
                   <div className="p-2 sm:p-4 bg-[#0f1419]/50 rounded-lg border border-gray-700">
-                    <p className="text-green-500 font-semibold text-sm sm:text-base">Travel</p>
+                    <p className="text-cyan-500 font-semibold text-sm sm:text-base">Travel</p>
                   </div>
                 </div>
               </div>
