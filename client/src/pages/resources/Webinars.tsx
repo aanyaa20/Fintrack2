@@ -174,7 +174,7 @@ const Webinars = () => {
         </div>
 
         <p className="text-gray-300 mb-8">
-          Join our live webinars to learn from experts, get tips and tricks, and connect with the Fintrack community.
+          Join our live webinars to learn from experts, get tips and tricks, and connect with the FinEnsure community.
         </p>
 
         {/* Add/Edit Webinar Form */}

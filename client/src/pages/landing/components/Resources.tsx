@@ -2,14 +2,14 @@ import { BookOpen, HelpCircle, Sparkles, FileText, Users, MessageCircle, Lightbu
 
 const Resources = () => {
   const handleEmailClick = () => {
-    window.location.href = "mailto:arjunbrt1303@gmail.com?subject=Fintrack Inquiry";
+    window.location.href = "mailto:arjunbrt1303@gmail.com?subject=FinEnsure Inquiry";
   };
 
   const resources = [
     {
       icon: BookOpen,
       title: "Help Documents",
-      description: "Stuck at some point using Fintrack? Our detailed help documents will get you out of any sticky situation.",
+      description: "Stuck at some point using FinEnsure? Our detailed help documents will get you out of any sticky situation.",
       action: "View the help docs",
       onClick: () => window.location.href = '/resources/help-docs'
     },
@@ -23,7 +23,7 @@ const Resources = () => {
     {
       icon: Sparkles,
       title: "What's New",
-      description: "View a timeline of all the latest updates and new features added to Fintrack.",
+      description: "View a timeline of all the latest updates and new features added to FinEnsure.",
       action: "See what's new",
       onClick: () => window.location.href = '/resources/whats-new'
     },
@@ -44,14 +44,14 @@ const Resources = () => {
     {
       icon: MessageCircle,
       title: "Forums",
-      description: "Get in touch with the Fintrack community and participate in discussions about the product and its features.",
+      description: "Get in touch with the FinEnsure community and participate in discussions about the product and its features.",
       action: "Access forums",
       onClick: () => window.location.href = '/resources/forums'
     },
     {
       icon: Lightbulb,
       title: "Request a feature",
-      description: "We are constantly working on expanding Fintrack's capabilities. If you'd like to see a feature in our product, let us know.",
+      description: "We are constantly working on expanding FinEnsure's capabilities. If you'd like to see a feature in our product, let us know.",
       action: "Request",
       onClick: () => { window.location.href = '#footer'; }
     },

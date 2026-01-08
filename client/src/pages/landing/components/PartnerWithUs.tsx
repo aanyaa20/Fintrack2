@@ -31,7 +31,7 @@ const PartnerWithUs = () => {
             </div>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              Partner with Fintrack
+              Partner with FinEnsure
             </h2>
             
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">

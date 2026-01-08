@@ -219,17 +219,17 @@
     },
     "hero": {
       "title": "Financial tracking, designed for clarity.",
-      "description": "Fintrack helps you track income, expenses, and financial patterns with structured records and clear insights. Built for people who value control over their financial data, so you always know where your money goes and why.",
+      "description": "FinEnsure helps you track income, expenses, and financial patterns with structured records and clear insights. Built for people who value control over their financial data, so you always know where your money goes and why.",
       "start_tracking": "Start Tracking",
       "see_how_it_works": "See How It Works"
     },
     "trust": {
       "privacy_title": "Privacy-first by design",
-      "privacy_desc": "Your financial data stays yours. No third-party tracking. Fintrack does not sell, share, or analyze your data for advertising or third-party services. No ads, no trackers.",
+      "privacy_desc": "Your financial data stays yours. No third-party tracking. FinEnsure does not sell, share, or analyze your data for advertising or third-party services. No ads, no trackers.",
       "security_title": "Built with secure architecture",
-      "security_desc": "Fintrack uses industry-standard encryption and secure backend practices to protect sensitive information at every stage with regular security audits and updates.",
+      "security_desc": "FinEnsure uses industry-standard encryption and secure backend practices to protect sensitive information at every stage with regular security audits and updates.",
       "reliability_title": "Designed for reliability",
-      "reliability_desc": "Financial records need to be accurate and dependable. Fintrack focuses on consistent and stable performance, predictable behavior, and transparent calculations."
+      "reliability_desc": "Financial records need to be accurate and dependable. FinEnsure focuses on consistent and stable performance, predictable behavior, and transparent calculations."
     },
     "features": {
       "title": "Core Capabilities",
@@ -244,7 +244,7 @@
       "account_desc": "Sign up in seconds with email or use Google, GitHub, or Microsoft. Set your preferred currency and start tracking."
     },
     "how_it_works": {
-      "title": "How Fintrack Works",
+      "title": "How FinEnsure Works",
       "subtitle": "Start tracking your finances in these hassle-free and straightforward steps:",
       "step1_title": "Create Your Account",
       "step1_desc": "Sign up in seconds. Set your preferred currency and financial tracking preferences.",
@@ -265,7 +265,7 @@
     },
     "cta": {
       "title": "Start Tracking Your Finances Today",
-      "description": "Join others who have taken control of their financial data with Fintrack.",
+      "description": "Join others who have taken control of their financial data with FinEnsure.",
       "create_account": "Create Your Free Account"
     },
     "footer": {
@@ -277,3 +277,4 @@
     }
   }
 }
+

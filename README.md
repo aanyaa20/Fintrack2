@@ -10,8 +10,8 @@
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/arjun9978/Personalised_AI_Finance_Tracker_Fintrack.git
-cd Personalised_AI_Finance_Tracker_Fintrack
+git clone https://github.com/arjun9978/Personalised_AI_Finance_Tracker_FinEnsure.git
+cd Personalised_AI_Finance_Tracker_FinEnsure
 ```
 
 ### 2. Setup Backend

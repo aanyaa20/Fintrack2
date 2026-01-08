@@ -219,7 +219,7 @@
     },
     "hero": {
       "title": "Seguimiento financiero, diseñado para la claridad.",
-      "description": "Fintrack te ayuda a rastrear ingresos, gastos y patrones financieros con registros estructurados y conocimientos claros. Creado para personas que valoran el control sobre sus datos financieros.",
+      "description": "FinEnsure te ayuda a rastrear ingresos, gastos y patrones financieros con registros estructurados y conocimientos claros. Creado para personas que valoran el control sobre sus datos financieros.",
       "start_tracking": "Comenzar a Rastrear",
       "see_how_it_works": "Ver Cómo Funciona"
     },
@@ -244,7 +244,7 @@
       "account_desc": "Regístrate en segundos con correo electrónico o usa Google, GitHub o Microsoft. Establece tu moneda preferida y comienza a rastrear."
     },
     "how_it_works": {
-      "title": "Cómo Funciona Fintrack",
+      "title": "Cómo Funciona FinEnsure",
       "subtitle": "Comienza a rastrear tus finanzas en tres pasos sencillos.",
       "step1_title": "Crea Tu Cuenta",
       "step1_desc": "Regístrate en segundos. Establece tu moneda preferida y preferencias de seguimiento financiero.",
@@ -265,7 +265,7 @@
     },
     "cta": {
       "title": "Comienza a Rastrear Tus Finanzas Hoy",
-      "description": "Únete a otros que han tomado el control de sus datos financieros con Fintrack.",
+      "description": "Únete a otros que han tomado el control de sus datos financieros con FinEnsure.",
       "create_account": "Crea Tu Cuenta Gratuita"
     },
     "footer": {
@@ -277,3 +277,4 @@
     }
   }
 }
+

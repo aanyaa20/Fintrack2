@@ -77,7 +77,7 @@ const LandingHeader = () => {
               <GalleryVerticalEnd className="size-5" />
             </div>
             <span className="font-semibold text-base sm:text-lg text-white">
-              Fintrack
+              FinEnsure
             </span>
           </Link>
 

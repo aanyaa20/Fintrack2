@@ -175,7 +175,7 @@
     },
     "hero": {
       "title": "Finanz-Tracking, für Klarheit entwickelt.",
-      "description": "Fintrack hilft Ihnen, Einnahmen, Ausgaben und Finanzmuster mit strukturierten Aufzeichnungen und klaren Einblicken zu verfolgen. Entwickelt für Menschen, die Wert auf Kontrolle über ihre Finanzdaten legen.",
+      "description": "FinEnsure hilft Ihnen, Einnahmen, Ausgaben und Finanzmuster mit strukturierten Aufzeichnungen und klaren Einblicken zu verfolgen. Entwickelt für Menschen, die Wert auf Kontrolle über ihre Finanzdaten legen.",
       "start_tracking": "Tracking Starten",
       "see_how_it_works": "Sehen Sie, Wie Es Funktioniert"
     },
@@ -200,7 +200,7 @@
       "account_desc": "Registrieren Sie sich in Sekunden mit E-Mail oder verwenden Sie Google, GitHub oder Microsoft. Legen Sie Ihre bevorzugte Währung fest und beginnen Sie mit dem Tracking."
     },
     "how_it_works": {
-      "title": "Wie Fintrack Funktioniert",
+      "title": "Wie FinEnsure Funktioniert",
       "subtitle": "Beginnen Sie mit dem Tracking Ihrer Finanzen in drei einfachen Schritten.",
       "step1_title": "Erstellen Sie Ihr Konto",
       "step1_desc": "Registrieren Sie sich in Sekunden. Legen Sie Ihre bevorzugte Währung und Finanz-Tracking-Präferenzen fest.",
@@ -221,7 +221,7 @@
     },
     "cta": {
       "title": "Beginnen Sie Heute Mit Dem Tracking Ihrer Finanzen",
-      "description": "Schließen Sie sich anderen an, die mit Fintrack die Kontrolle über ihre Finanzdaten übernommen haben.",
+      "description": "Schließen Sie sich anderen an, die mit FinEnsure die Kontrolle über ihre Finanzdaten übernommen haben.",
       "create_account": "Erstellen Sie Ihr Kostenloses Konto"
     },
     "footer": {
@@ -233,3 +233,4 @@
     }
   }
 }
+

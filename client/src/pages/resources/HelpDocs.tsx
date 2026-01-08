@@ -17,14 +17,14 @@ const HelpDocs = () => {
 
         <div className="prose prose-invert max-w-none">
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-4 text-cyan-500">Getting Started with Fintrack</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-cyan-500">Getting Started with FinEnsure</h2>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Welcome to Fintrack! This comprehensive guide will help you navigate through all the features and capabilities
+              Welcome to FinEnsure! This comprehensive guide will help you navigate through all the features and capabilities
               of our expense tracking platform. Whether you're new to financial management or an experienced user, these
-              documents will help you make the most of Fintrack.
+              documents will help you make the most of FinEnsure.
             </p>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Fintrack is designed to simplify your financial life by providing powerful tools for tracking expenses,
+              FinEnsure is designed to simplify your financial life by providing powerful tools for tracking expenses,
               analyzing spending patterns, and generating insightful reports. Our AI-powered features help you understand
               your financial behavior and make informed decisions about your money.
             </p>
@@ -33,7 +33,7 @@ const HelpDocs = () => {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4 text-cyan-500">Core Features Overview</h2>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Fintrack offers a wide range of features including transaction tracking, category management, budget planning,
+              FinEnsure offers a wide range of features including transaction tracking, category management, budget planning,
               and automated insights. You can manually enter transactions or use our AI receipt scanning feature to
               automatically extract transaction details from photos of your receipts.
             </p>

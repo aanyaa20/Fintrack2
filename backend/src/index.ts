@@ -87,7 +87,7 @@ app.get(
   "/",
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
     res.status(HTTPSTATUS.OK).json({
-      message: "FinTrack API is running",
+      message: "FinEnsure API is running",
       version: "1.0.0",
       status: "healthy"
     });

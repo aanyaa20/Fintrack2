@@ -16,7 +16,7 @@ const LandingFooter = () => {
                 <GalleryVerticalEnd className="size-5" />
               </div>
               <span className="font-semibold text-lg text-white">
-                Fintrack
+                FinEnsure
               </span>
             </Link>
             <p className="text-sm text-gray-400">

@@ -20,13 +20,23 @@ export const sendReportEmail = async (params: ReportEmailParams) => {
     frequency
   );
 
+  const topCategoriesText = report.topSpendingCategories
+    .map((cat: any) => `  ${cat.name}: ${formatCurrency(cat.amount)} (${cat.percent}%)`)
+    .join("\n");
+
   const text = `Your ${frequency} Financial Report (${report.period})
+
+Financial Summary:
     Income: ${formatCurrency(report.totalIncome)}
     Expenses: ${formatCurrency(report.totalExpenses)}
     Balance: ${formatCurrency(report.currentBalance)}
     Savings Rate: ${report.savingsRate.toFixed(2)}%
 
-    ${report.insights.join("\n")}
+Top Spending Categories:
+${topCategoriesText}
+
+This report was generated automatically based on your transactions during the specified period.
+Keep tracking your finances to achieve your financial goals!
 `;
 
   console.log(text, "text mail");

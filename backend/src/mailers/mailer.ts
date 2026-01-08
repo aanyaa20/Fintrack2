@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const mailer_sender = `Fintrack <${Env.EMAIL_USER}>`;
+const mailer_sender = `FinEnsure <${Env.EMAIL_USER}>`;
 
 export const sendEmail = async ({
   to,

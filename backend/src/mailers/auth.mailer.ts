@@ -31,7 +31,7 @@ export const sendForgotPasswordEmail = async (params: ForgotPasswordEmailParams)
         </div>
         <div class="content">
           <p>Hi <strong>${username}</strong>,</p>
-          <p>We received a request to reset your password for your FinTrack account.</p>
+          <p>We received a request to reset your password for your FinEnsure account.</p>
           <p>Click the button below to reset your password:</p>
           <div style="text-align: center;">
             <a href="${resetUrl}" class="button">Reset Password</a>
@@ -48,7 +48,7 @@ export const sendForgotPasswordEmail = async (params: ForgotPasswordEmailParams)
           </div>
         </div>
         <div class="footer">
-          <p>© ${new Date().getFullYear()} FinTrack. All rights reserved.</p>
+          <p>© ${new Date().getFullYear()} FinEnsure. All rights reserved.</p>
           <p>This is an automated email, please do not reply.</p>
         </div>
       </div>
@@ -61,7 +61,7 @@ export const sendForgotPasswordEmail = async (params: ForgotPasswordEmailParams)
     
     Hi ${username},
     
-    We received a request to reset your password for your FinTrack account.
+    We received a request to reset your password for your FinEnsure account.
     
     Click this link to reset your password:
     ${resetUrl}
@@ -71,13 +71,14 @@ export const sendForgotPasswordEmail = async (params: ForgotPasswordEmailParams)
     If you didn't request this, please ignore this email.
     Your password won't change until you create a new one.
     
-    © ${new Date().getFullYear()} FinTrack
+    © ${new Date().getFullYear()} FinEnsure
   `;
 
   return sendEmail({
     to: email,
-    subject: "Reset Your Password - FinTrack",
+    subject: "Reset Your Password - FinEnsure",
     text,
     html,
   });
 };
+

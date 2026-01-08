@@ -45,11 +45,11 @@ const WhatsNew = () => {
 
         <div className="flex items-center gap-3 mb-6">
           <Sparkles className="size-10 text-cyan-500" />
-          <h1 className="text-4xl font-bold">What's New in Fintrack</h1>
+          <h1 className="text-4xl font-bold">What's New in FinEnsure</h1>
         </div>
 
         <p className="text-gray-300 mb-8">
-          Stay up to date with the latest features, improvements, and updates to Fintrack. We're constantly working
+          Stay up to date with the latest features, improvements, and updates to FinEnsure. We're constantly working
           to make your expense tracking experience better.
         </p>
 

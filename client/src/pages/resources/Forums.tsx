@@ -33,7 +33,7 @@ const Forums = () => {
   const [topics, setTopics] = useState<ForumPost[]>([
     {
       id: 1,
-      title: "Tips & Tricks for Maximizing Fintrack",
+      title: "Tips & Tricks for Maximizing FinEnsure",
       content: "Share your best practices and workflows for using Fintrack efficiently. What features do you use the most?",
       author: "Sarah Chen",
       replies: 2,
@@ -435,7 +435,7 @@ const Forums = () => {
             </div>
 
             <p className="text-gray-300 mb-8">
-              Connect with other Fintrack users, share tips, ask questions, and learn from the community.
+              Connect with other FinEnsure users, share tips, ask questions, and learn from the community.
             </p>
 
             {/* Search Bar */}

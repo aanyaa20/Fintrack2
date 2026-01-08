@@ -4,7 +4,7 @@ import { ArrowLeft, HelpCircle } from "lucide-react";
 const Faqs = () => {
   const faqs = [
     {
-      question: "How do I get started with Fintrack?",
+      question: "How do I get started with FinEnsure?",
       answer: "Simply create an account, verify your email, and you're ready to start tracking your expenses. The onboarding guide will walk you through the basic features."
     },
     {
@@ -12,8 +12,8 @@ const Faqs = () => {
       answer: "Yes, we use bank-level encryption and security measures to protect your data. Your information is stored securely and never shared with third parties."
     },
     {
-      question: "Can I use Fintrack on multiple devices?",
-      answer: "Absolutely! Fintrack is accessible from any device with a web browser. Your data syncs automatically across all your devices."
+      question: "Can I use FinEnsure on multiple devices?",
+      answer: "Absolutely! FinEnsure is accessible from any device with a web browser. Your data syncs automatically across all your devices."
     },
     {
       question: "How does AI receipt scanning work?",
@@ -39,7 +39,7 @@ const Faqs = () => {
         </div>
 
         <p className="text-gray-300 mb-8">
-          Find answers to the most common questions about Fintrack. Can't find what you're looking for? Contact our support team.
+          Find answers to the most common questions about FinEnsure. Can't find what you're looking for? Contact our support team.
         </p>
 
         <div className="space-y-6">
