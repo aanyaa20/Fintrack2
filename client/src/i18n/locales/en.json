@@ -1,9 +1,9 @@
 {
   "navbar": {
-    "overview": "Overview",
-    "transactions": "Transactions",
-    "reports": "Reports",
-    "settings": "Settings"
+    "overview": "Dashboard Overview",
+    "transactions": "Transaction Log",
+    "reports": "Report Insights",
+    "settings": "Profile Settings"
   },
   "dashboard": {
     "welcome": "Your Financial Overview",
@@ -258,7 +258,7 @@
       "transaction_desc": "Maintain organized financial records with categorized income and expenses. Clear data structure for easy reference.",
       "analytics_title": "Spending Pattern Analysis",
       "analytics_desc": "Understand where your money goes with visual breakdowns and category-based analytics. Identify trends over time.",
-      "receipt_title": "AI Receipt Scanning",
+      "receipt_title": "Manual + AI Receipt Scanning",
       "receipt_desc": "Upload receipts and extract transaction details automatically. Save time on manual data entry.",
       "account_title": "Create Your Account",
       "account_desc": "Sign up in seconds with email or use Google, GitHub, or Microsoft. Set your preferred currency and start tracking."

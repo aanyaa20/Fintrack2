@@ -16,6 +16,7 @@ const Features = () => {
       ],
       image: "/assets/landing/image-1766880354385.png",
       imageAlt: "Transaction recording interface",
+      type: "image"
     },
     {
       title: t('landing.features.analytics_title'),
@@ -26,6 +27,7 @@ const Features = () => {
       ],
       image: "/assets/landing/image-1766880558860.png",
       imageAlt: "Analytics dashboard showing spending patterns",
+      type: "image"
     },
     {
       title: t('landing.features.receipt_title'),
@@ -34,8 +36,9 @@ const Features = () => {
         "Reduce manual entry with automated transaction capture",
         "Store scanned receipts alongside verified financial records"
       ],
-      image: "/assets/landing/image-1766883729680.png",
+      video: "/assets/landing/addt.mp4",
       imageAlt: "Receipt scanning feature",
+      type: "video"
     },
     {
       title: t('landing.features.account_title'),
@@ -46,6 +49,7 @@ const Features = () => {
       ],
       image: "/assets/landing/image-1766880675915.png",
       imageAlt: "Account creation interface",
+      type: "image"
     },
   ];
 
@@ -112,7 +116,7 @@ const Features = () => {
                 </ul>
               </div>
 
-              {/* Feature Image */}
+              {/* Feature Image/Video */}
               <div 
                 ref={(el) => { imageRefs.current[index] = el; }}
                 data-index={index}
@@ -127,14 +131,29 @@ const Features = () => {
                   }
                   group-hover:scale-105 group-hover:shadow-2xl group-hover:border-cyan-500`}>
                   <div className="bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center">
-                    <img
-                      src={feature.image}
-                      alt={feature.imageAlt}
-                      className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110"
-                      onError={(e) => {
-                        e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23f1f5f9'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, system-ui' font-size='16' fill='%2364748b'%3E${feature.imageAlt}%3C/text%3E%3C/svg%3E`;
-                      }}
-                    />
+                    {feature.type === "video" ? (
+                      <video
+                        src={feature.video}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110"
+                        onLoadedMetadata={(e) => {
+                          const video = e.currentTarget;
+                          video.playbackRate = 2.0; // 2x speed
+                        }}
+                      />
+                    ) : (
+                      <img
+                        src={feature.image}
+                        alt={feature.imageAlt}
+                        className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => {
+                          e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23f1f5f9'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, system-ui' font-size='16' fill='%2364748b'%3E${feature.imageAlt}%3C/text%3E%3C/svg%3E`;
+                        }}
+                      />
+                    )}
                   </div>
                 </div>
               </div>

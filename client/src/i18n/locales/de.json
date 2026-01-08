@@ -1,9 +1,9 @@
 {
   "navbar": {
-    "overview": "Übersicht",
-    "transactions": "Transaktionen",
-    "reports": "Berichte",
-    "settings": "Einstellungen"
+    "overview": "Dashboard-Übersicht",
+    "transactions": "Transaktionsprotokoll",
+    "reports": "Berichtseinblicke",
+    "settings": "Profileinstellungen"
   },
   "dashboard": {
     "welcome": "Willkommen zurück",

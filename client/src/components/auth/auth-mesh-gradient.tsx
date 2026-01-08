@@ -16,7 +16,7 @@ const AuthMeshGradient = () => {
       }}
     >
       {/* 
-        Blob 1 - Dark blue with emerald hint - very subtle
+        Blob 1 - Vibrant emerald - highly visible
       */}
       <div 
         className="absolute"
@@ -26,16 +26,16 @@ const AuthMeshGradient = () => {
           width: '110%',
           height: '110%',
           borderRadius: '50%',
-          background: 'radial-gradient(circle at center, rgba(6, 78, 59, 0.25) 0%, rgba(6, 95, 70, 0.15) 30%, transparent 60%)',
-          filter: 'blur(90px)',
+          background: 'radial-gradient(circle at center, rgba(16, 185, 129, 0.4) 0%, rgba(5, 150, 105, 0.25) 30%, transparent 65%)',
+          filter: 'blur(80px)',
           mixBlendMode: 'screen',
-          animation: 'meshDrift1 7s ease-in-out infinite',
+          animation: 'meshDrift1 4s ease-in-out infinite',
           willChange: 'transform, opacity'
         }}
       />
       
       {/* 
-        Blob 2 - Pure black - deep darkness base
+        Blob 2 - Deep blue - visible base
       */}
       <div 
         className="absolute"
@@ -45,16 +45,16 @@ const AuthMeshGradient = () => {
           width: '100%',
           height: '100%',
           borderRadius: '50%',
-          background: 'radial-gradient(circle at center, rgba(0, 0, 0, 0.7) 0%, rgba(10, 15, 25, 0.5) 30%, transparent 60%)',
-          filter: 'blur(90px)',
-          mixBlendMode: 'multiply',
-          animation: 'meshDrift2 9s ease-in-out infinite',
+          background: 'radial-gradient(circle at center, rgba(37, 99, 235, 0.35) 0%, rgba(29, 78, 216, 0.2) 30%, transparent 65%)',
+          filter: 'blur(80px)',
+          mixBlendMode: 'screen',
+          animation: 'meshDrift2 5s ease-in-out infinite',
           willChange: 'transform, opacity'
         }}
       />
       
       {/* 
-        Blob 3 - Dark cyan glow - subtle accent
+        Blob 3 - Bright cyan glow - very visible
       */}
       <div 
         className="absolute"
@@ -64,16 +64,16 @@ const AuthMeshGradient = () => {
           width: '85%',
           height: '85%',
           borderRadius: '50%',
-          background: 'radial-gradient(circle at center, rgba(6, 182, 212, 0.18) 0%, rgba(14, 165, 233, 0.12) 30%, transparent 60%)',
-          filter: 'blur(90px)',
+          background: 'radial-gradient(circle at center, rgba(6, 182, 212, 0.45) 0%, rgba(14, 165, 233, 0.3) 30%, transparent 65%)',
+          filter: 'blur(80px)',
           mixBlendMode: 'screen',
-          animation: 'meshPulse 6s ease-in-out infinite',
+          animation: 'meshPulse 3s ease-in-out infinite',
           willChange: 'transform, opacity'
         }}
       />
       
       {/* 
-        Blob 4 - Dark blue-emerald blend
+        Blob 4 - Teal-emerald blend - vibrant
       */}
       <div 
         className="absolute"
@@ -83,16 +83,16 @@ const AuthMeshGradient = () => {
           width: '70%',
           height: '70%',
           borderRadius: '50%',
-          background: 'radial-gradient(circle at center, rgba(13, 148, 136, 0.2) 0%, rgba(6, 78, 59, 0.12) 30%, transparent 60%)',
-          filter: 'blur(90px)',
+          background: 'radial-gradient(circle at center, rgba(20, 184, 166, 0.4) 0%, rgba(13, 148, 136, 0.25) 30%, transparent 65%)',
+          filter: 'blur(80px)',
           mixBlendMode: 'screen',
-          animation: 'meshDrift3 8s ease-in-out infinite',
+          animation: 'meshDrift3 4.5s ease-in-out infinite',
           willChange: 'transform, opacity'
         }}
       />
       
       {/* 
-        Blob 5 - Dark teal accent - fast moving
+        Blob 5 - Bright teal - fast moving and visible
       */}
       <div 
         className="absolute"
@@ -102,16 +102,16 @@ const AuthMeshGradient = () => {
           width: '65%',
           height: '65%',
           borderRadius: '50%',
-          background: 'radial-gradient(circle at center, rgba(20, 184, 166, 0.15) 0%, rgba(6, 182, 212, 0.1) 30%, transparent 60%)',
-          filter: 'blur(90px)',
+          background: 'radial-gradient(circle at center, rgba(34, 211, 238, 0.4) 0%, rgba(6, 182, 212, 0.25) 30%, transparent 65%)',
+          filter: 'blur(80px)',
           mixBlendMode: 'screen',
-          animation: 'meshDrift4 7s ease-in-out infinite',
+          animation: 'meshDrift4 3.5s ease-in-out infinite',
           willChange: 'transform, opacity'
         }}
       />
       
       {/* 
-        Blob 6 - Deep blue accent
+        Blob 6 - Sky blue accent - vibrant
       */}
       <div 
         className="absolute"
@@ -121,10 +121,10 @@ const AuthMeshGradient = () => {
           width: '55%',
           height: '55%',
           borderRadius: '50%',
-          background: 'radial-gradient(circle at center, rgba(37, 99, 235, 0.12) 0%, rgba(29, 78, 216, 0.08) 30%, transparent 60%)',
-          filter: 'blur(90px)',
+          background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.35) 0%, rgba(37, 99, 235, 0.2) 30%, transparent 65%)',
+          filter: 'blur(80px)',
           mixBlendMode: 'screen',
-          animation: 'meshDrift5 8s ease-in-out infinite',
+          animation: 'meshDrift5 4s ease-in-out infinite',
           willChange: 'transform, opacity'
         }}
       />

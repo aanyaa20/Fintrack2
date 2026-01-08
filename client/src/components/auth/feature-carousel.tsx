@@ -1,23 +1,22 @@
 import { useState, useEffect } from "react";
-import { Scan, Mail, Shield } from "lucide-react";
 
 const features = [
   {
-    icon: Shield,
+    image: "/assets/features/security.png",
     title: "Secure Multi-Platform Login",
     description: "Sign in seamlessly with Google, GitHub, or Microsoft. Your choice, your security.",
     gradient: "from-teal-500/10 to-cyan-500/10",
     glowColor: "teal-400/20",
   },
   {
-    icon: Scan,
+    image: "/assets/features/receipt-scan.png",
     title: "AI-Powered Receipt Scanning",
     description: "Snap a photo, let AI do the rest. Automatic expense tracking powered by Google Gemini Vision.",
     gradient: "from-cyan-500/10 to-blue-500/10",
     glowColor: "cyan-400/20",
   },
   {
-    icon: Mail,
+    image: "/assets/features/email.png",
     title: "Smart Email Reports",
     description: "Get personalized financial insights delivered weekly, bi-weekly, or monthly—straight to your inbox.",
     gradient: "from-blue-500/10 to-teal-500/10",
@@ -37,7 +36,6 @@ export const FeatureCarousel = () => {
   }, []);
 
   const feature = features[currentSlide];
-  const Icon = feature.icon;
 
   return (
     <div className="w-full h-full flex items-center justify-center relative">
@@ -54,7 +52,11 @@ export const FeatureCarousel = () => {
           key={currentSlide}
         >
           <div className="mb-6 inline-block p-4 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-xl">
-            <Icon className="w-12 h-12 text-cyan-400" />
+            <img 
+              src={feature.image} 
+              alt={feature.title}
+              className="w-12 h-12 object-contain"
+            />
           </div>
           
           <h3 className="text-2xl font-bold text-foreground mb-4">

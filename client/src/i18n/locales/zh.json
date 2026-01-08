@@ -1,9 +1,9 @@
 {
   "navbar": {
-    "overview": "概述",
-    "transactions": "交易",
-    "reports": "报告",
-    "settings": "设置"
+    "overview": "仪表板概览",
+    "transactions": "交易日志",
+    "reports": "报告洞察",
+    "settings": "个人设置"
   },
   "dashboard": {
     "welcome": "欢迎回来",
@@ -238,7 +238,7 @@
       "transaction_desc": "Maintain organized financial records with categorized income and expenses. Clear data structure for easy reference.",
       "analytics_title": "Spending Pattern Analysis",
       "analytics_desc": "Understand where your money goes with visual breakdowns and category-based analytics. Identify trends over time.",
-      "receipt_title": "AI Receipt Scanning",
+      "receipt_title": "Manual + AI Receipt Scanning",
       "receipt_desc": "Upload receipts and extract transaction details automatically. Save time on manual data entry.",
       "account_title": "Create Your Account",
       "account_desc": "Sign up in seconds with email or use Google, GitHub, or Microsoft. Set your preferred currency and start tracking."

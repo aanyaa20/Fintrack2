@@ -1,9 +1,9 @@
 {
   "navbar": {
-    "overview": "Aperçu",
-    "transactions": "Transactions",
-    "reports": "Rapports",
-    "settings": "Paramètres"
+    "overview": "Aperçu du tableau de bord",
+    "transactions": "Journal des transactions",
+    "reports": "Analyses de rapports",
+    "settings": "Paramètres du profil"
   },
   "dashboard": {
     "welcome": "Bon retour",

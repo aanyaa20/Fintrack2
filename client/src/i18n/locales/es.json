@@ -1,9 +1,9 @@
 {
   "navbar": {
-    "overview": "Descripción general",
-    "transactions": "Transacciones",
-    "reports": "Informes",
-    "settings": "Configuración"
+    "overview": "Resumen del Panel",
+    "transactions": "Registro de Transacciones",
+    "reports": "Información de Informes",
+    "settings": "Configuración del Perfil"
   },
   "dashboard": {
     "welcome": "Bienvenido de nuevo",

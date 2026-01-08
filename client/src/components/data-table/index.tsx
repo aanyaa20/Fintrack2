@@ -11,7 +11,7 @@ import {
   VisibilityState,
   ColumnFiltersState,
 } from "@tanstack/react-table";
-import { Loader, PlusCircleIcon, Trash, X } from "lucide-react";
+import { Loader, PlusCircleIcon, Trash, X, Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -50,6 +50,7 @@ interface DataTableProps<TData> {
   onSearch?: (term: string) => void;
   onFilterChange?: (filters: Record<string, string>) => void;
   onBulkDelete?: (selectedIds: string[]) => void;
+  onBulkEdit?: (selectedIds: string[]) => void;
   selection?: boolean;
   isLoading?: boolean;
   isBulkDeleting?: boolean;
@@ -74,6 +75,7 @@ export function DataTable<TData>({
   onSearch,
   onFilterChange,
   onBulkDelete,
+  onBulkEdit,
   selection = true,
   isLoading = false,
   isBulkDeleting = false,
@@ -141,6 +143,13 @@ export function DataTable<TData>({
     setRowSelection({});
   };
 
+  const handleEdit = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const selectedIds = selectedRows.map((row) => (row.original as any).id);
+    onBulkEdit?.(selectedIds);
+    setRowSelection({});
+  };
+
   return (
     <div className="w-full">
       {/* Top Bar: Search & Filters */}
@@ -194,16 +203,29 @@ export function DataTable<TData>({
         </div>
 
         {(selection && hasSelections) || isBulkDeleting ? (
-          <Button
-            disabled={isLoading || isBulkDeleting}
-            variant="destructive"
-            size="sm"
-            onClick={handleDelete}
-          >
-            <Trash className="h-4 w-4 mr-1" />
-            Delete ({selectedRows.length})
-            {isBulkDeleting && <Loader className="ml-1 h-4 w-4 animate-spin" />}
-          </Button>
+          <div className="flex gap-2">
+            {onBulkEdit && selectedRows.length === 1 && (
+              <Button
+                disabled={isLoading || isBulkDeleting}
+                variant="outline"
+                size="sm"
+                onClick={handleEdit}
+              >
+                <Pencil className="h-4 w-4 mr-1" />
+                Edit
+              </Button>
+            )}
+            <Button
+              disabled={isLoading || isBulkDeleting}
+              variant="destructive"
+              size="sm"
+              onClick={handleDelete}
+            >
+              <Trash className="h-4 w-4 mr-1" />
+              Delete ({selectedRows.length})
+              {isBulkDeleting && <Loader className="ml-1 h-4 w-4 animate-spin" />}
+            </Button>
+          </div>
         ) : null}
       </div>
 

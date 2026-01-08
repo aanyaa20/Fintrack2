@@ -15,7 +15,7 @@ interface LogoutDialogProps {
 }
 
 const LogoutDialog = ({ isOpen, setIsOpen }: LogoutDialogProps) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [isPending, startTransition] = useTransition();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -24,6 +24,7 @@ const LogoutDialog = ({ isOpen, setIsOpen }: LogoutDialogProps) => {
       startTransition(() => {
         setIsOpen(false);
         dispatch(logout());
+        i18n.changeLanguage('en'); // Reset to English on logout
         navigate(AUTH_ROUTES.SIGN_IN);
       });
     };

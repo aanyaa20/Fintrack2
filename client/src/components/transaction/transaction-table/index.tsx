@@ -9,6 +9,7 @@ import {
 } from "@/features/transaction/transactionAPI";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
+import useEditTransactionDrawer from "@/hooks/use-edit-transaction-drawer";
 
 type FilterType = {
   type?: _TransactionType | undefined;
@@ -22,6 +23,7 @@ const TransactionTable = (props: {
   isShowPagination?: boolean;
 }) => {
   const { t } = useTranslation();
+  const { onOpenDrawer } = useEditTransactionDrawer();
   const [filter, setFilter] = useState<FilterType>({
     type: undefined,
     recurringStatus: undefined,
@@ -85,6 +87,12 @@ const TransactionTable = (props: {
       });
   };
 
+  const handleBulkEdit = (transactionIds: string[]) => {
+    if (transactionIds.length === 1) {
+      onOpenDrawer(transactionIds[0]);
+    }
+  };
+
   return (
     <DataTable
       data={transactions} //transactions
@@ -117,6 +125,7 @@ const TransactionTable = (props: {
       onPageSizeChange={(pageSize) => handlePageSizeChange(pageSize)}
       onFilterChange={(filters) => handleFilterChange(filters)}
       onBulkDelete={handleBulkDelete}
+      onBulkEdit={handleBulkEdit}
     />
   );
 };

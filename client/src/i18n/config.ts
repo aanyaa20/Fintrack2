@@ -26,6 +26,7 @@ i18n
       ja: { translation: ja },
       pt: { translation: pt },
     },
+    lng: 'en', // Set default language to English
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,

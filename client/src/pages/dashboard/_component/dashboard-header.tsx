@@ -1,5 +1,4 @@
 import { DateRangeSelect, DateRangeType } from "@/components/date-range-select";
-import AddTransactionDrawer from "@/components/transaction/add-transaction-drawer";
 
 interface Props {
   title: string;
@@ -17,7 +16,6 @@ const DashboardHeader = ({ title, subtitle, dateRange, setDateRange }: Props) =>
       </div>
       <div className="flex justify-end gap-4 mb-6">
       <DateRangeSelect dateRange={dateRange || null} setDateRange={(range) => setDateRange?.(range)} />
-        <AddTransactionDrawer />
       </div>
     </div>
   );

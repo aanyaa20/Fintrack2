@@ -1,9 +1,9 @@
 {
   "navbar": {
-    "overview": "अवलोकन",
-    "transactions": "लेनदेन",
-    "reports": "रिपोर्ट",
-    "settings": "सेटिंग्स"
+    "overview": "डैशबोर्ड ओवरव्यू",
+    "transactions": "ट्रांजैक्शन लॉग",
+    "reports": "रिपोर्ट इनसाइट्स",
+    "settings": "प्रोफाइल सेटिंग्स"
   },
   "dashboard": {
     "welcome": "वापसी पर स्वागत है",
