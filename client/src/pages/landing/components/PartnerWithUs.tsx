@@ -84,9 +84,9 @@ const PartnerWithUs = () => {
                 <div>
                   <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Who can partner with us?</h3>
                   <p className="text-sm sm:text-base text-gray-300">
-                    Fintrack is designed to solve diversified use cases across industries, 
+                    FinEnsure is designed to solve diversified use cases across industries, 
                     irrespective of business size. Professionals in sectors ranging from 
-                    accounting and finance to IT and travel can partner with Fintrack.
+                    accounting and finance to IT and travel can partner with FinEnsure.
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full mt-4">
@@ -113,3 +113,4 @@ const PartnerWithUs = () => {
 };
 
 export default PartnerWithUs;
+

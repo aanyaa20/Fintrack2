@@ -27,7 +27,7 @@ const HowItWorks = () => {
     {
       number: "05",
       title: "Set Recurring Transactions",
-      description: "Automate regular income and expenses with recurring transactions. Set frequencies and let Fintrack handle the rest for effortless tracking.",
+      description: "Automate regular income and expenses with recurring transactions. Set frequencies and let FinEnsure handle the rest for effortless tracking.",
     },
     {
       number: "06",
@@ -77,3 +77,4 @@ const HowItWorks = () => {
 };
 
 export default HowItWorks;
+

@@ -8,7 +8,7 @@ const Logo = (props: { url?: string }) => {
     <div className="bg-gradient-to-br from-teal-500 to-cyan-500 text-white h-6.5 w-6.5 rounded flex items-center justify-center">
     <GalleryVerticalEnd className="size-4" />
     </div>
-    <span className="font-semibold text-lg">Fintrack</span>
+    <span className="font-semibold text-lg">FinEnsure</span>
   </Link>
   )
 }

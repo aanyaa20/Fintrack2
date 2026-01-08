@@ -91,7 +91,7 @@ const LandingFooter = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800">
           <p className="text-sm text-gray-400 text-center">
-            © {new Date().getFullYear()} Fintrack. All rights reserved.
+            © {new Date().getFullYear()} FinEnsure. All rights reserved.
           </p>
         </div>
       </div>
@@ -100,3 +100,4 @@ const LandingFooter = () => {
 };
 
 export default LandingFooter;
+

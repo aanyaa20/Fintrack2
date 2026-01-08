@@ -1,6 +1,6 @@
-# 🚀 FinTrack Deployment Guide
+# 🚀 FinEnsure Deployment Guide
 
-Complete step-by-step guide to deploy your FinTrack application to production.
+Complete step-by-step guide to deploy your FinEnsure application to production.
 
 ---
 
@@ -331,7 +331,7 @@ Open: `https://YOUR-VERCEL-APP.vercel.app`
 
 ## 🎉 Success!
 
-Your **FinTrack** app is now **LIVE** and accessible worldwide!
+Your **FinEnsure** app is now **LIVE** and accessible worldwide!
 
 **Share your app:**
 - 🌐 Frontend: `https://YOUR-APP.vercel.app`

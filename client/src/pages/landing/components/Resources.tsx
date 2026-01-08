@@ -16,7 +16,7 @@ const Resources = () => {
     {
       icon: HelpCircle,
       title: "FAQs",
-      description: "We strive to leave no question unanswered. Find answers to all the frequently asked questions about Fintrack.",
+      description: "We strive to leave no question unanswered. Find answers to all the frequently asked questions about FinEnsure.",
       action: "Check out the FAQs",
       onClick: () => window.location.href = '/resources/faqs'
     },
