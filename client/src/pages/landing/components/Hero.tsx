@@ -7,7 +7,23 @@ const Hero = () => {
   
   return (
     <section className="w-full pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-20 bg-[#0f1419] relative overflow-hidden">
-      <div className="w-full">
+      {/* Meshy Glassmorphic Background Effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Scattered Glowing Mesh Blobs */}
+        <div className="absolute top-10 left-[5%] w-[400px] h-[400px] bg-gradient-to-br from-teal-500/30 via-cyan-500/20 to-transparent rounded-full blur-[120px] animate-pulse"></div>
+        <div className="absolute top-[20%] left-[15%] w-[350px] h-[350px] bg-gradient-to-tr from-purple-500/20 via-pink-500/15 to-transparent rounded-full blur-[100px] opacity-70"></div>
+        <div className="absolute top-[40%] left-[8%] w-[300px] h-[300px] bg-gradient-to-bl from-blue-500/25 via-cyan-400/15 to-transparent rounded-full blur-[110px] animate-pulse-delay-1000"></div>
+        <div className="absolute bottom-[10%] left-[20%] w-[320px] h-[320px] bg-gradient-to-t from-emerald-500/20 via-teal-400/15 to-transparent rounded-full blur-[90px]"></div>
+        
+        {/* Additional scattered blobs for depth */}
+        <div className="absolute top-[30%] left-[25%] w-[250px] h-[250px] bg-gradient-to-br from-indigo-500/15 via-purple-400/10 to-transparent rounded-full blur-[80px] opacity-60 animate-pulse-delay-500"></div>
+        <div className="absolute top-[60%] left-[12%] w-[280px] h-[280px] bg-gradient-to-tl from-cyan-500/18 via-teal-500/12 to-transparent rounded-full blur-[95px]"></div>
+        
+        {/* Glassmorphic overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.02] to-transparent backdrop-blur-[1px]"></div>
+      </div>
+
+      <div className="w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           {/* Left: Text Content */}
           <div className="w-full relative z-10">

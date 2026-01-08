@@ -9,6 +9,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      animation: {
+        'pulse-delay-500': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) 0.5s infinite',
+        'pulse-delay-1000': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) 1s infinite',
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
