@@ -34,7 +34,7 @@ const Forums = () => {
     {
       id: 1,
       title: "Tips & Tricks for Maximizing FinEnsure",
-      content: "Share your best practices and workflows for using Fintrack efficiently. What features do you use the most?",
+      content: "Share your best practices and workflows for using FinEnsure efficiently. What features do you use the most?",
       author: "Sarah Chen",
       replies: 2,
       views: 156,
@@ -100,7 +100,7 @@ const Forums = () => {
     {
       id: 4,
       title: "Best practices for tracking business expenses",
-      content: "For small business owners using Fintrack, what's your strategy for separating personal and business expenses?",
+      content: "For small business owners using FinEnsure, what's your strategy for separating personal and business expenses?",
       author: "Emma Williams",
       replies: 0,
       views: 178,

@@ -254,7 +254,7 @@ Open: `https://YOUR-VERCEL-APP.vercel.app`
 1. Go to [Google Account](https://myaccount.google.com/security)
 2. Enable **2-Step Verification**
 3. Go to **App Passwords**
-4. Select **Mail** → **Other** → Name it "FinTrack"
+4. Select **Mail** → **Other** → Name it "FinEnsure"
 5. Copy the 16-character password (no spaces)
 
 ### Firebase Service Account

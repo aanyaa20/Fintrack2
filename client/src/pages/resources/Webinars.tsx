@@ -63,7 +63,7 @@ const Webinars = () => {
       id: 3,
       title: "AI-Powered Receipt Scanning Deep Dive",
       description: "Explore how our Gemini AI integration works, best practices for capturing receipts, and troubleshooting common issues.",
-      speaker: "Fintrack Team",
+      speaker: "FinEnsure Team",
       date: new Date('2024-02-10'),
       time: "1:00 PM EST",
       duration: "45 minutes",

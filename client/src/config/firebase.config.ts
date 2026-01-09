@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, OAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyDegwcoCDQx_20_hjOANqc5ROi7RpLuwbM",
+  authDomain: "fintrack-af3ca.firebaseapp.com",
+  projectId: "fintrack-af3ca",
+  storageBucket: "fintrack-af3ca.firebasestorage.app",
+  messagingSenderId: "94764973734",
+  appId: "1:94764973734:web:35dff0e3e475b83b57be67",
+  measurementId: "G-CZK9Q23HDG"
 };
 
 // Initialize Firebase

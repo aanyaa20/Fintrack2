@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import useEditTransactionDrawer from "@/hooks/use-edit-transaction-drawer";
 
 type FilterType = {
-  type?: _TransactionType | undefined;
+  type?: _TransactionType | undefined;  
   recurringStatus?: "RECURRING" | "NON_RECURRING" | undefined;
   pageNumber?: number;
   pageSize?: number;
