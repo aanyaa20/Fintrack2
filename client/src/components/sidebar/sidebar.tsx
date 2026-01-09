@@ -50,11 +50,8 @@ const Sidebar = () => {
           isOpen ? "w-64" : "w-40"
         )}
       >
-        {/* Logo - Always shown, clickable to toggle */}
-        <div 
-          className="flex items-center justify-center px-4 py-5 border-b border-white/10 cursor-pointer hover:bg-white/5 transition-colors"
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        {/* Logo - Always shown */}
+        <div className="flex items-center justify-center px-4 py-5 border-b border-white/10">
           <Logo />
         </div>
 

@@ -7,22 +7,19 @@ const Blogs = () => {
       title: "10 Tips for Better Budget Management",
       date: "January 15, 2025",
       excerpt: "Learn practical strategies to take control of your finances and achieve your savings goals with these expert tips.",
-      readTime: "5 min read",
-      link: "https://www.investopedia.com/financial-edge/0310/10-steps-to-better-budget-management.aspx"
+      readTime: "5 min read"
     },
     {
       title: "How AI is Revolutionizing Personal Finance",
       date: "January 8, 2025",
       excerpt: "Discover how artificial intelligence is making expense tracking easier and providing valuable insights into your spending habits.",
-      readTime: "7 min read",
-      link: "https://www.forbes.com/advisor/banking/ai-in-personal-finance/"
+      readTime: "7 min read"
     },
     {
       title: "The Psychology of Spending: Understanding Your Money Habits",
       date: "December 28, 2024",
       excerpt: "Explore the emotional and psychological factors that influence our spending decisions and how to make better choices.",
-      readTime: "6 min read",
-      link: "https://www.psychologytoday.com/us/blog/mind-over-money/201305/the-psychology-spending"
+      readTime: "6 min read"
     }
   ];
 
@@ -45,7 +42,7 @@ const Blogs = () => {
 
         <div className="space-y-6">
           {posts.map((post, index) => (
-            <article key={index} className="bg-[#0f1419] p-6 rounded-lg border border-gray-800 hover:border-cyan-500 transition-colors">
+            <article key={index} className="bg-[#0f1419] p-6 rounded-lg border border-gray-800 hover:border-cyan-500 transition-colors cursor-pointer">
               <div className="flex items-center gap-3 mb-3 text-sm text-gray-400">
                 <span>{post.date}</span>
                 <span>•</span>
@@ -57,12 +54,7 @@ const Blogs = () => {
               <p className="text-gray-300 leading-relaxed mb-4">
                 {post.excerpt}
               </p>
-              <a 
-                href={post.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-cyan-500 hover:text-cyan-400 font-medium inline-flex items-center gap-1"
-              >
+              <a href="#" className="text-cyan-500 hover:text-cyan-400 font-medium inline-flex items-center gap-1">
                 Read more →
               </a>
             </article>
