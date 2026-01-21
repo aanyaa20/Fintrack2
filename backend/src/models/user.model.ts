@@ -105,6 +105,12 @@ const userSchema = new Schema<UserDocument>(
   }
 );
 
+// Indexes for faster authentication queries
+userSchema.index({ email: 1 });
+userSchema.index({ googleId: 1 }, { sparse: true });
+userSchema.index({ microsoftId: 1 }, { sparse: true });
+userSchema.index({ githubId: 1 }, { sparse: true });
+
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     if (this.password) {

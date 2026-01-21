@@ -50,6 +50,10 @@ const reportSettingSchema = new mongoose.Schema<ReportSettingDocument>(
   }
 );
 
+// Index for faster userId lookups during authentication
+reportSettingSchema.index({ userId: 1 });
+reportSettingSchema.index({ isEnabled: 1, nextReportDate: 1 });
+
 const ReportSettingModel = mongoose.model<ReportSettingDocument>(
   "ReportSetting",
   reportSettingSchema
