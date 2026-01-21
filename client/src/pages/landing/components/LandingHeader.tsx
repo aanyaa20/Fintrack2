@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { GalleryVerticalEnd, Search, X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { LandingLanguageSelector } from "./LandingLanguageSelector";
 import { useTranslation } from "react-i18next";
 
@@ -73,9 +73,11 @@ const LandingHeader = () => {
         <nav className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5">
-            <div className="bg-gradient-to-br from-teal-500 to-cyan-500 text-white h-8 w-8 rounded flex items-center justify-center">
-              <GalleryVerticalEnd className="size-5" />
-            </div>
+            <img 
+              src="/assets/finensure-logo.png" 
+              alt="FinEnsure Logo" 
+              className="h-8 w-8 object-contain"
+            />
             <span className="font-semibold text-base sm:text-lg text-white">
               FinEnsure
             </span>

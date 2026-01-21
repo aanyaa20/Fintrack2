@@ -1,4 +1,4 @@
-import { GalleryVerticalEnd, Mail, Phone, Github } from "lucide-react";
+import { Mail, Phone, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -12,9 +12,11 @@ const LandingFooter = () => {
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="bg-gradient-to-br from-teal-500 to-cyan-500 text-white h-8 w-8 rounded flex items-center justify-center">
-                <GalleryVerticalEnd className="size-5" />
-              </div>
+              <img 
+                src="/assets/finensure-logo.png" 
+                alt="FinEnsure Logo" 
+                className="h-8 w-8 object-contain"
+              />
               <span className="font-semibold text-lg text-white">
                 FinEnsure
               </span>

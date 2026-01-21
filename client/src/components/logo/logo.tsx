@@ -1,15 +1,16 @@
 import { PROTECTED_ROUTES } from "@/routes/common/routePath"
-import { GalleryVerticalEnd } from "lucide-react"
 import { Link } from "react-router-dom"
 
 const Logo = (props: { url?: string }) => {
   return (
     <Link to={props.url || PROTECTED_ROUTES.OVERVIEW} className="flex items-center gap-2">
-    <div className="bg-gradient-to-br from-teal-500 to-cyan-500 text-white h-6.5 w-6.5 rounded flex items-center justify-center">
-    <GalleryVerticalEnd className="size-4" />
-    </div>
-    <span className="font-semibold text-lg">FinEnsure</span>
-  </Link>
+      <img 
+        src="/assets/finensure-logo.png" 
+        alt="FinEnsure Logo" 
+        className="h-7 w-7 object-contain"
+      />
+      <span className="font-semibold text-lg">FinEnsure</span>
+    </Link>
   )
 }
 
