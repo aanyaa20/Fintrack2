@@ -22,6 +22,8 @@ interface ReportSetting {
   frequency?: string;
   email?: string;
   isEnabled: boolean;
+  nextReportDate?: string;
+  lastSentDate?: string;
 }
 
 const initialState: AuthState = {

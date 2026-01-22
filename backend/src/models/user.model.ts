@@ -17,6 +17,7 @@ export interface UserDocument extends Document {
   provider?: "local" | "github" | "google" | "microsoft";
   resetPasswordToken?: string;
   resetPasswordExpires?: Date;
+  welcomeEmailSent?: boolean; // One-time welcome email tracker
   createdAt: Date;
   updatedAt: Date;
   comparePassword: (password: string) => Promise<boolean>;
@@ -99,17 +100,18 @@ const userSchema = new Schema<UserDocument>(
       type: Date,
       select: false,
     },
+    welcomeEmailSent: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
   }
 );
 
-// Indexes for faster authentication queries
-userSchema.index({ email: 1 });
-userSchema.index({ googleId: 1 }, { sparse: true });
-userSchema.index({ microsoftId: 1 }, { sparse: true });
-userSchema.index({ githubId: 1 }, { sparse: true });
+// Note: email, googleId, microsoftId, githubId already have indexes via "unique: true"
+// No need to add duplicate indexes
 
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {

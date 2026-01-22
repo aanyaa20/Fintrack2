@@ -15,19 +15,21 @@ import { signJwtToken } from "../utils/jwt";
 import { verifyFirebaseToken } from "../config/firebase.config";
 import { generateResetToken, hashResetToken } from "../utils/token";
 import { sendForgotPasswordEmail } from "../mailers/auth.mailer";
+import { sendWelcomeEmail } from "../mailers/welcome.mailer";
 
 export const registerService = async (body: RegisterSchemaType) => {
-  const { email } = body;
+  const { email, name } = body;
 
   const session = await mongoose.startSession();
 
   try {
-    await session.withTransaction(async () => {
+    const result = await session.withTransaction(async () => {
       const existingUser = await UserModel.findOne({ email }).session(session);
       if (existingUser) throw new UnauthorizedException("User already exists");
 
       const newUser = new UserModel({
         ...body,
+        welcomeEmailSent: false,
       });
 
       await newUser.save({ session });
@@ -41,8 +43,23 @@ export const registerService = async (body: RegisterSchemaType) => {
       });
       await reportSetting.save({ session });
 
+      // Send welcome email AFTER transaction completes (fire and forget)
+      session.commitTransaction().then(() => {
+        sendWelcomeEmail({ name, email })
+          .then(async () => {
+            await UserModel.findByIdAndUpdate(newUser._id, { 
+              welcomeEmailSent: true 
+            });
+          })
+          .catch((err) => {
+            console.error("Welcome email failed:", err);
+          });
+      });
+
       return { user: newUser.omitPassword() };
     });
+
+    return result;
   } catch (error) {
     throw error;
   } finally {
@@ -66,7 +83,7 @@ export const loginService = async (body: LoginSchemaType) => {
     {
       userId: user.id,
     },
-    { _id: 1, frequency: 1, isEnabled: 1 }
+    { _id: 1, frequency: 1, isEnabled: 1, email: 1, nextReportDate: 1, lastSentDate: 1 }
   ).lean();
 
   return {
@@ -101,6 +118,9 @@ export const githubAuthService = async (user: UserDocument) => {
       _id: reportSetting._id,
       frequency: reportSetting.frequency,
       isEnabled: reportSetting.isEnabled,
+      email: reportSetting.email,
+      nextReportDate: reportSetting.nextReportDate,
+      lastSentDate: reportSetting.lastSentDate,
     },
   };
 };
@@ -114,6 +134,7 @@ export const googleAuthService = async (firebaseToken: string) => {
   }
 
   let user = await UserModel.findOne({ googleId: uid });
+  let isNewUser = false;
 
   if (!user) {
     user = await UserModel.findOne({ email });
@@ -124,12 +145,14 @@ export const googleAuthService = async (firebaseToken: string) => {
       user.profilePicture = picture || user.profilePicture;
       await user.save();
     } else {
+      isNewUser = true;
       user = await UserModel.create({
         googleId: uid,
         name: name || email.split("@")[0],
         email,
         profilePicture: picture,
         provider: "google",
+        welcomeEmailSent: false,
       });
     }
   }
@@ -146,6 +169,17 @@ export const googleAuthService = async (firebaseToken: string) => {
     });
   }
 
+  // Send welcome email for new Google users
+  if (isNewUser && !user.welcomeEmailSent) {
+    sendWelcomeEmail({ name: user.name, email: user.email })
+      .then(async () => {
+        await UserModel.findByIdAndUpdate(user!._id, { welcomeEmailSent: true });
+      })
+      .catch((err) => {
+        console.error("Welcome email failed:", err);
+      });
+  }
+
   const { token, expiresAt } = signJwtToken({ userId: user.id });
 
   return {
@@ -156,6 +190,9 @@ export const googleAuthService = async (firebaseToken: string) => {
       _id: reportSetting._id,
       frequency: reportSetting.frequency,
       isEnabled: reportSetting.isEnabled,
+      email: reportSetting.email,
+      nextReportDate: reportSetting.nextReportDate,
+      lastSentDate: reportSetting.lastSentDate,
     },
   };
 };
@@ -169,6 +206,7 @@ export const microsoftAuthService = async (firebaseToken: string) => {
   }
 
   let user = await UserModel.findOne({ microsoftId: uid });
+  let isNewUser = false;
 
   if (!user) {
     user = await UserModel.findOne({ email });
@@ -179,12 +217,14 @@ export const microsoftAuthService = async (firebaseToken: string) => {
       user.profilePicture = picture || user.profilePicture;
       await user.save();
     } else {
+      isNewUser = true;
       user = await UserModel.create({
         microsoftId: uid,
         name: name || email.split("@")[0],
         email,
         profilePicture: picture,
         provider: "microsoft",
+        welcomeEmailSent: false,
       });
     }
   }
@@ -201,6 +241,17 @@ export const microsoftAuthService = async (firebaseToken: string) => {
     });
   }
 
+  // Send welcome email for new Microsoft users
+  if (isNewUser && !user.welcomeEmailSent) {
+    sendWelcomeEmail({ name: user.name, email: user.email })
+      .then(async () => {
+        await UserModel.findByIdAndUpdate(user!._id, { welcomeEmailSent: true });
+      })
+      .catch((err) => {
+        console.error("Welcome email failed:", err);
+      });
+  }
+
   const { token, expiresAt } = signJwtToken({ userId: user.id });
 
   return {
@@ -211,6 +262,9 @@ export const microsoftAuthService = async (firebaseToken: string) => {
       _id: reportSetting._id,
       frequency: reportSetting.frequency,
       isEnabled: reportSetting.isEnabled,
+      email: reportSetting.email,
+      nextReportDate: reportSetting.nextReportDate,
+      lastSentDate: reportSetting.lastSentDate,
     },
   };
 };

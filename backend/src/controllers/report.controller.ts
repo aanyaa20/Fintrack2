@@ -32,10 +32,11 @@ export const updateReportSettingController = asyncHandler(
     const userId = req.user?._id;
     const body = updateReportSettingSchema.parse(req.body);
 
-    await updateReportSettingService(userId, body);
+    const updatedSetting = await updateReportSettingService(userId, body);
 
     return res.status(HTTPSTATUS.OK).json({
       message: "Reports setting updated successfully",
+      reportSetting: updatedSetting,
     });
   }
 );

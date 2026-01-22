@@ -1,5 +1,5 @@
 import { apiClient } from "@/app/api-client";
-import { GetAllReportResponse, UpdateReportSettingParams } from "./reportType";
+import { GetAllReportResponse, ReportSettingResponse, UpdateReportSettingParams } from "./reportType";
 
 export const reportApi = apiClient.injectEndpoints({
   endpoints: (builder) => ({
@@ -15,7 +15,7 @@ export const reportApi = apiClient.injectEndpoints({
       },
     }),
 
-    updateReportSetting: builder.mutation<void, UpdateReportSettingParams>({
+    updateReportSetting: builder.mutation<ReportSettingResponse, UpdateReportSettingParams>({
       query: (payload) => ({
         url: "/report/update-setting",
         method: "PUT",

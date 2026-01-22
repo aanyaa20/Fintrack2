@@ -7,26 +7,37 @@ export function calulateNextReportDate(
   frequency: keyof typeof ReportFrequencyEnum = "MONTHLY"
 ): Date {
   const now = new Date();
-  const lastSent = lastSentDate || now;
+  
+  // Always calculate from current time for fresh start
   let nextDate: Date;
 
   switch (frequency) {
     case ReportFrequencyEnum.DAILY:
-      nextDate = addDays(lastSent, 1);
+      // If it's before 11:59 PM today, schedule for today, else tomorrow
+      const todayAt1159PM = new Date(now);
+      todayAt1159PM.setHours(23, 59, 0, 0);
+      
+      if (now < todayAt1159PM) {
+        nextDate = todayAt1159PM; // Today at 11:59 PM
+      } else {
+        nextDate = addDays(now, 1); // Tomorrow at 11:59 PM
+      }
       break;
     case ReportFrequencyEnum.WEEKLY:
-      nextDate = addWeeks(lastSent, 1);
+      nextDate = addWeeks(now, 1);
       break;
     case ReportFrequencyEnum.BI_WEEKLY:
-      nextDate = addWeeks(lastSent, 2);
+      nextDate = addDays(now, 15);
       break;
     case ReportFrequencyEnum.MONTHLY:
     default:
-      nextDate = startOfMonth(addMonths(lastSent, 1));
+      nextDate = startOfMonth(addMonths(now, 1));
       break;
   }
 
-  nextDate.setHours(0, 0, 0, 0);
+  // Set to 11:59 PM local time
+  nextDate.setHours(23, 59, 0, 0);
+
   console.log(nextDate, "nextReportDate");
   return nextDate;
 }
