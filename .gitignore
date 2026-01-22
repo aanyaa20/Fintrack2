@@ -12,3 +12,6 @@ dist/
 # IDE
 .vscode/
 .idea/
+
+# Deployment documentation (internal only)
+DEPLOYMENT.md

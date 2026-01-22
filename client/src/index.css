@@ -1,6 +1,10 @@
 ﻿@import "tailwindcss";
 @import "tw-animate-css";
 
+html {
+  zoom: 0.9;
+}
+
 body {
   pointer-events: fill !important;
   font-family: "Onest", sans-serif !important;
