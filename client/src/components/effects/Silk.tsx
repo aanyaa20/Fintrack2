@@ -1,8 +1,12 @@
+/// <reference path="../../types/three.d.ts" />
 /* eslint-disable react/no-unknown-property */
 import React, { forwardRef, useMemo, useRef, useLayoutEffect } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Color, Mesh, ShaderMaterial } from 'three';
+import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
+import { Color, Mesh, ShaderMaterial, PlaneGeometry } from 'three';
 import { IUniform } from 'three';
+
+// Extend react-three-fiber to recognize three.js elements
+extend({ Mesh, PlaneGeometry, ShaderMaterial });
 
 type NormalizedRGB = [number, number, number];
 
