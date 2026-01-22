@@ -29,3 +29,14 @@ export interface UpdateReportSettingParams {
     frequency?: "DAILY" | "WEEKLY" | "BI_WEEKLY" | "MONTHLY";
     email?: string;
 }
+
+export interface ReportSettingResponse {
+    message: string;
+    reportSetting: {
+        frequency: "DAILY" | "WEEKLY" | "BI_WEEKLY" | "MONTHLY";
+        isEnabled: boolean;
+        email?: string;
+        nextReportDate?: string;
+        lastSentDate?: string;
+    }
+}

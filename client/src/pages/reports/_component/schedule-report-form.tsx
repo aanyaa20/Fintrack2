@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Loader, Mail } from "lucide-react";
+import { Loader, Mail, Calendar } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -24,8 +24,9 @@ import { useAppDispatch, useTypedSelector } from "@/app/hook";
 import { useUpdateReportSettingMutation } from "@/features/report/reportAPI";
 import { updateCredentials } from "@/features/auth/authSlice";
 import { toast } from "sonner";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import InstantReportGenerator from "./instant-report-generator";
+import { format } from "date-fns";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -42,6 +43,7 @@ const ScheduleReportForm = ({
 }) => {
   const dispatch = useAppDispatch();
   const { user, reportSetting } = useTypedSelector((state) => state.auth);
+  const [nextReportDate, setNextReportDate] = useState<string | null>(null);
 
   const [updateReportSetting, { isLoading }] = useUpdateReportSettingMutation();
 
@@ -62,6 +64,11 @@ const ScheduleReportForm = ({
         isEnabled: reportSetting?.isEnabled,
         frequency: (reportSetting?.frequency as "DAILY" | "WEEKLY" | "BI_WEEKLY" | "MONTHLY") || "DAILY",
       });
+      
+      // Set the next report date if it exists
+      if (reportSetting?.nextReportDate) {
+        setNextReportDate(reportSetting.nextReportDate);
+      }
     }
   }, [user, form, reportSetting]);
 
@@ -74,8 +81,23 @@ const ScheduleReportForm = ({
     };
     updateReportSetting(payload)
       .unwrap()
-      .then(() => {
-        dispatch(updateCredentials({ reportSetting: payload }));
+      .then((response) => {
+        // Update local state with the new report setting including nextReportDate
+        const updatedSetting = {
+          ...payload,
+          nextReportDate: response.reportSetting.nextReportDate,
+          lastSentDate: response.reportSetting.lastSentDate,
+        };
+        
+        dispatch(updateCredentials({ reportSetting: updatedSetting }));
+        
+        // Update local nextReportDate state
+        if (response.reportSetting.nextReportDate) {
+          setNextReportDate(response.reportSetting.nextReportDate);
+        } else {
+          setNextReportDate(null);
+        }
+        
         onCloseDrawer();
         toast.success("Report setting updated successfully");
       })
@@ -87,22 +109,22 @@ const ScheduleReportForm = ({
   // Get summary text based on form values
   const getScheduleSummary = () => {
     if (!form.watch("isEnabled")) {
-      return "Reports are currently deactivated";
+      return "Automated reports are currently disabled. Enable the toggle above to start receiving scheduled email reports.";
     }
     
     const frequency = form.watch("frequency");
     
     switch (frequency) {
       case "DAILY":
-        return "Report will be sent daily at 11:59 PM";
+        return "Your financial report will be sent every day at 11:59 PM covering the previous day's transactions.";
       case "WEEKLY":
-        return "Report will be sent once a week";
+        return "Your financial report will be sent once a week covering the last 7 days of transactions.";
       case "BI_WEEKLY":
-        return "Report will be sent every 2 weeks (15 days)";
+        return "Your financial report will be sent every 15 days covering the last 15 days of transactions.";
       case "MONTHLY":
-        return "Report will be sent once a month on the 1st day of the next month";
+        return "Your financial report will be sent on the 1st of each month covering the previous month's transactions.";
       default:
-        return "Report will be sent based on selected frequency";
+        return "Your report will be sent automatically based on the selected frequency.";
     }
   };
 
@@ -134,10 +156,10 @@ const ScheduleReportForm = ({
                 rounded-lg border p-4"
                 >
                   <div className="space-y-0.5">
-                    <FormLabel className="text-base">Monthly Reports</FormLabel>
+                    <FormLabel className="text-base">Automated Email Reports</FormLabel>
                     <p className="text-sm text-muted-foreground">
                       {form.watch("isEnabled")
-                        ? "Reports activated"
+                        ? `Active - ${form.watch("frequency") === "DAILY" ? "Daily" : form.watch("frequency") === "WEEKLY" ? "Weekly" : form.watch("frequency") === "BI_WEEKLY" ? "Every 15 Days" : "Monthly"} reports enabled`
                         : "Reports deactivated"}
                     </p>
                   </div>
@@ -214,11 +236,24 @@ const ScheduleReportForm = ({
             </div>
 
             {/* Schedule Summary */}
-            <div className="bg-muted p-4 rounded-lg">
+            <div className="bg-muted p-4 rounded-lg space-y-3">
               <h3 className="font-medium mb-2">Schedule Summary</h3>
               <p className="text-sm text-muted-foreground">
                 {getScheduleSummary()}
               </p>
+              
+              {/* Next Report Date */}
+              {form.watch("isEnabled") && nextReportDate && (
+                <div className="flex items-center gap-2 pt-2 border-t">
+                  <Calendar className="h-4 w-4 text-primary" />
+                  <div className="flex-1">
+                    <p className="text-xs font-medium text-muted-foreground">Next Report Date</p>
+                    <p className="text-sm font-semibold">
+                      {format(new Date(nextReportDate), "MMMM dd, yyyy 'at' hh:mm a")}
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Submit Button */}

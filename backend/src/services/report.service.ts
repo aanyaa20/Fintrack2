@@ -48,6 +48,7 @@ export const updateReportSettingService = async (
   userId: string,
   body: UpdateReportSettingType
 ) => {
+  console.log("📧 Updating report settings:", { userId, body });
   const { isEnabled, frequency } = body;
   let nextReportDate: Date | null = null;
 
@@ -58,21 +59,30 @@ export const updateReportSettingService = async (
     throw new NotFoundException("Report setting not found");
 
   const updatedFrequency = frequency || existingReportSetting.frequency;
+  console.log("🔄 Updated frequency:", updatedFrequency);
 
   if (isEnabled) {
     const currentNextReportDate = existingReportSetting.nextReportDate;
     const now = new Date();
+    console.log("⏰ Current next report date:", currentNextReportDate);
+    console.log("📅 Now:", now);
+    console.log("🔍 Will recalculate?", !currentNextReportDate || currentNextReportDate <= now || frequency);
+    
     if (!currentNextReportDate || currentNextReportDate <= now || frequency) {
       nextReportDate = calulateNextReportDate(
         existingReportSetting.lastSentDate,
         updatedFrequency
       );
+      console.log("✅ NEW Next report date:", nextReportDate);
     } else {
       nextReportDate = currentNextReportDate;
+      console.log("♻️ Keeping existing next report date:", nextReportDate);
     }
+  } else {
+    console.log("❌ Reports disabled, clearing next report date");
   }
 
-  console.log(nextReportDate, "nextReportDate");
+  console.log("💾 Saving next report date:", nextReportDate);
 
   existingReportSetting.set({
     ...body,
@@ -80,6 +90,15 @@ export const updateReportSettingService = async (
   });
 
   await existingReportSetting.save();
+
+  // Return the updated setting with nextReportDate
+  return {
+    frequency: existingReportSetting.frequency,
+    isEnabled: existingReportSetting.isEnabled,
+    email: existingReportSetting.email,
+    nextReportDate: existingReportSetting.nextReportDate,
+    lastSentDate: existingReportSetting.lastSentDate,
+  };
 };
 
 export const generateReportService = async (
