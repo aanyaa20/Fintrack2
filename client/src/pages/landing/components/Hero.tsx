@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section className="w-full pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6 lg:px-20 bg-[#0f1419] relative overflow-hidden">
       {/* Silk Shader Effect - Diagonal gradient mesh like Stripe */}
-      <div className="absolute -top-[20%] -left-[10%] w-[120%] h-[140%] pointer-events-none transform -rotate-12 origin-top-left">
+      <div className="absolute -top-[35%] -left-[35%] w-[170%] h-[170%] pointer-events-none transform -rotate-18 origin-top-left">
         {/* Layer 1 - Teal/Cyan base */}
         <div className="absolute inset-0 opacity-25">
           <Silk
